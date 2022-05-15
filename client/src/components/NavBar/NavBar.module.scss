@@ -1,0 +1,54 @@
+@import '../../styles/variables.scss';
+
+.header {
+    position: sticky;
+    top: 0;
+    width: 100%;
+    background: #fff;
+    box-shadow: 0 6px 16px 0 rgb(25 25 25 / 6%);
+    z-index: 20;
+}  
+.logo {
+    text-decoration: none;
+
+    &:hover {
+        color: inherit;
+    }
+}
+.nav {
+    display: flex;
+    align-items: center;
+
+    &__menu {
+        padding: 0;
+        margin: 0;
+        margin-left: auto; 
+    }
+    &__item {
+        display: inline-block;
+        padding: 0px 16px;
+    }
+    &__link {
+        position: relative;
+        display: inline-block;
+        padding: 15px 8px;
+        
+        &::after {
+            content: "";
+            display: block;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background-color: transparent;
+            transition: background-color .3s linear;
+        }
+
+        &:hover {
+            &::after {
+                background-color: $background-primary;
+            }
+        }
+    }
+}
