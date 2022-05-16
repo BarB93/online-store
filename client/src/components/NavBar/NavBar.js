@@ -1,17 +1,20 @@
 import React, {useContext} from 'react'
 import { NavLink } from 'react-router-dom'
+import {observer} from 'mobx-react-lite'
 
 import { Context } from '../../index'
 import { SHOP_ROUTE } from '../../utils/consts'
+import Button from '../Button/Button'
+
 
 import styles from './NavBar.module.scss'
 
-const NavBar = () => {
+const NavBar = observer(() => {
     const {user} = useContext(Context)
 
     return (
         <header className={styles.header}>
-            <div className={'container '}>
+            <div className={'container'}>
                 <nav className={styles.nav}>
                     <NavLink className={styles.logo} to={SHOP_ROUTE}>DeviceShop</NavLink>
                     <ul className={styles.nav__menu}>
@@ -19,11 +22,12 @@ const NavBar = () => {
                         <li className={styles.nav__item}><NavLink className={styles.nav__link} to={SHOP_ROUTE}>Basket</NavLink></li>
                         <li className={styles.nav__item}><NavLink className={styles.nav__link} to={SHOP_ROUTE}>Basket</NavLink></li>
                         <li className={styles.nav__item}><NavLink className={styles.nav__link} to={SHOP_ROUTE}>Basket</NavLink></li>
+                        <Button>Выйти</Button>
                     </ul>
                 </nav>
             </div>
         </header>
     )
-}
+})
 
 export default NavBar
