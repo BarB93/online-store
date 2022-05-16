@@ -1,5 +1,5 @@
 import Admin from "./pages/Admin"
-import Auth from "./pages/Auth"
+import Auth from "./pages/Auth/Auth"
 import Basket from "./pages/Basket"
 import DevicePage from "./pages/DevicePage"
 import Shop from "./pages/Shop"
