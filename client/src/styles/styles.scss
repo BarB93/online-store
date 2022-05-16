@@ -12,3 +12,25 @@ body {
     padding: 0 20px;
     margin: 0 auto;
 }
+
+.btn {
+    padding: 4px 23px;
+    border: 1px solid $border-secondary;
+    border-radius: 5px;
+    background: #fff;
+    
+    &:hover {
+        cursor: pointer;
+        border-color:#666;
+        color: #666;
+    }
+    &.secondary {
+        color: #fff;
+        background-color: $background-black;
+
+        &:hover {
+            background-color: #444;
+            border-color: #444;
+        }
+    }
+}
