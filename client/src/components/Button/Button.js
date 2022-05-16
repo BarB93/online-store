@@ -1,10 +1,10 @@
 import React from 'react'
 
-const Button = (props) => {
-    let className = props.secondary ? 'secondary' : ''
+const Button = ({secondary, clickHandler, children}) => {
+    let className = secondary ? 'secondary' : ''
 
     return (
-        <button className={'btn ' + className}>{props.children}</button>
+        <button className={'btn ' + className} onClick={clickHandler}>{children}</button>
     )
 }
 
