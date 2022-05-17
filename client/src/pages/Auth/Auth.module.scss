@@ -1,6 +1,38 @@
+@import '../../styles/variables.scss';
+
 .container {
     display: flex;
     justify-content: center;
     align-items: center;
     height: calc(100vh - 54px);
+}
+
+.box {
+    position: relative;
+    width: 100%;
+    max-width: 500px;
+    padding: 20px 30px;
+    border: 1px solid $border-secondary;
+    border-radius: 10px;
+    overflow: hidden;
+
+    &::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        right: 0;
+        display: block;
+        width: 200px;
+        height: 200px;
+        background-color: #ff6900;
+        transform: rotate(45deg) translateY(-71%);
+    }
+}
+
+.header {
+    margin-bottom: 10px;
+}
+
+.btn {
+    margin-top: 20px;
 }
