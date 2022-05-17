@@ -13,6 +13,8 @@ body {
     margin: 0 auto;
 }
 
+/* Buttons
+––––––––––––––––––––––––––––––––– */
 .btn {
     height: fit-content;
     padding: 4px 23px;
@@ -37,4 +39,42 @@ body {
     & + & {
         margin-left: 20px;
     }
+}
+
+
+/* Forms
+––––––––––––––––––––––––––––––––– */
+label {
+    font-weight: bold;
+    display: flex;
+}
+
+input {
+    outline: none;
+}
+
+input[type="email"],
+input[type="text"],
+input[type="number"],
+input[type="password"] {
+  width: 100%;
+  padding: 0.65rem 0.5rem;
+  margin-bottom: 5px;
+  font-size: 1rem;
+  border: 2px solid $gray-200;
+  background-color: $gray-100;
+  border-radius: 10px;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+
+  &:focus-visible {
+    border-color: $gray-600;
+  }
+}
+
+div.error-message {
+    margin-bottom: 10px;
+    color: $red-700;
+    font-size: .8rem;
 }
