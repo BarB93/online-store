@@ -1,0 +1,13 @@
+.container {
+    display: flex;
+    min-height: calc(100vh - 54px);
+    padding-top: 15px;
+}
+.aside {
+    flex: 0 0 270px;
+    background-color: green;
+}
+.main {
+    flex: 1 0 auto;
+    background-color: yellow;
+}
