@@ -4,7 +4,8 @@ import {observer} from 'mobx-react-lite'
 
 import { Context } from '../../index'
 import { LOGIN_ROUTE, SHOP_ROUTE } from '../../utils/consts'
-import Button from '../Button/Button'
+import Button from '../UI/Button/Button'
+import Container from '../UI/Container/Container'
 
 
 import styles from './NavBar.module.scss'
@@ -16,7 +17,7 @@ const NavBar = observer(() => {
 
     return (
         <header className={styles.header}>
-            <div className={'container'}>
+            <Container>
                 <nav className={styles.nav}>
                     <NavLink className={styles.logo} to={SHOP_ROUTE}>DeviceShop</NavLink>
                     <ul className={styles.nav__menu}>
@@ -34,7 +35,7 @@ const NavBar = observer(() => {
                        }
                     </ul>
                 </nav>
-            </div>
+            </Container>
         </header>
     )
 })

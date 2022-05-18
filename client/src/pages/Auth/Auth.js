@@ -4,7 +4,8 @@ import {Formik, Form, Field, ErrorMessage} from 'formik'
 import * as Yup from 'yup'
 
 import { LOGIN_ROUTE, REGISTRATION_ROUTE } from '../../utils/consts'
-import Button from '../../components/Button/Button'
+import Button from '../../components/UI/Button/Button'
+import Container from '../../components/UI/Container/Container'
 
 import styles from './Auth.module.scss'
 
@@ -17,7 +18,7 @@ const Auth = () => {
     const registrationClass = !isLogin ? styles.header__item_active : styles.header__item_disabled
 
     return (
-        <div className={'container ' + styles.container}> 
+        <Container className={styles.container}> 
             <div className={styles.box}>
                 <div className={styles.header}>
                     <h2 className={styles.header__item + ' ' + loginClass}><NavLink to={LOGIN_ROUTE}>Войти</NavLink></h2>
@@ -57,7 +58,7 @@ const Auth = () => {
                     </Form>
                 </Formik>
             </div>
-        </div>
+        </Container>
     ) 
     
 }
