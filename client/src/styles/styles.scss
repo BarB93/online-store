@@ -6,42 +6,6 @@ body {
     color: $text-base;
 }
 
-/* Buttons
-––––––––––––––––––––––––––––––––– */
-.btn {
-    height: fit-content;
-    padding: 4px 23px;
-    border: 1px solid $border-secondary;
-    border-radius: 5px;
-    background: #fff;
-    
-    &.secondary {
-        color: #fff;
-        background-color: $background-black;
-        
-        &:hover {
-            background-color: #444;
-            border-color: #444;
-            color: #fff;
-        }
-    }
-    & + & {
-        margin-left: 20px;
-    }
-    &:hover {
-        cursor: pointer;
-        border-color:#666;
-        color: #666;
-    }
-    &:active {
-        transform: translateY(1px);
-    }
-    &:focus {
-        box-shadow: 0 0 10px rgb(0 0 0 / 30%);
-    }
-}
-
-
 /* Forms
 ––––––––––––––––––––––––––––––––– */
 label {
@@ -78,3 +42,4 @@ div.error-message {
     color: $red-700;
     font-size: .8rem;
 }
+/* ––––––––––––––––––––––––––––––––– */
