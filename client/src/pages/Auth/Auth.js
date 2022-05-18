@@ -1,15 +1,28 @@
 import React from 'react'
+import {NavLink, useLocation} from 'react-router-dom'
 import {Formik, Form, Field, ErrorMessage} from 'formik'
 import * as Yup from 'yup'
 
+import { LOGIN_ROUTE, REGISTRATION_ROUTE } from '../../utils/consts'
+import Button from '../../components/Button/Button'
+
 import styles from './Auth.module.scss'
-import Button from '../../components/Button/Button';
 
 const Auth = () => {
+
+    const location = useLocation()
+    const isLogin = location.pathname === LOGIN_ROUTE
+
+    const loginClass = isLogin ? styles.header__item_active : styles.header__item_disabled
+    const registrationClass = !isLogin ? styles.header__item_active : styles.header__item_disabled
+
     return (
         <div className={'container ' + styles.container}> 
             <div className={styles.box}>
-                <h2 className={styles.header}>Авторизация</h2>
+                <div className={styles.header}>
+                    <h2 className={styles.header__item + ' ' + loginClass}><NavLink to={LOGIN_ROUTE}>Войти</NavLink></h2>
+                    <h2 className={styles.header__item + ' ' + registrationClass}><NavLink to={REGISTRATION_ROUTE}>Регистрация</NavLink></h2>
+                </div>
                 <Formik
                     initialValues={{ email: '', password: '' }}
                     validationSchema={Yup.object({
@@ -31,14 +44,16 @@ const Auth = () => {
                 >
                     <Form>
                         <label htmlFor='email'>Email</label>
-                        <Field name='email' type='text' />
+                        <Field name='email' type='text' placeholder='Введите email...' />
                         <ErrorMessage className='error-message' name='email' component="div" />
                 
                         <label htmlFor='password'>Пароль</label>
-                        <Field name='password' type='password' />
+                        <Field name='password' type='password' placeholder='Введите пароль...' />
                         <ErrorMessage className='error-message' name='password' component="div" />
     
-                        <Button className={styles.btn} secondary type='submit'>Boйти</Button>
+                        <div className={styles.footer}>
+                            <Button className={styles.btn} secondary type='submit'>{isLogin ? 'Boйти' : 'Регистрация'}</Button>
+                        </div>
                     </Form>
                 </Formik>
             </div>
