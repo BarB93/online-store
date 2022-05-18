@@ -13,7 +13,13 @@ export default class DeviceStore {
 
         this._brands = [
             {id: 1, name: 'Xiaomi'},
-            {id: 2, name: 'Apple'}
+            {id: 2, name: 'Apple'},
+            {id: 3, name: 'Lenovo'},
+            {id: 4, name: 'Asus'},
+            {id: 5, name: 'Nokia'},
+            {id: 6, name: 'Acer'},
+            
+
         ]
 
         this._devices = [
@@ -25,6 +31,7 @@ export default class DeviceStore {
             {id: 6, name: 'Note 12', prece: 15, rating: 5, img: 'https://img.giznext.com/assets/model/4/13039/xiaomi-mobiles-xiaomi-redmi-note-12-pro-max-1626950748.jpg?width=160'},
         ]
         this._selectedType = {}
+        this._selectedBrand = {}
 
         makeAutoObservable(this)
     }
@@ -45,6 +52,10 @@ export default class DeviceStore {
         this._selectedType = type
     }
 
+    setSelectedBrand (brand) {
+        this._selectedBrand = brand
+    }
+
     get types () {
         return this._types
     }
@@ -59,5 +70,9 @@ export default class DeviceStore {
 
     get selectedType () {
         return this._selectedType
+    }
+
+    get selectedBrand () {
+        return this._selectedBrand
     }
 }
