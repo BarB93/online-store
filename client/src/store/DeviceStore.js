@@ -5,6 +5,10 @@ export default class DeviceStore {
         this._types = [
             {id: 1, name: 'Смартфоны'},
             {id: 2, name: 'Ноутбуки'},
+            {id: 3, name: 'Планшеты'},
+            {id: 4, name: 'Телевизоры'},
+            {id: 5, name: 'Пылесосы'},
+            {id: 6, name: 'Чайники'},
         ]
 
         this._brands = [
@@ -20,6 +24,7 @@ export default class DeviceStore {
             {id: 5, name: 'Note 12', prece: 15, rating: 5, img: 'https://img.giznext.com/assets/model/4/13039/xiaomi-mobiles-xiaomi-redmi-note-12-pro-max-1626950748.jpg?width=160'},
             {id: 6, name: 'Note 12', prece: 15, rating: 5, img: 'https://img.giznext.com/assets/model/4/13039/xiaomi-mobiles-xiaomi-redmi-note-12-pro-max-1626950748.jpg?width=160'},
         ]
+        this._selectedType = {}
 
         makeAutoObservable(this)
     }
@@ -36,6 +41,10 @@ export default class DeviceStore {
         this.devices = devices
     }
 
+    setSelectedType (type) {
+        this._selectedType = type
+    }
+
     get types () {
         return this._types
     }
@@ -46,5 +55,9 @@ export default class DeviceStore {
 
     get devices () {
         return this._devices
+    }
+
+    get selectedType () {
+        return this._selectedType
     }
 }
