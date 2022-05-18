@@ -7,11 +7,17 @@ import styles from './TypeBar.module.scss'
 
 const TypeBar = observer(() => {
     const {device} = useContext(Context)
-    console.log('Device', device)
 
     return (
         <ul className={styles.list}>
-            {device.types.map(item => <li key={item.id} className={styles.list__item}>{item.name}</li>)}
+            {device.types.map(type => 
+                <li 
+                    key={type.id} 
+                    className={styles.list__item + ' ' + (type.id === device.selectedType.id ? styles.active : '')} 
+                    onClick={() => device.setSelectedType(type)}
+                >
+                    {type.name}
+                </li>)}
         </ul>
     )
 })
