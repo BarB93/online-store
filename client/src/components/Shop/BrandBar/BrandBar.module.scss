@@ -3,11 +3,12 @@
 .list {
     display: flex;
     flex-wrap: wrap;
+    margin-bottom: $indent-base;
 
     &__item {
         padding: 5px 20px;
         border: 1px solid transparent;
-        border-radius: 3px;
+        border-radius: $border-radius-base;
         cursor: pointer;
         user-select: none;
 
