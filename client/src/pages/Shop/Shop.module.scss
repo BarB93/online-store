@@ -6,6 +6,7 @@
 .aside {
     flex: 0 0 200px;
     margin-right: 10px;
+    user-select: none;
 }
 .main {
     flex: 1 0 auto;
