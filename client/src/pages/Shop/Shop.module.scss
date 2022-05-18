@@ -1,11 +1,11 @@
 .container {
     display: flex;
     min-height: calc(100vh - 54px);
-    padding-top: 15px;
+    padding-top: 10px;
 }
 .aside {
-    flex: 0 0 270px;
-    background-color: green;
+    flex: 0 0 200px;
+    margin-right: 10px;
 }
 .main {
     flex: 1 0 auto;
