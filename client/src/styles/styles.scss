@@ -22,15 +22,10 @@ body {
     border-radius: 5px;
     background: #fff;
     
-    &:hover {
-        cursor: pointer;
-        border-color:#666;
-        color: #666;
-    }
     &.secondary {
         color: #fff;
         background-color: $background-black;
-
+        
         &:hover {
             background-color: #444;
             border-color: #444;
@@ -38,6 +33,17 @@ body {
     }
     & + & {
         margin-left: 20px;
+    }
+    &:hover {
+        cursor: pointer;
+        border-color:#666;
+        color: #666;
+    }
+    &:active {
+        transform: translateY(1px);
+    }
+    &:focus {
+        box-shadow: 0 0 10px rgb(0 0 0 / 30%);
     }
 }
 
