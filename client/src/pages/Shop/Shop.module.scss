@@ -1,12 +1,14 @@
+@import '../../styles/variables.scss';
+
 .container {
     display: flex;
     min-height: calc(100vh - 54px);
-    padding-top: 10px;
+    padding-top: $indent-base;
 }
 .aside {
     flex: 0 0 30%;
     max-width: 200px;
-    margin-right: 10px;
+    margin-right: $indent-base;
     user-select: none;
 }
 .main {
