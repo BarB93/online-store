@@ -1,0 +1,8 @@
+@import '../../../styles/variables.scss';
+
+.list {
+    display: flex;
+    flex-wrap: wrap;
+    margin-left:-($indent-card);
+    margin-right:-($indent-card);
+}

@@ -5,6 +5,7 @@ import TypeBar from '../../components/Shop/TypeBar/TypeBar'
 import BrandBar from '../../components/Shop/BrandBar/BrandBar'
 
 import styles from './Shop.module.scss'
+import DeviceList from '../../components/Shop/DeviceList/DeviceList'
 
 const Shop = () => {
     return (
@@ -15,6 +16,7 @@ const Shop = () => {
                 </aside>
                 <main className={styles.main}>
                     <BrandBar />
+                    <DeviceList />
                 </main>
             </div>
         </Container>
