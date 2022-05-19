@@ -5,7 +5,7 @@
     flex-direction: column;
     background-color: #fff;
     border: 1px solid $gray-500;
-    border-radius: 3px;
+    border-radius: $border-radius-base;
 
     &__item {
         padding: 7px 20px;
