@@ -1,0 +1,54 @@
+@import '../../styles/variables.scss';
+
+.title {
+    margin-top: $indent-base;
+}
+
+.content {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.image {
+   margin-right: $indent-base;
+}
+
+.price {
+    max-width: 400px;
+    min-width: 250px;
+    background-color: yellow;
+}
+
+.features {
+    flex: 1 1 100%;
+    margin-right: $indent-base;
+    
+    &__title {
+        font-size: 1.5rem;
+        margin-bottom: 10px;
+    }
+    &__item {
+        display: flex;
+        padding: 5px 20px;
+
+        &:nth-child(odd) {
+            background: #fff;
+        }
+    }
+    &__name {
+       display: flex;
+       flex: 1 1 300px;
+       max-width: 500px;
+    }
+    &__underline {
+        flex: 1 1 auto;
+        position: relative;
+        bottom: 7px;
+        margin: 0 5px;
+        border-bottom: 1px dotted $gray-500;
+    }
+    &__value {
+        min-width: 90px;
+        white-space: no-wrap;
+    }
+}
