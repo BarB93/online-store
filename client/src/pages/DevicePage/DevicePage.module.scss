@@ -1,6 +1,7 @@
 @import '../../styles/variables.scss';
 
-.title {
+.name {
+    font-size: 1.8rem;
     margin-top: $indent-base;
 }
 
@@ -10,42 +11,83 @@
 }
 
 .image {
-   margin-right: $indent-base;
+    flex: 1 0 auto;
+    margin-right: $indent-base;
+    margin-bottom: $indent-base;
+    padding: 20px 15px;;
+    background: #fff;
+    border-radius: $border-radius-base;
+    box-shadow: 0 6px 16px rgb(0 26 52 / 16%), 0 0 0 rgb(0 26 52 / 5%);
 }
 
-.price {
+.title {
+    font-size: 1.4rem;
+    margin-bottom: 10px;
+    font-weight: 700;
+}
+
+.info {
+    display: flex;
+    flex-direction: column;
     max-width: 400px;
     min-width: 250px;
-    background-color: yellow;
+    margin-bottom: $indent-base;
+    padding: 20px 15px;
+    background-color: #fff;
+    border-radius: $border-radius-base;
+    box-shadow: 0 6px 16px rgb(0 26 52 / 16%), 0 0 0 rgb(0 26 52 / 5%);
+
+    &__header {
+        display: flex;
+        flex: 1 1 100%;
+        align-items: flex-start;
+    }
+    &__name {
+        margin: 0;
+        margin-right: 10px;
+        font-size: 1.4rem;
+    }
+    &__price {
+        font-size: 1.4rem;
+        font-weight: 700;
+    }
+    &__addToCard {
+        width: 100%;
+    }
 }
 
 .features {
     flex: 1 1 100%;
-    margin-right: $indent-base;
+    margin-bottom: $indent-base;
+    padding: $indent-base 0;
+    background: #fff;
+    border-radius: $border-radius-base;
+    box-shadow: 0 6px 16px rgb(0 26 52 / 16%), 0 0 0 rgb(0 26 52 / 5%);
     
-    &__title {
-        font-size: 1.5rem;
-        margin-bottom: 10px;
-    }
     &__item {
         display: flex;
         padding: 5px 20px;
+        font-size: .9rem;
 
         &:nth-child(odd) {
-            background: #fff;
+            background: $background-base;
         }
+    }
+    &__title {
+        margin-left: 20px;
     }
     &__name {
        display: flex;
        flex: 1 1 300px;
        max-width: 500px;
+       color: $gray-700;
     }
     &__underline {
         flex: 1 1 auto;
         position: relative;
         bottom: 7px;
         margin: 0 5px;
-        border-bottom: 1px dotted $gray-500;
+        border-bottom: 1px dotted $gray-400;
     }
     &__value {
         min-width: 90px;
