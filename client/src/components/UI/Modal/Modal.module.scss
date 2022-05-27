@@ -10,7 +10,7 @@
     bottom: 0;
     left: 0;
     right: 0;
-    background-color: rgba(0 0 0 /0.5);
+    background-color: rgba(0 0 0 /0.8);
 
     opacity: 0;
     z-index: 100;
@@ -22,10 +22,11 @@
         pointer-events: all;
     }
     &__content {
+        position: relative;
+        width: 500px;
         min-width: 300px;
-        min-height: 250px;
-        background: #fff;
-        padding: 20px 30px;
+        background: $background-base;
+        padding: 20px 30px 15px;
         border-radius: $border-radius-base;
 
         transform: translateY(-50px);
@@ -33,6 +34,45 @@
 
         .active & {
             transform: translateY(0);
+        }
+    }
+    &__title {
+        margin-bottom: 20px;
+        font-size: 1.5em;
+    }
+    &__btnClose {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        border: 3px solid #000;
+        transition: all .1s linear;
+
+        &:hover {
+            cursor: pointer;
+        }
+        &:active {
+            transform: translateY(3px);
+        }
+        &::before,
+        &::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 70%;
+            height: 3px;
+            background: #000;
+            display: block;
+
+        }
+        &::before {
+            transform:  translate(-50%, -50%) rotate(45deg);
+        }
+        &::after {
+            transform:  translate(-50%, -50%) rotate(-45deg);
         }
     }
 }
