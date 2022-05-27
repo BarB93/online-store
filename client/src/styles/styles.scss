@@ -9,11 +9,6 @@ body {
 
 /* Forms
 ––––––––––––––––––––––––––––––––– */
-label {
-    font-weight: bold;
-    display: flex;
-}
-
 input {
     outline: none;
 }
@@ -35,6 +30,21 @@ input[type="password"] {
 
   &:focus-visible {
     border-color: $gray-600;
+  }
+}
+
+.form {
+
+  &__label {
+    display: flex;
+    margin-bottom: 3px;
+    font-weight: bold;
+  }
+
+  &__footer {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 20px;
   }
 }
 
