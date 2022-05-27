@@ -1,4 +1,4 @@
-import Admin from './pages/Admin'
+import Admin from './pages/Admin/Admin'
 import Auth from './pages/Auth/Auth'
 import Basket from './pages/Basket'
 import DevicePage from './pages/DevicePage/DevicePage'
