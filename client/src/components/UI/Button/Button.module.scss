@@ -7,6 +7,7 @@
     border-radius: 5px;
     background: #fff;
     user-select: none;
+    transition: all .1s linear;
     
     &.secondary {
         color: #fff;
@@ -24,7 +25,7 @@
         color: #666;
     }
     &:active {
-        transform: translateY(1px);
+        transform: translateY(3px);
     }
     &:focus {
         box-shadow: 0 0 10px rgb(0 0 0 / 30%);
