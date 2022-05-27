@@ -1,0 +1,35 @@
+@import '../../styles/variables.scss';  
+
+.container {
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+}
+
+.buttons {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 400px;
+}
+
+.btn {
+    width: 100%;
+    margin-left: 0;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    font-size: 1.3rem;
+    background-color: $background-orange;
+    color: #fff;
+    border: none;
+
+    &:hover {
+        color: #fff;
+        background-color: $background-orange-hover;
+    }
+    
+
+    & + & {
+        margin-top: 25px;
+    }
+}
