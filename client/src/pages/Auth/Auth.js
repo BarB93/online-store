@@ -44,14 +44,18 @@ const Auth = () => {
                     }}
                 >
                     <Form>
-                        <label className='form__label' htmlFor='email'>Email</label>
-                        <Field name='email' type='text' placeholder='Введите email...' />
-                        <ErrorMessage className='error-message' name='email' component="div" />
+                        <div className='form__field'>
+                            <label className='form__label' htmlFor='email'>Email</label>
+                            <Field className='form__input' name='email' type='text' placeholder='Введите email...' />
+                            <ErrorMessage className='error-message' name='email' component="div" />
+                        </div>
                 
-                        <label className='form__label' htmlFor='password'>Пароль</label>
-                        <Field name='password' type='password' placeholder='Введите пароль...' />
-                        <ErrorMessage className='error-message' name='password' component="div" />
-    
+                        <div className='form__field'>
+                            <label className='form__label' htmlFor='password'>Пароль</label>
+                            <Field className='form__input' name='password' type='password' placeholder='Введите пароль...' />
+                            <ErrorMessage className='error-message' name='password' component="div" />
+                        </div>
+
                         <div className='form__footer'>
                             <Button className={styles.btn} secondary type='submit'>{isLogin ? 'Boйти' : 'Регистрация'}</Button>
                         </div>
