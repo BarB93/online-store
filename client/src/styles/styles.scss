@@ -10,11 +10,14 @@ body {
 /* Forms
 ––––––––––––––––––––––––––––––––– */
 input, 
-select {
+select,
+textarea {
     outline: none;
 }
 
-input {
+input[type='text'],
+input[type='number'],
+textarea {
   width: 100%;
   padding: 2px 8px;
   margin-bottom: 5px;
@@ -25,14 +28,8 @@ input {
 
 .form {
 
-  &__field {
-
-    & + & {
-      margin-top: 15px;
-    }
-  }
-
-  &__input {
+  &__input,
+  &__textarea {
     min-height: 38px;
     border: 1px solid hsl(0, 0%, 80%);
     padding: 2px 8px;
@@ -66,3 +63,12 @@ div.error-message {
     font-size: .8rem;
 }
 /* ––––––––––––––––––––––––––––––––– */
+
+.btn {
+  font-size: 0.9rem;
+  display: inline-block;
+  padding: 5px 10px;
+  border: 1px solid #000;
+  border-radius: 5px;
+  cursor: pointer;  
+}
