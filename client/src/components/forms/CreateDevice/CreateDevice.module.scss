@@ -1,0 +1,22 @@
+@import '../../../styles/variables.scss';
+
+.fileName {
+    margin-left: 10px;
+}
+
+.field {
+    margin-bottom: 10px;
+}
+
+.textarea {
+    resize: none;
+}
+
+.info {
+    &__row {
+        & + & {
+            padding-top: 10px;
+            border-top: 1px dashed $gray-500;
+        }
+    }
+}

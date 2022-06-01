@@ -5,7 +5,7 @@ import Container from '../../components/UI/Container/Container'
 import Modal from '../../components/UI/Modal/Modal'
 import CreateType from '../../components/forms/CreateType'
 import CreateBrand from '../../components/forms/CreateBrand'
-import CreateDevice from '../../components/forms/CreateDevice'
+import CreateDevice from '../../components/forms/CreateDevice/CreateDevice'
 
 import styles from './Admin.module.scss'
 
