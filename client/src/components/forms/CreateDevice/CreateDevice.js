@@ -18,7 +18,7 @@ const CreateDevice = () => {
 
     // handlers
     const addInfo = () => setInfo([...info, {title: '', description: '', number: Date.now()}])
-    const removeInfo = (number) => setInfo(info.map(i => i.number !== number))
+    const removeInfo = (number) => setInfo(info.filter(i => i.number !== number))
 
     const formik = useFormik({
         initialValues: {
@@ -101,33 +101,10 @@ const CreateDevice = () => {
             <div className={`form__field ${styles.field}`}>
                 <div className='form__label'>Свойства</div>
                 <div className={styles.info}>
-                    <div className={styles.info__row}>
-                        <input 
-                            className='form__input'
-                            type='text' 
-                            placeholder='Введите название...'
-                        />
-                        <textarea 
-                            className={`form__input ${styles.textarea}`}
-                            type='text' 
-                            placeholder='Введите описание...'
-                        />
-                    </div>
-                    <div className={styles.info__row}>
-                        <input 
-                            className='form__input'
-                            type='text' 
-                            placeholder='Введите название...'
-                        />
-                        <textarea 
-                            className={`form__input ${styles.textarea}`}
-                            type='text' 
-                            placeholder='Введите описание...'
-                        />
-                    </div>
                     {info.map(i => {
                         return  (
                             <div key={i.number} className={styles.info__row}>
+                                <div className={styles.info__remove} onClick={() => {removeInfo(i.number)}}></div>
                                 <input 
                                     className='form__input'
                                     type='text' 
@@ -142,7 +119,7 @@ const CreateDevice = () => {
                         )
                     })}
                 </div>
-                <buttton type='button' onClick={addInfo} className='btn'>Добавить новое свойство</buttton> 
+                <button type='button' onClick={addInfo} className={`btn ${styles.addInfo}`}>Добавить новое свойство</button> 
             </div>
 
             <div className='form__footer'>
