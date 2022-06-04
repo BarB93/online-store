@@ -8,6 +8,12 @@
     background: #fff;
     user-select: none;
     transition: all .1s linear;
+
+    &:disabled {
+        color: $gray-400;
+        border-color: $gray-400;
+        cursor:not-allowed;
+    }
     
     &.secondary {
         color: #fff;
@@ -17,6 +23,16 @@
             background-color: #444;
             border-color: #444;
             color: #fff;
+        }
+
+        &:disabled {
+            background: rgba(0 0 0/0.3);
+            cursor:not-allowed;
+            border-color:rgba(0 0 0/0.3);
+
+            &:hover {
+                border-color:rgba(0 0 0/0.3);
+            }
         }
     }
     &:hover {

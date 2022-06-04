@@ -2,11 +2,11 @@ import React from 'react'
 
 import styles from './Button.module.scss'
 
-const Button = ({onClick, children, className, ...props}) => {
+const Button = ({onClick, children, className, secondary, ...props}) => {
     let classes = `${styles.btn} `
-    classes += props.secondary ? `${styles.secondary} ` : ''
+    classes += secondary ? `${styles.secondary} ` : ''
     classes += className ? className : ''
-
+    
     return (
         <button className={classes} onClick={onClick} {...props}>{children}</button>
     )
