@@ -14,8 +14,8 @@ const NavBar = observer(() => {
     const {user} = useContext(Context)
     const navigate = useNavigate()
 
-    const authHandler = () => user.setIsAuth(true)
-    const exitHandler = () => { navigate(LOGIN_ROUTE) }
+  
+    const authHandler = () => { navigate(LOGIN_ROUTE) }
     const adminHandler = () => { navigate(ADMIN_ROUTE) }
 
     return (
@@ -31,7 +31,7 @@ const NavBar = observer(() => {
                        {user.isAuth ? 
                             <>
                                 <Button className={styles.btn} onClick={adminHandler}>Админ панель</Button>
-                                <Button className={styles.btn} onClick={exitHandler}>Выйти</Button>
+                                <Button className={styles.btn} onClick={authHandler}>Выйти</Button>
                             </>
                             :
                             <Button className={styles.btn} onClick={authHandler}>Авторизация</Button>
