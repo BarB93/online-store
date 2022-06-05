@@ -4,6 +4,7 @@ export default class UserStore {
     constructor() {
         this._isAuth = false
         this._user = {}
+        this._isLoading = true
         makeAutoObservable(this)
     }
 
@@ -15,12 +16,19 @@ export default class UserStore {
         this._user = user
     }
 
+    setIsLoading(bool) {
+        this._isLoading = bool
+    }
+
     get isAuth() {
         return this._isAuth
     }
 
-
     get user() {
         return this._user
+    }
+
+    get isLoading() {
+        return this._isLoading
     }
 }
