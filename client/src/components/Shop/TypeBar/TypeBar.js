@@ -2,13 +2,17 @@ import React, {useContext} from 'react'
 import { observer } from 'mobx-react-lite'
 
 import { Context } from '../../../index'
+import TypeBarSkeleton from './TypeBarSkeleton'
 
 import styles from './TypeBar.module.scss'
 
 const TypeBar = observer(() => {
     const {device} = useContext(Context)
+    const {user} = useContext(Context)
 
     return (
+        user.isLoading ? <TypeBarSkeleton />
+        :
         <ul className={styles.list}>
             {device.types.map(type => 
                 <li 
@@ -17,7 +21,8 @@ const TypeBar = observer(() => {
                     onClick={() => device.setSelectedType(type)}
                 >
                     {type.name}
-                </li>)}
+                </li>
+            )}
         </ul>
     )
 })
