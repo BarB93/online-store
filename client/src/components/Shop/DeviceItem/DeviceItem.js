@@ -2,10 +2,10 @@ import React from 'react'
 import {useNavigate} from 'react-router-dom'
 import { observer } from 'mobx-react-lite'
 
-import Button from '../../UI/Button/Button'
-import pricePrettify from '../../../utils/pricePrettify'
-
 import {DEVICE_ROUTE} from '../../../utils/consts'
+import pricePrettify from '../../../utils/pricePrettify'
+import Button from '../../UI/Button/Button'
+
 import star from '../../../assets/star.png'
 import styles from './DeviceItem.module.scss'
 
