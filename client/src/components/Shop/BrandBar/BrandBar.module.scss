@@ -1,4 +1,5 @@
 @import '../../../styles/variables.scss';
+@import '../../../styles/animations.scss';
 
 .list {
     display: flex;
@@ -16,6 +17,14 @@
             background-color: $background-primary;
             border-color: $gray-500;
             color: #fff
+        }
+        &.skeleton {
+            width: 60px;
+            height: 25px;
+            animation: skeleton-loading 1s infinite alternate;
+            & + & {
+                margin-left: 40px;
+            }
         }
     }
 }
