@@ -9,16 +9,23 @@ import Container from '../UI/Container/Container'
 
 
 import styles from './NavBar.module.scss'
+import NavBarSkeleton from './NavBarSkeleton'
 
 const NavBar = observer(() => {
     const {user} = useContext(Context)
     const navigate = useNavigate()
 
-  
-    const authHandler = () => { navigate(LOGIN_ROUTE) }
-    const adminHandler = () => { navigate(ADMIN_ROUTE) }
+    const logout = () => {
+        localStorage.removeItem('token')
+        user.setUser({})
+        user.setIsAuth(false)
+        navigate(LOGIN_ROUTE)
+    }
 
     return (
+        user.isLoading ?
+        <NavBarSkeleton />
+        :
         <header className={styles.header}>
             <Container>
                 <nav className={styles.nav}>
@@ -30,11 +37,11 @@ const NavBar = observer(() => {
                         <li className={styles.nav__item}><NavLink className={styles.nav__link} to={SHOP_ROUTE}>Basket</NavLink></li>
                        {user.isAuth ? 
                             <>
-                                <Button className={styles.btn} onClick={adminHandler}>Админ панель</Button>
-                                <Button className={styles.btn} onClick={authHandler}>Выйти</Button>
+                                <Button className={styles.btn} onClick={() => { navigate(ADMIN_ROUTE) }}>Админ панель</Button>
+                                <Button className={styles.btn} onClick={logout}>Выйти</Button>
                             </>
                             :
-                            <Button className={styles.btn} onClick={authHandler}>Авторизация</Button>
+                            <Button className={styles.btn} onClick={() => { navigate(LOGIN_ROUTE) }}>Авторизация</Button>
                        }
                     </ul>
                 </nav>
