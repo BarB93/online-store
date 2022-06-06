@@ -2,49 +2,14 @@ import {makeAutoObservable} from 'mobx'
 
 export default class DeviceStore {
     constructor() {
-        this._types = [
-            {id: 1, name: 'Смартфоны'},
-            {id: 2, name: 'Ноутбуки'},
-            {id: 3, name: 'Планшеты'},
-            {id: 4, name: 'Телевизоры'},
-            {id: 5, name: 'Пылесосы'},
-            {id: 6, name: 'Чайники'},
-        ]
-
-        this._brands = [
-            {id: 1, name: 'Xiaomi'},
-            {id: 2, name: 'Apple'},
-            {id: 3, name: 'Lenovo'},
-            {id: 4, name: 'Asus'},
-            {id: 5, name: 'Nokia'},
-            {id: 6, name: 'Acer'},
-            
-
-        ]
-
-        this._devices = [
-            {id: 1, name: 'Note 12', prece: 15, rating: 5, price: 15000, img: 'https://img.giznext.com/assets/model/4/13039/xiaomi-mobiles-xiaomi-redmi-note-12-pro-max-1626950748.jpg?width=160'},
-            {id: 2, name: 'Note 12', prece: 15, rating: 5, price: 15000, img: 'https://img.giznext.com/assets/model/4/13039/xiaomi-mobiles-xiaomi-redmi-note-12-pro-max-1626950748.jpg?width=160'},
-            {id: 3, name: 'Note 12', prece: 15, rating: 5, price: 15000, img: 'https://img.giznext.com/assets/model/4/13039/xiaomi-mobiles-xiaomi-redmi-note-12-pro-max-1626950748.jpg?width=160'},
-            {id: 4, name: 'Note 12', prece: 15, rating: 5, price: 15000, img: 'https://img.giznext.com/assets/model/4/13039/xiaomi-mobiles-xiaomi-redmi-note-12-pro-max-1626950748.jpg?width=160'},
-            {id: 5, name: 'Note 12', prece: 15, rating: 5, price: 15000, img: 'https://img.giznext.com/assets/model/4/13039/xiaomi-mobiles-xiaomi-redmi-note-12-pro-max-1626950748.jpg?width=160'},
-            {id: 6, name: 'Note 12', prece: 15, rating: 5, price: 15000, img: 'https://img.giznext.com/assets/model/4/13039/xiaomi-mobiles-xiaomi-redmi-note-12-pro-max-1626950748.jpg?width=160'},
-            {id: 7, name: 'Note 12', prece: 15, rating: 5, price: 15000, img: 'https://img.giznext.com/assets/model/4/13039/xiaomi-mobiles-xiaomi-redmi-note-12-pro-max-1626950748.jpg?width=160'},
-            {id: 8, name: 'Note 12', prece: 15, rating: 5, price: 15000, img: 'https://img.giznext.com/assets/model/4/13039/xiaomi-mobiles-xiaomi-redmi-note-12-pro-max-1626950748.jpg?width=160'},
-            {id: 9, name: 'Note 12', prece: 15, rating: 5, price: 15000, img: 'https://img.giznext.com/assets/model/4/13039/xiaomi-mobiles-xiaomi-redmi-note-12-pro-max-1626950748.jpg?width=160'},
-            {id: 10, name: 'Note 12', prece: 15, rating: 5, price: 15000, img: 'https://img.giznext.com/assets/model/4/13039/xiaomi-mobiles-xiaomi-redmi-note-12-pro-max-1626950748.jpg?width=160'},
-            {id: 11, name: 'Note 12', prece: 15, rating: 5, price: 15000, img: 'https://img.giznext.com/assets/model/4/13039/xiaomi-mobiles-xiaomi-redmi-note-12-pro-max-1626950748.jpg?width=160'},
-            {id: 12, name: 'Note 12', prece: 15, rating: 5, price: 15000, img: 'https://img.giznext.com/assets/model/4/13039/xiaomi-mobiles-xiaomi-redmi-note-12-pro-max-1626950748.jpg?width=160'},
-            {id: 13, name: 'Note 12', prece: 15, rating: 5, price: 15000, img: 'https://img.giznext.com/assets/model/4/13039/xiaomi-mobiles-xiaomi-redmi-note-12-pro-max-1626950748.jpg?width=160'},
-            {id: 14, name: 'Note 12', prece: 15, rating: 5, price: 15000, img: 'https://img.giznext.com/assets/model/4/13039/xiaomi-mobiles-xiaomi-redmi-note-12-pro-max-1626950748.jpg?width=160'},
-            {id: 15, name: 'Note 12', prece: 15, rating: 5, price: 15000, img: 'https://img.giznext.com/assets/model/4/13039/xiaomi-mobiles-xiaomi-redmi-note-12-pro-max-1626950748.jpg?width=160'},
-            {id: 16, name: 'Note 12', prece: 15, rating: 5, price: 15000, img: 'https://img.giznext.com/assets/model/4/13039/xiaomi-mobiles-xiaomi-redmi-note-12-pro-max-1626950748.jpg?width=160'},
-            {id: 17, name: 'Note 12', prece: 15, rating: 5, price: 15000, img: 'https://img.giznext.com/assets/model/4/13039/xiaomi-mobiles-xiaomi-redmi-note-12-pro-max-1626950748.jpg?width=160'},
-            {id: 18, name: 'Note 12', prece: 15, rating: 5, price: 15000, img: 'https://img.giznext.com/assets/model/4/13039/xiaomi-mobiles-xiaomi-redmi-note-12-pro-max-1626950748.jpg?width=160'},
-        ]
+        this._types = []
+        this._brands = []
+        this._devices = []
         this._selectedType = {}
         this._selectedBrand = {}
-
+        this._isLoadingTypes = true
+        this._isLoadingBrands = true
+        this._isLoadingDevices = true
         makeAutoObservable(this)
     }
 
@@ -57,7 +22,7 @@ export default class DeviceStore {
     }
 
     setDevices (devices) {
-        this.devices = devices
+        this._devices = devices
     }
 
     setSelectedType (type) {
@@ -66,6 +31,18 @@ export default class DeviceStore {
 
     setSelectedBrand (brand) {
         this._selectedBrand = brand
+    }
+
+    setIsLoadingTypes (bool) {
+        this._isLoadingTypes = bool
+    }
+
+    setIsLoadingBrands (bool) {
+        this._isLoadingBrands = bool
+    }
+
+    setIsLoadingDevices (bool) {
+        this._isLoadingDevices = bool
     }
 
     get types () {
@@ -86,5 +63,17 @@ export default class DeviceStore {
 
     get selectedBrand () {
         return this._selectedBrand
+    }
+
+    get isLoadingTypes () {
+        return this._isLoadingTypes
+    }
+
+    get isLoadingBrands () {
+        return this._isLoadingBrands
+    }
+
+    get isLoadingDevices () {
+        return this._isLoadingDevices
     }
 }
