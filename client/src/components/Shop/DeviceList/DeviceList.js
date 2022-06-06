@@ -9,10 +9,9 @@ import styles from './DeviceList.module.scss'
 
 const DeviceList = observer(() => {
     const {device, user} = useContext(Context)
-
     return (
         <div className={styles.list}>
-            { user.isLoading ? new Array(12).fill(0).map((i, index) => <DeviceItemSkeleton key={index} />)
+            { (user.isLoading || device.isLoadingDevices) ? new Array(12).fill(0).map((i, index) => <DeviceItemSkeleton key={index} />)
                 :
                 device.devices.map(device => 
                 <DeviceItem key={device.id} device={device} />
