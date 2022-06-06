@@ -12,7 +12,7 @@ const BrandBar = observer(() => {
         
         <ul className={styles.list}>
             {
-                user.isLoading ? new Array(10).fill(0).map((i, index) => <BrandBarSkeleton key={index} />)
+                (user.isLoading || device.isLoadingBrand) ? new Array(10).fill(0).map((i, index) => <BrandBarSkeleton key={index} />)
                 :
                 device.brands.map(brand => 
                 <li 
