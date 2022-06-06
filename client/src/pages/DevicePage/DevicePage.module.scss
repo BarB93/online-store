@@ -1,4 +1,5 @@
 @import '../../styles/variables.scss';
+@import '../../styles/animations.scss';
 
 .name {
     font-size: 1.8rem;
@@ -12,12 +13,19 @@
 
 .image {
     flex: 1 0 auto;
+    display: flex;
+    justify-content: center;
+    min-height: 500px;
     margin-right: $indent-base;
     margin-bottom: $indent-base;
     padding: 20px 15px;;
     background: #fff;
     border-radius: $border-radius-base;
     box-shadow: 0 6px 16px rgb(0 26 52 / 16%), 0 0 0 rgb(0 26 52 / 5%);
+
+    img {
+        height: 500px;
+    }
 }
 
 .title {
@@ -41,6 +49,7 @@
         display: flex;
         flex: 1 1 100%;
         align-items: flex-start;
+        margin-bottom: 30px;
     }
     &__name {
         margin: 0;
@@ -92,5 +101,24 @@
     &__value {
         min-width: 90px;
         white-space: no-wrap;
+    }
+}
+
+.skeleton {
+    .name {
+        height: 43px;
+        width: 200px;
+        border-radius: $border-radius-base;
+        animation: skeleton-loading 1s infinite alternate;
+    }
+
+    .image,
+    .info,
+    .features {
+        animation: skeleton-loading 1s infinite alternate;
+    }
+
+    .features {
+        height: 300px;
     }
 }
