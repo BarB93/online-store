@@ -14,6 +14,7 @@ const DeviceItem = observer(({device}) => {
     const price = pricePrettify(device.price)
 
     const navigateToDevice = () => {navigate(DEVICE_ROUTE + '/' + device.id)}
+    const imageURL = `${process.env.REACT_APP_API_URL}/${device.img}`
 
     return (
         <article className={styles.card}>
@@ -25,7 +26,7 @@ const DeviceItem = observer(({device}) => {
                     <Button className={styles.btnMore} onClick={navigateToDevice}>Подробнее</Button>
                 </div>
                 <div className={styles.card__image} onClick={navigateToDevice}>
-                    <img src={device.img} alt={device.name} />
+                    <img src={imageURL} alt={device.name} />
                 </div>
                 <div className={styles.card__rating}>
                     <img src={star} alt='рейтинг' />
