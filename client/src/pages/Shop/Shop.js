@@ -1,13 +1,38 @@
-import React from 'react'
+import React, { useContext, useEffect } from 'react'
+import { observer } from 'mobx-react-lite'
 
+import { fetchBrands, fetchDevices, fetchTypes } from '../../http/deviceAPI'
+import { Context } from '../../index'
 import Container from '../../components/UI/Container/Container'
 import TypeBar from '../../components/Shop/TypeBar/TypeBar'
 import BrandBar from '../../components/Shop/BrandBar/BrandBar'
-
-import styles from './Shop.module.scss'
 import DeviceList from '../../components/Shop/DeviceList/DeviceList'
 
-const Shop = () => {
+import styles from './Shop.module.scss'
+
+const Shop = observer(() => {
+    const {device} = useContext(Context)
+
+    useEffect(() => {
+        // Types
+        fetchTypes().then(data => device.setTypes(data))
+        .catch(e => alert(e.massage))
+        .finally(() => device.setIsLoadingTypes(false))
+        
+        // Brands
+        fetchBrands().then(data => device.setBrands(data))
+        .catch(e => alert(e.massage))
+        .finally(() => device.setIsLoadingBrands(false)) 
+
+        // Devices
+        fetchDevices().then((devices) => {
+            device.setDevices(devices.rows)
+        })
+        .catch(e => alert(e))
+        .finally(() => {device.setIsLoadingDevices(false)})
+       
+    }, [])
+
     return (
         <Container>
             <div className={styles.container}>
@@ -21,6 +46,6 @@ const Shop = () => {
             </div>
         </Container>
     )
-}
+})
 
 export default Shop
