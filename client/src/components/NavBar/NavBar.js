@@ -23,8 +23,7 @@ const NavBar = observer(() => {
     }
 
     return (
-        user.isLoading ?
-        <NavBarSkeleton />
+        user.isLoading ? <NavBarSkeleton />
         :
         <header className={styles.header}>
             <Container>

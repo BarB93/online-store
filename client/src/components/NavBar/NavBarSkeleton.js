@@ -9,12 +9,9 @@ const NavBarSkeleton = () => {
             <Container>
                 <nav className={styles.nav}>
                     <div className={styles.logo}><div className={styles.skeleton_logo}></div></div>
-                    <ul className={styles.nav__menu}>
-                        <li className={styles.nav__item}><div className={styles.nav__link}><span className={styles.skeleton_text}></span></div></li>
-                        <li className={styles.nav__item}><div className={styles.nav__link}><span className={styles.skeleton_text}></span></div></li>
-                        <li className={styles.nav__item}><div className={styles.nav__link}><span className={styles.skeleton_text}></span></div></li>
-                        <li className={styles.nav__item}><div className={styles.nav__link}><span className={styles.skeleton_text}></span></div></li>
-                    </ul>
+                    <div className={styles.nav__menu}>
+                        <div className={styles.nav__item}><div className={styles.nav__link}><span className={styles.skeleton_item}></span></div></div>
+                    </div>
                 </nav>
             </Container>
         </header>
