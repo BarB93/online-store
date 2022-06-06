@@ -6,6 +6,12 @@
     flex-wrap: wrap;
     margin-bottom: $indent-base;
 
+    &.skeleton {
+        height: 36px;
+        animation: skeleton-loading 1s infinite alternate;
+        border-radius: $border-radius-base;
+    }
+
     &__item {
         padding: 5px 20px;
         border: 1px solid transparent;
@@ -17,14 +23,6 @@
             background-color: $background-primary;
             border-color: $gray-500;
             color: #fff
-        }
-        &.skeleton {
-            width: 60px;
-            height: 25px;
-            animation: skeleton-loading 1s infinite alternate;
-            & + & {
-                margin-left: 40px;
-            }
         }
     }
 }

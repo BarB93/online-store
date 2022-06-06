@@ -9,11 +9,10 @@ import styles from './BrandBar.module.scss'
 const BrandBar = observer(() => {
     const {device, user} = useContext(Context)
     return (
-        
+        (user.isLoading || device.isLoadingBrand) ? <BrandBarSkeleton />
+        :
         <ul className={styles.list}>
             {
-                (user.isLoading || device.isLoadingBrand) ? new Array(10).fill(0).map((i, index) => <BrandBarSkeleton key={index} />)
-                :
                 device.brands.map(brand => 
                 <li 
                     key={brand.id} 

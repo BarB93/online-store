@@ -4,7 +4,7 @@ import styles from './BrandBar.module.scss'
 
 const BrandBarSkeleton = () => {
     return (
-        <li className={`${styles.list__item} ${styles.skeleton}`}></li>
+        <id className={`${styles.list} ${styles.skeleton}`}></id>
     )
 }
 
