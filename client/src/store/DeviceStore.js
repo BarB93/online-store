@@ -10,6 +10,7 @@ export default class DeviceStore {
         this._isLoadingTypes = true
         this._isLoadingBrands = true
         this._isLoadingDevices = true
+        this._isLoadingOneDevice = true
         makeAutoObservable(this)
     }
 
@@ -45,6 +46,10 @@ export default class DeviceStore {
         this._isLoadingDevices = bool
     }
 
+    setIsLoadingOneDevice (bool) {
+        this._isLoadingOneDevice = bool
+    }
+
     get types () {
         return this._types
     }
@@ -75,5 +80,9 @@ export default class DeviceStore {
 
     get isLoadingDevices () {
         return this._isLoadingDevices
+    }
+
+    get isLoadingOneDevice () {
+        return this._isLoadingOneDevice
     }
 }
