@@ -7,11 +7,10 @@ import TypeBarSkeleton from './TypeBarSkeleton'
 import styles from './TypeBar.module.scss'
 
 const TypeBar = observer(() => {
-    const {device} = useContext(Context)
-    const {user} = useContext(Context)
+    const {device, user} = useContext(Context)
 
     return (
-        user.isLoading ? <TypeBarSkeleton />
+        (user.isLoading || device.isLoadingType) ? <TypeBarSkeleton />
         :
         <ul className={styles.list}>
             {device.types.map(type => 
