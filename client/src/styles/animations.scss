@@ -1,5 +1,7 @@
-// skeleton loading 
+//  vars
+$animation-skeleton-loading: skeleton-loading 1s infinite alternate;
 
+// skeleton loading 
 @keyframes skeleton-loading {
     0% {
         background-color: hsl(200, 20%, 70%);
@@ -8,5 +10,4 @@
         background-color: hsl(200, 20%, 95%);
     }
 }
-
 // ***************************
