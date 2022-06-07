@@ -8,7 +8,7 @@
 
     &.skeleton {
         height: 36px;
-        animation: skeleton-loading 1s infinite alternate;
+        animation: $animation-skeleton-loading;
         border-radius: $border-radius-base;
     }
 
