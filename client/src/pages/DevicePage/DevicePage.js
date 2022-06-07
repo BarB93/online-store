@@ -43,7 +43,7 @@ const DevicePage = observer(() => {
                         <Button className={styles.info__addToCard} secondary>Добавить в корзину</Button>
                     </div>
                     <div className={styles.features}>
-                       <h3 className={styles.title + ' ' + styles.features__title}>Характеристики</h3>
+                       <h3 className={`${styles.title} ${styles.features__title}`}>Характеристики</h3>
                        <ul className={styles.features__body}>
                             {device.info.map(({id, name, value}) => 
                                 <li key={id} 
