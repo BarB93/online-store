@@ -24,7 +24,6 @@ const DevicePage = observer(() => {
         .finally(() => devStore.setIsLoadingOneDevice(false))
     }, [])
 
-    console.log('id', id)
     return (
         devStore.isLoadingOneDevice ? <DevicePageSkeleton />
         :
