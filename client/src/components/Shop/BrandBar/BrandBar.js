@@ -7,19 +7,19 @@ import BrandBarSkeleton from './BrandBarSkeleton'
 import styles from './BrandBar.module.scss'
 
 const BrandBar = observer(() => {
-    const {device, user} = useContext(Context)
+    const {brand} = useContext(Context)
     return (
-        (user.isLoading || device.isLoadingBrand) ? <BrandBarSkeleton />
+        (brand.isLoadingBrand) ? <BrandBarSkeleton />
         :
         <ul className={styles.list}>
             {
-                device.brands.map(brand => 
+                brand.brands.map(b => 
                 <li 
-                    key={brand.id} 
-                    className={styles.list__item + ' ' + (brand.id === device.selectedBrand.id ? styles.active : '')}
-                    onClick={() => device.setSelectedBrand(brand)}
+                    key={b.id} 
+                    className={styles.list__item + ' ' + (b.id === brand.selectedBrand.id ? styles.active : '')}
+                    onClick={() => brand.setSelectedBrand(b)}
                 >
-                    {brand.name}
+                    {b.name}
                 </li>)
             }
         </ul>

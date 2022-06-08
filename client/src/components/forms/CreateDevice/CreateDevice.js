@@ -8,11 +8,11 @@ import CustomSelect from '../../UI/CustomSelect'
 import styles from './CreateDevice.module.scss'
 
 const CreateDevice = () => {
-    const {device, type} = useContext(Context)
+    const {type, brand} = useContext(Context)
     // список для select типов устройств
     const optionsType = type.types.map(t => ({value: t, label: t.name}))
     // список для select брендов устройств
-    const optionsBrand = device.brands.map(brand => ({value: brand, label: brand.name}))
+    const optionsBrand = brand.brands.map(b => ({value: b, label: b.name}))
     // массив характериститк для девайса
     const [info, setInfo] = useState([])
 

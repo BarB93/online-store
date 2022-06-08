@@ -11,7 +11,7 @@ import DeviceList from '../../components/Shop/DeviceList/DeviceList'
 import styles from './Shop.module.scss'
 
 const Shop = observer(() => {
-    const {device, type} = useContext(Context)
+    const {device, type, brand} = useContext(Context)
 
     useEffect(() => {
         // Types
@@ -20,9 +20,9 @@ const Shop = observer(() => {
         .finally(() => type.setIsLoadingTypes(false))
         
         // Brands
-        fetchBrands().then(data => device.setBrands(data))
+        fetchBrands().then(data => brand.setBrands(data))
         .catch(e => alert(e.massage))
-        .finally(() => device.setIsLoadingBrands(false)) 
+        .finally(() => brand.setIsLoadingBrands(false)) 
 
         // Devices
         fetchDevices().then((devices) => {
