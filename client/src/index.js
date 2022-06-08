@@ -2,13 +2,15 @@ import React, { createContext } from 'react'
 import ReactDOM from 'react-dom/client'
 import App from './App'
 import UserStore from './store/UserStore'
-import DeviceStore from './store/DeviceStore';
+import DeviceStore from './store/DeviceStore'
+import TypeStore from './store/TypeStore'
 
 export const Context = createContext(null)
 
 const store = {
   user: new UserStore(),
   device: new DeviceStore(),
+  type: new TypeStore(),
 }
 
 const root = ReactDOM.createRoot(document.getElementById('root'))

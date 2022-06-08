@@ -7,19 +7,19 @@ import TypeBarSkeleton from './TypeBarSkeleton'
 import styles from './TypeBar.module.scss'
 
 const TypeBar = observer(() => {
-    const {device, user} = useContext(Context)
+    const {type} = useContext(Context)
 
     return (
-        (user.isLoading || device.isLoadingType) ? <TypeBarSkeleton />
+        (type.isLoadingType) ? <TypeBarSkeleton />
         :
         <ul className={styles.list}>
-            {device.types.map(type => 
+            {type.types.map(t => 
                 <li 
-                    key={type.id} 
-                    className={styles.list__item + ' ' + (type.id === device.selectedType.id ? styles.active : '')} 
-                    onClick={() => device.setSelectedType(type)}
+                    key={t.id} 
+                    className={styles.list__item + ' ' + (t.id === type.selectedType.id ? styles.active : '')} 
+                    onClick={() => type.setSelectedType(t)}
                 >
-                    {type.name}
+                    {t.name}
                 </li>
             )}
         </ul>
