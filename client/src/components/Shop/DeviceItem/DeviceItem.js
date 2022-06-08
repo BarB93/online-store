@@ -24,10 +24,8 @@ const DeviceItem = observer(({device}) => {
                 <div className={styles.card__buttons}>
                     <Button className={styles.btnBuy} secondary>Купить</Button>
                     <Button className={styles.btnMore} onClick={navigateToDevice}>Подробнее</Button>
-                </div>
-                <div className={styles.card__image} onClick={navigateToDevice}>
-                    <img src={imageURL} alt={device.name} />
-                </div>
+                </div> 
+                <img className={styles.card__image} onClick={navigateToDevice} src={imageURL} alt={device.name} />
                 <div className={styles.card__rating}>
                     <img src={star} alt='рейтинг' />
                     <span>{device.rating.toFixed(1)}</span>
