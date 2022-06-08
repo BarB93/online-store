@@ -5,7 +5,7 @@ import Container from '../../components/UI/Container/Container'
 import Modal from '../../components/UI/Modal/Modal'
 import CreateTypeForm from '../../components/forms/CreateTypeForm'
 import CreateBrandForm from '../../components/forms/CreateBrandForm'
-import CreateDevice from '../../components/forms/CreateDevice/CreateDevice'
+import CreateDeviceForm from '../../components/forms/CreateDeviceForm/CreateDeviceForm'
 
 import styles from './Admin.module.scss'
 
@@ -40,7 +40,7 @@ const Admin = () => {
 
             <Modal active={typeModal} setActive={setTypeModal} title={titleType}><CreateTypeForm /></Modal>
             <Modal active={brandModal} setActive={setBrandModal} title={titleBrand}><CreateBrandForm /></Modal>
-            <Modal active={deviceModal} setActive={setDeviceModal} title={titleDevice}><CreateDevice /></Modal>
+            <Modal active={deviceModal} setActive={setDeviceModal} title={titleDevice}><CreateDeviceForm /></Modal>
         </Container>
     )
 }

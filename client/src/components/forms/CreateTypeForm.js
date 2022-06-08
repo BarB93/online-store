@@ -6,7 +6,7 @@ import Button from '../UI/Button/Button'
 import ErrorMessage from './ErrorMessage'
 import { createType } from '../../http/deviceAPI'
 
-const CreateType = () => {
+const CreateTypeForm = () => {
     const validationSchema = Yup.object({
         name: Yup.string().required('Укажите название типа')
     })
@@ -33,4 +33,4 @@ const CreateType = () => {
     )
 }
 
-export default CreateType
+export default CreateTypeForm

@@ -5,9 +5,9 @@ import { Context } from '../../../index'
 import Button from '../../UI/Button/Button'
 import CustomSelect from '../../UI/CustomSelect'
 
-import styles from './CreateDevice.module.scss'
+import styles from './CreateDeviceForm.module.scss'
 
-const CreateDevice = () => {
+const CreateDeviceForm = () => {
     const {type, brand} = useContext(Context)
     // список для select типов устройств
     const optionsType = type.types.map(t => ({value: t, label: t.name}))
@@ -130,4 +130,4 @@ const CreateDevice = () => {
     )
 }
 
-export default CreateDevice
+export default CreateDeviceForm

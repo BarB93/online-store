@@ -3,7 +3,7 @@ import { Field, Form, Formik } from 'formik'
 
 import Button from '../UI/Button/Button'
 
-const CreateBrand = () => {
+const CreateBrandForm = () => {
     return (
         <Formik
             initialValues={{name: '',}}
@@ -19,4 +19,4 @@ const CreateBrand = () => {
     )
 }
 
-export default CreateBrand
+export default CreateBrandForm
