@@ -47,7 +47,6 @@ const AuthForm = () => {
             authHandler(values.email, values.password)
             setSubmitting(false)
         },
-        isValid: false,
     })
 
     return (
