@@ -3,7 +3,7 @@ import React, { useState } from 'react'
 import Button from '../../components/UI/Button/Button'
 import Container from '../../components/UI/Container/Container'
 import Modal from '../../components/UI/Modal/Modal'
-import CreateType from '../../components/forms/CreateType'
+import CreateTypeForm from '../../components/forms/CreateTypeForm'
 import CreateBrand from '../../components/forms/CreateBrand'
 import CreateDevice from '../../components/forms/CreateDevice/CreateDevice'
 
@@ -38,7 +38,7 @@ const Admin = () => {
                 </div>
             </div>
 
-            <Modal active={typeModal} setActive={setTypeModal} title={titleType}><CreateType /></Modal>
+            <Modal active={typeModal} setActive={setTypeModal} title={titleType}><CreateTypeForm /></Modal>
             <Modal active={brandModal} setActive={setBrandModal} title={titleBrand}><CreateBrand /></Modal>
             <Modal active={deviceModal} setActive={setDeviceModal} title={titleDevice}><CreateDevice /></Modal>
         </Container>
