@@ -4,7 +4,7 @@ import styles from './SpinnerRoller.module.scss'
 
 const SpinnerRoller = () => {
     return (
-        <div class={styles.spinner}><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+        <div className={styles.spinner}><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
     )
 }
 
