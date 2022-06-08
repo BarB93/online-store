@@ -4,6 +4,7 @@ import { observer } from 'mobx-react-lite'
 
 import { check } from './http/userAPI'
 import { Context } from './index'
+import SpinnerRoller from './components/UI/spinners/SpinnerRoller/SpinnerRoller'
 import AppRouter from './components/AppRouter'
 import NavBar from './components/NavBar/NavBar'
 
@@ -28,6 +29,8 @@ const App = observer(() => {
   },[])
 
   return (
+    user.isLoading ? <div className='AppLoading'><SpinnerRoller /></div>
+    :
     <BrowserRouter>
       <NavBar />
       <AppRouter />
