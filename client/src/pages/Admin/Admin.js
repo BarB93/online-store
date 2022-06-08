@@ -24,6 +24,16 @@ const Admin = () => {
         setDeviceModal(true)
     }
 
+    const typeSubmittedHandler = () => {
+        setTypeModal(false)
+    }
+    const brandSubmittedHandler = () => {
+        setBrandModal(false)
+    }
+    const deviceSubmittedHandler = () => {
+        setDeviceModal(false)
+    }
+
     const titleType = 'Добавить тип'
     const titleBrand = 'Добавить бренд'
     const titleDevice = 'Добавить устройство'
@@ -38,9 +48,9 @@ const Admin = () => {
                 </div>
             </div>
 
-            <Modal active={typeModal} setActive={setTypeModal} title={titleType}><CreateTypeForm /></Modal>
-            <Modal active={brandModal} setActive={setBrandModal} title={titleBrand}><CreateBrandForm /></Modal>
-            <Modal active={deviceModal} setActive={setDeviceModal} title={titleDevice}><CreateDeviceForm /></Modal>
+            <Modal active={typeModal} setActive={setTypeModal} title={titleType}><CreateTypeForm submittedHandler={typeSubmittedHandler}/></Modal>
+            <Modal active={brandModal} setActive={setBrandModal} title={titleBrand}><CreateBrandForm submittedHandler={brandSubmittedHandler}/></Modal>
+            <Modal active={deviceModal} setActive={setDeviceModal} title={titleDevice}><CreateDeviceForm submittedHandler={deviceSubmittedHandler}/></Modal>
         </Container>
     )
 }
