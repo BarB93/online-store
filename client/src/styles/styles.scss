@@ -7,6 +7,13 @@ body {
     background: $background-base;
 }
 
+.AppLoading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
 /* Forms
 ––––––––––––––––––––––––––––––––– */
 input, 
@@ -58,6 +65,17 @@ textarea {
     justify-content: flex-end;
     align-items: center;
     margin-top: 20px;
+  }
+
+  &__error {
+    margin-right: 20px;
+    font-size: 0.9rem;
+    color: $red-700;
+  }
+
+  &__btn{
+    display: inline-block;
+    margin-left: auto;
   }
 }
 
