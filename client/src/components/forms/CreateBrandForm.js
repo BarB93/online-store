@@ -10,7 +10,7 @@ const CreateBrand = () => {
         >
             <Form>
                 <label className='form__label' htmlFor='name'>Название</label>
-                <Field name='name' type='text' />
+                <Field className='form__input' name='name' type='text' />
                 <div className='form__footer'>
                     <Button secondary>Добавить</Button>
                 </div>
