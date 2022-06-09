@@ -8,8 +8,9 @@ import styles from './BrandBar.module.scss'
 
 const BrandBar = observer(() => {
     const {brand} = useContext(Context)
+    
     return (
-        (brand.isLoadingBrand) ? <BrandBarSkeleton />
+        (brand.isLoadingBrands) ? <BrandBarSkeleton />
         :
         <ul className={styles.list}>
             {

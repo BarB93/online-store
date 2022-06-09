@@ -8,9 +8,9 @@ import styles from './TypeBar.module.scss'
 
 const TypeBar = observer(() => {
     const {type} = useContext(Context)
-
+    
     return (
-        (type.isLoadingType) ? <TypeBarSkeleton />
+        (type.isLoadingTypes) ? <TypeBarSkeleton />
         :
         <ul className={styles.list}>
             {type.types.map(t => 
