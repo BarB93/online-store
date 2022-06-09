@@ -19,6 +19,7 @@
     "react-scripts": "5.0.1",
     "react-select": "^5.3.2",
     "sass": "^1.51.0",
+    "uuid": "^8.3.2",
     "web-vitals": "^2.1.0",
     "yup": "^0.32.11"
   },
