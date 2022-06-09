@@ -52,30 +52,37 @@ textarea {
       border-color: #000;
     }
   }
-
   &__label {
     display: flex;
     width: fit-content;
     margin-bottom: 3px;
     font-weight: bold;
   }
-
   &__footer {
     display: flex;
     justify-content: flex-end;
     align-items: center;
     margin-top: 20px;
   }
-
   &__error {
     margin-right: 20px;
     font-size: 0.9rem;
     color: $red-700;
   }
-
   &__btn{
     display: inline-block;
     margin-left: auto;
+  }
+  &__spinnerContainer {
+    position: relative;
+    height: 34px;
+    width: 68px;
+  }
+  &__spinner {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) scale(0.5);
   }
 }
 

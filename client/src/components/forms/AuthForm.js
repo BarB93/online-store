@@ -1,5 +1,6 @@
 import React, { useContext, useState } from 'react'
 import { useLocation, useNavigate } from 'react-router-dom'
+import { observer } from 'mobx-react-lite'
 import { useFormik } from 'formik'
 import * as Yup from 'yup'
 
@@ -7,10 +8,10 @@ import { Context } from '../../index'
 import { login, registration } from '../../http/userAPI'
 import { LOGIN_ROUTE,  SHOP_ROUTE } from '../../utils/consts'
 import Button from '../UI/Button/Button'
-
+import SpinnerFacebook from '../UI/spinners/SpinnerFacebook/SpinnerFacebook'
 import ErrorMessage from './ErrorMessage'
 
-const AuthForm = () => {
+const AuthForm = observer(() => {
     const [error, setError] = useState(null)
     const {user} = useContext(Context)
     const location = useLocation()
@@ -19,6 +20,7 @@ const AuthForm = () => {
 
     const authHandler = async (email, password) => {
         try {
+            user.setIsFetchingAuth(true)
             let data
             if(error) setError(null)
             if(isLogin) {
@@ -26,13 +28,12 @@ const AuthForm = () => {
             } else {
                 data = await registration(email, password)
             }
-    
             user.setUser(data)
             user.setIsAuth(true)
             navigate(SHOP_ROUTE)
-        } catch (e) {
-            setError(e.response.data.message)
-        }
+        } 
+        catch (e) {setError(e.response.data.message)}
+        finally {user.setIsFetchingAuth(false)}
     }
 
     const formik = useFormik({
@@ -77,17 +78,20 @@ const AuthForm = () => {
             </div>
 
             <div className={`form__footer`}>
-                {
+                {   
+                    
+                    (user.isFetchingAuth && <div className='form__spinnerContainer'><SpinnerFacebook className='form__spinner'/></div>)
+                    ||
                     (error && <ErrorMessage message={error} />)
                     ||
                     ((formik.errors.email && formik.touched.email) && <ErrorMessage message={formik.errors.email} />)
                     ||
                     ((formik.errors.password && formik.touched.password) && <ErrorMessage message={formik.errors.password} />)
                 }
-                <Button className='form__btn' disabled={!formik.isValid} secondary type='submit'>{isLogin ? 'Boйти' : 'Регистрация'}</Button>
+                <Button className='form__btn' disabled={!formik.isValid || user.isFetchingAuth} secondary type='submit'>{isLogin ? 'Boйти' : 'Регистрация'}</Button>
             </div>
         </form>
     )
-}
+})
 
 export default AuthForm
