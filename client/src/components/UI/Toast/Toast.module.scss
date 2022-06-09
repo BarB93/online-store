@@ -1,0 +1,137 @@
+@import '../../../styles/variables.scss';
+
+.notificationContainer {
+    font-size: 14px;
+    box-sizing: border-box;
+    position: fixed;
+}
+
+.topRight {
+  top: 12px;
+  right: 12px;
+  transition: transform .6s ease-in-out;
+  animation: toast-in-right .7s;
+}
+
+.bottomRight {
+  bottom: 12px;
+  right: 12px;
+  transition: transform .6s ease-in-out;
+  animation: toast-in-right .7s;
+}
+
+.topLeft {
+  top: 12px;
+  left: 12px;
+  transition: transform .6s ease-in;
+  animation: toast-in-left .7s;
+}
+
+.bottomLeft {
+  bottom: 12px;
+  left: 12px;
+  transition: transform .6s ease-in;
+  animation: toast-in-left .7s;
+}
+
+.notification {
+  position: relative;
+  min-height: 50px;
+  width: 365px;
+  padding: 20px 10px 20px 70px;
+  border-radius: $border-radius-base;
+  box-shadow: 0 0 10px #999;
+  transition: .3s ease;
+
+  & + & {
+    margin-top: 5px;
+  }
+  &__img {
+      
+    .success & {
+        position: absolute;
+        top: 50%;
+        left: 15px;
+        width: 30px;
+        height: 30px;
+        background: #000;
+        border: 2px solid #000;
+        border-radius: 50%;
+        transform: translateY(-50%);
+    
+        &::before {
+            content: "";
+            position: absolute;
+            top: calc(50% - 2px);
+            left: 50%;
+            width: 15px;
+            height: 9px;
+            border: 3px solid #fff;
+            border-top: none;
+            border-right: 0;
+            transform: translate(-50%, -50%) rotate(-45deg);
+        }
+    }
+  }
+  &__title {
+    font-weight: 700;
+    margin: 0 0 10px 0;
+  }
+  &__description {
+    margin: 0;
+  }
+  &__btnClose {
+    position: absolute;
+    top: 7px;
+    right: 7px;
+    display: block;
+    padding: 0;
+    margin: 0;
+    width: 20px;
+    height: 20px;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+
+    &::after,
+    &::before {
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      display: block;
+      width: 100%;
+      height: 2px;
+      background: #000;
+      transform: translate(-50%, -50%) rotate(45deg); 
+    }
+    &::before {
+      transform: translate(-50%, -50%) rotate(-45deg); 
+    }
+
+  }
+  &.success {
+    background: #fff;
+    border: 1px solid $gray-500;
+  }
+}
+
+@keyframes toast-in-right {
+	from {
+	  transform: translateX(100%);
+	  
+	}
+	to {
+	  transform: translateX(0);
+	}
+}
+
+@keyframes toast-in-left {
+	from {
+		transform: translateX(-100%);
+		
+	}
+	to {
+		transform: translateX(0);
+	}
+}
