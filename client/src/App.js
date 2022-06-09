@@ -7,6 +7,7 @@ import { Context } from './index'
 import SpinnerRoller from './components/UI/spinners/SpinnerRoller/SpinnerRoller'
 import AppRouter from './components/AppRouter'
 import NavBar from './components/NavBar/NavBar'
+import Toast from './components/UI/Toast/Toast'
 
 import './styles/normalize.scss'
 import './styles/styles.scss'
@@ -34,6 +35,7 @@ const App = observer(() => {
     <BrowserRouter>
       <NavBar />
       <AppRouter />
+      <Toast />
     </BrowserRouter>
   )
 })
