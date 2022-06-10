@@ -5,25 +5,32 @@ export default class TypeStore {
         this._types = []
         this._selectedType = {}
         this._isLoadingTypes = true
+        this._isFetchingType = false
         makeAutoObservable(this)
     }
 
-    setTypes (types) {
+    setTypes(types) {
         this._types = types
     }
-    setSelectedType (type) {
+    setSelectedType(type) {
         this._selectedType = type
     }
-    setIsLoadingTypes (bool) {
+    setIsLoadingTypes(bool) {
         this._isLoadingTypes = bool
     }
-    get types () {
+    setIsFetchingType(bool) {
+        this._isFetchingType = bool
+    }
+    get types() {
         return this._types
     }
-    get selectedType () {
+    get selectedType() {
         return this._selectedType
     }
-    get isLoadingTypes () {
+    get isLoadingTypes() {
         return this._isLoadingTypes
+    }
+    get isFetchingType() {
+        return this._isFetchingType
     }
 }
