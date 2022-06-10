@@ -51,9 +51,7 @@ const AuthForm = observer(() => {
     })
 
     return (
-        <form onSubmit={formik.handleSubmit} onChange={()=> {
-            setError(null)
-        }}>
+        <form onSubmit={formik.handleSubmit} onChange={() => setError(null)}>
             <div className='form__field'>
                 <label className='form__label' htmlFor='email'>Email</label>
                 <input 
