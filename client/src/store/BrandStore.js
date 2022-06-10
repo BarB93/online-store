@@ -5,25 +5,32 @@ export default class BrandStore {
         this._brands = []
         this._selectedBrand = {}
         this._isLoadingBrands = true
+        this._isFetchingBrand = false
         makeAutoObservable(this)
     }
 
-    setBrands (brands) {
+    setBrands(brands) {
         this._brands = brands
     }
-    setSelectedBrand (brand) {
+    setSelectedBrand(brand) {
         this._selectedBrand = brand
     }
-    setIsLoadingBrands (bool) {
+    setIsLoadingBrands(bool) {
         this._isLoadingBrands = bool
+    }
+    setIsFetchingBrand(bool) {
+        this._isFetchingBrand = bool
     }
     get brands () {
         return this._brands
     }
-    get selectedBrand () {
+    get selectedBrand() {
         return this._selectedBrand
     }
-    get isLoadingBrands () {
+    get isLoadingBrands() {
         return this._isLoadingBrands
+    }
+    get isFetchingBrand() {
+        return this._isFetchingBrand
     }
 }
