@@ -4,3 +4,6 @@ export const REGISTRATION_ROUTE = '/registration'
 export const SHOP_ROUTE = '/shop'
 export const BASKET_ROUTE = '/basket'
 export const DEVICE_ROUTE = '/device'
+
+// numbers
+export const MAX_PRICE = 9_999_999
