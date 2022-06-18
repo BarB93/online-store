@@ -23,7 +23,7 @@ const DevicePage = observer(() => {
         .catch(e => alert(e))
         .finally(() => devStore.setIsLoadingOneDevice(false))
     }, [])
-
+    
     return (
         devStore.isLoadingOneDevice ? <DevicePageSkeleton />
         :
@@ -44,15 +44,15 @@ const DevicePage = observer(() => {
                     <div className={styles.features}>
                        <h3 className={`${styles.title} ${styles.features__title}`}>Характеристики</h3>
                        <ul className={styles.features__body}>
-                            {device.info.map(({id, name, value}) => 
+                            {device.info.map(({id, title, description}) => 
                                 <li key={id} 
                                     className={styles.features__item}
                                 >
                                     <div className={styles.features__name}>
-                                        <span>{name}</span>
+                                        <span>{title}</span>
                                         <div className={styles.features__underline}></div> 
                                     </div>
-                                    <div className={styles.features__value}>{value}</div>
+                                    <div className={styles.features__value}>{description}</div>
                                 </li>)}
                        </ul> 
                     </div>
