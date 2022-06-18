@@ -5,25 +5,46 @@ export default class DeviceStore {
         this._devices = []
         this._isLoadingDevices = true
         this._isLoadingOneDevice = true
+        this._page = 1
+        this._totalCount = 0
+        this._limit = 3
         makeAutoObservable(this)
     }
 
-    setDevices (devices) {
+    setDevices(devices) {
         this._devices = devices
     }
-    setIsLoadingDevices (bool) {
+    setIsLoadingDevices(bool) {
         this._isLoadingDevices = bool
     }
-    setIsLoadingOneDevice (bool) {
+    setIsLoadingOneDevice(bool) {
         this._isLoadingOneDevice = bool
     }
-    get devices () {
+    setPage(num) {
+        this._page = num
+    }
+    setTotalCount(num) {
+        this._totalCount = num
+    }
+    setLimit(num) {
+        this._limit = num
+    }
+    get devices() {
         return this._devices
     }
-    get isLoadingDevices () {
+    get isLoadingDevices() {
         return this._isLoadingDevices
     }
-    get isLoadingOneDevice () {
+    get isLoadingOneDevice() {
         return this._isLoadingOneDevice
+    }
+    get page() {
+        return this._page
+    }
+    get totalCount() {
+        return this._totalCount
+    }
+    get limit() {
+        return this._limit
     }
 }
