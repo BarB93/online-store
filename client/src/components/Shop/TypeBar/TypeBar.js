@@ -16,7 +16,7 @@ const TypeBar = observer(() => {
             {type.types.map(t => 
                 <li 
                     key={t.id} 
-                    className={styles.list__item + ' ' + (t.id === type.selectedType.id ? styles.active : '')} 
+                    className={styles.list__item + ' ' + (t.id === type.selectedType?.id ? styles.active : '')} 
                     onClick={() => type.setSelectedType(t)}
                 >
                     {t.name}
