@@ -13,7 +13,11 @@ export default class BrandStore {
         this._brands = brands
     }
     setSelectedBrand(brand) {
-        this._selectedBrand = brand
+        if (this._selectedBrand?.id === brand?.id) {
+            this._selectedBrand = null
+        } else {
+            this._selectedBrand = brand
+        }
     }
     setIsLoadingBrands(bool) {
         this._isLoadingBrands = bool
@@ -21,7 +25,7 @@ export default class BrandStore {
     setIsFetchingBrand(bool) {
         this._isFetchingBrand = bool
     }
-    get brands () {
+    get brands() {
         return this._brands
     }
     get selectedBrand() {
