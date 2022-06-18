@@ -25,13 +25,31 @@ const Shop = observer(() => {
         .finally(() => brand.setIsLoadingBrands(false)) 
 
         // Devices
-        fetchDevices().then((devices) => {
-            device.setDevices(devices.rows)
+        fetchDevices(type.selectedType?.id, brand.selectedBrand?.id, 1, device.limit).then((data) => {
+            device.setDevices(data.rows)
+            device.setTotalCount(data.count)
         })
         .catch(e => alert(e))
         .finally(() => {device.setIsLoadingDevices(false)})
+
+        //  TODO barb: uncomment if you want reset selectedType and selectedBrand 
+        // return () => {
+        //     type.setSelectedType(null)
+        //     brand.setSelectedBrand(null)
+        // }
        
     }, [])
+
+    useEffect(() => {
+        device.setIsLoadingDevices(true)
+        fetchDevices(type.selectedType?.id, brand.selectedBrand?.id, device.page, device.limit)
+        .then((data) => {
+            device.setDevices(data.rows)
+            device.setTotalCount(data.count)
+        })
+        .catch(e => alert(e))
+        .finally(() => {device.setIsLoadingDevices(false)})
+    }, [type.selectedType, brand.selectedBrand, device.page, device.limit])
 
     return (
         <Container>
