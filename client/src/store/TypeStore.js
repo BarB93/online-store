@@ -13,7 +13,11 @@ export default class TypeStore {
         this._types = types
     }
     setSelectedType(type) {
-        this._selectedType = type
+        if(this._selectedType?.id === type?.id) {
+            this._selectedType = null
+        } else {
+            this._selectedType = type
+        }
     }
     setIsLoadingTypes(bool) {
         this._isLoadingTypes = bool
