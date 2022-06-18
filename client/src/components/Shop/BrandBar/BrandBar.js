@@ -17,7 +17,7 @@ const BrandBar = observer(() => {
                 brand.brands.map(b => 
                 <li 
                     key={b.id} 
-                    className={styles.list__item + ' ' + (b.id === brand.selectedBrand.id ? styles.active : '')}
+                    className={styles.list__item + ' ' + (b.id === brand.selectedBrand?.id ? styles.active : '')}
                     onClick={() => brand.setSelectedBrand(b)}
                 >
                     {b.name}
