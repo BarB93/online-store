@@ -7,6 +7,7 @@ import Container from '../../components/UI/Container/Container'
 import TypeBar from '../../components/Shop/TypeBar/TypeBar'
 import BrandBar from '../../components/Shop/BrandBar/BrandBar'
 import DeviceList from '../../components/Shop/DeviceList/DeviceList'
+import Pagination from '../../components/Pagination/Pagination'
 
 import styles from './Shop.module.scss'
 
@@ -60,6 +61,7 @@ const Shop = observer(() => {
                 <main className={styles.main}>
                     <BrandBar />
                     <DeviceList />
+                    <Pagination />
                 </main>
             </div>
         </Container>
