@@ -7,7 +7,7 @@ import TypeBarSkeleton from './TypeBarSkeleton'
 import styles from './TypeBar.module.scss'
 
 const TypeBar = observer(() => {
-    const {type} = useContext(Context)
+    const {type, device} = useContext(Context)
     
     return (
         (type.isLoadingTypes) ? <TypeBarSkeleton />
@@ -17,7 +17,10 @@ const TypeBar = observer(() => {
                 <li 
                     key={t.id} 
                     className={styles.list__item + ' ' + (t.id === type.selectedType?.id ? styles.active : '')} 
-                    onClick={() => type.setSelectedType(t)}
+                    onClick={() => {
+                        type.setSelectedType(t)
+                        device.setPage(1)
+                    }}
                 >
                     {t.name}
                 </li>
