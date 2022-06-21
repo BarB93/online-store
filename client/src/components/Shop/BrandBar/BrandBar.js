@@ -7,7 +7,7 @@ import BrandBarSkeleton from './BrandBarSkeleton'
 import styles from './BrandBar.module.scss'
 
 const BrandBar = observer(() => {
-    const {brand} = useContext(Context)
+    const {brand, device} = useContext(Context)
     
     return (
         (brand.isLoadingBrands) ? <BrandBarSkeleton />
@@ -18,7 +18,10 @@ const BrandBar = observer(() => {
                 <li 
                     key={b.id} 
                     className={styles.list__item + ' ' + (b.id === brand.selectedBrand?.id ? styles.active : '')}
-                    onClick={() => brand.setSelectedBrand(b)}
+                    onClick={() => {
+                        brand.setSelectedBrand(b)
+                        device.setPage(1)
+                    }}
                 >
                     {b.name}
                 </li>)
