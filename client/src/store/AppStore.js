@@ -1,9 +1,10 @@
 import { makeAutoObservable } from 'mobx';
+import { languages } from '../utils/consts'
 
 export default class AppStore {
     constructor() {
-        this._lang = 'ru'
-        this._mainLang = 'ru'
+        this._lang = languages.russian
+        this._mainLang = languages.russian
         makeAutoObservable(this)
     }
 
