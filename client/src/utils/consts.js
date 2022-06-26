@@ -7,3 +7,9 @@ export const DEVICE_ROUTE = '/device'
 
 // numbers
 export const MAX_PRICE = 9_999_999
+
+// languages
+export const languages = {
+    russian: 'ru',
+    english: 'en',
+}
