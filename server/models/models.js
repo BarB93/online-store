@@ -14,13 +14,23 @@ const Basket = sequelize.define('basket', {
 
 const BasketDevice = sequelize.define('basket_device', {
     id: {type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true},
+    quantity: {type: DataTypes.INTEGER, defaultValue: 1}
+})
+
+const Order = sequelize.define('order', {
+    id: {type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true},
+})
+
+const OrderDevice = sequelize.define('order_device', {
+    id: {type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true},
+    quantity: {type: DataTypes.INTEGER, defaultValue: 1}
 })
 
 const Device = sequelize.define('device', {
     id: {type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true},
     name: {type: DataTypes.STRING, unique: true, allowNull: false},
     price: {type: DataTypes.INTEGER, allowNull: false},
-    rating: {type: DataTypes.INTEGER, defaultValue: 0},
+    raiting: {type: DataTypes.INTEGER, defaultValue: 0},
     img: {type: DataTypes.STRING, allowNull: false},
 })
 
@@ -49,14 +59,14 @@ const TypeBrand = sequelize.define('type_brand', {
     id: {type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true},
 })
 
-User.hasMany(Raiting)
-Raiting.belongsTo(User)
-
 User.hasOne(Basket)
 Basket.belongsTo(User)
 
-Basket.hasMany(BasketDevice)
-BasketDevice.belongsTo(Basket)
+User.hasMany(Raiting)
+Raiting.belongsTo(User)
+
+User.hasMany(Order)
+Order.belongsTo(User)
 
 Device.hasMany(Raiting)
 Raiting.belongsTo(Device)
@@ -64,8 +74,17 @@ Raiting.belongsTo(Device)
 Device.hasMany(DeviceInfo, {as: 'info'})
 DeviceInfo.belongsTo(Device)
 
-Device.hasMany(BasketDevice)
-BasketDevice.belongsTo(Device)
+Basket.hasMany(BasketDevice)
+BasketDevice.belongsTo(Basket)
+
+BasketDevice.hasMany(Device)
+Device.belongsTo(BasketDevice)
+
+Order.hasMany(OrderDevice)
+OrderDevice.belongsTo(Order)
+
+OrderDevice.hasMany(Device)
+Device.belongsTo(OrderDevice)
 
 Type.hasMany(Device)
 Device.belongsTo(Type)
@@ -80,6 +99,8 @@ module.exports = {
     User,
     Basket,
     BasketDevice,
+    Order,
+    OrderDevice,
     Device,
     Type,
     Brand,
