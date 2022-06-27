@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from 'react'
 import { observer } from 'mobx-react-lite'
 import { useFormik, FieldArray, FormikProvider } from 'formik'
 import * as Yup from 'yup'
+import { useTranslation } from 'react-i18next'
 
 import { createDevice, fetchBrands, fetchTypes } from '../../../http/deviceAPI'
 import { MAX_PRICE } from '../../../utils/consts'
@@ -28,9 +29,10 @@ function getErrorMessage(formik) {
 
 const CreateDeviceForm = observer(({submittedHandler}) => {
     const {type, brand, toast} = useContext(Context)
+    const i18n = useTranslation()
     const [error, setError] = useState(null)
     // список для select типов устройств
-    const optionsType = type.types.map(t => ({value: t, label: t.name}))
+    const optionsType = type.types.map(t => ({value: t, label: i18n.t(t.name)}))
     // список для select брендов устройств
     const optionsBrand = brand.brands.map(b => ({value: b, label: b.name}))
 
@@ -65,15 +67,15 @@ const CreateDeviceForm = observer(({submittedHandler}) => {
     }, [])
 
     const validationSchema = Yup.object({
-        type: Yup.object().required('Укажите тип девайса'),
-        brand: Yup.object().required('Укажите бренд девайса'),
-        name: Yup.string().required('Укажите название девайса'),
-        price: Yup.number().nullable(true).min(1, 'Стоимость должна быть больше нуля').required('Укажите стоимость девайса'),
-        img: Yup.mixed().required('Прикрепите фото девайса'),
+        type: Yup.object().required('Choose device type'),
+        brand: Yup.object().required('Choose device brand'),
+        name: Yup.string().required('Enter name device'),
+        price: Yup.number().nullable(true).min(1, 'Cost must be more than zero').required('Enter price'),
+        img: Yup.mixed().required('Add device image'),
         info: Yup.array().of(
             Yup.object().shape({
-                title: Yup.string().required('Укажите название свойства'),
-                description: Yup.string().required('Укажите описание свойства'),
+                title: Yup.string().required('Enter property name'),
+                description: Yup.string().required('Enter property description'),
             })
         )
     })
@@ -117,38 +119,38 @@ const CreateDeviceForm = observer(({submittedHandler}) => {
     return (
             <form onSubmit={formik.handleSubmit} onChange={() => setError(null)}>
                 <div className={`form__field ${styles.field}`}>
-                    <label className='form__label' htmlFor="type">Tип</label>
+                    <label className='form__label' htmlFor="type">{i18n.t('Type')}</label>
                     <CustomSelect 
                         options={optionsType}
                         value={formik.values.type}
                         onChange={value => formik.setFieldValue('type', value.value)}
-                        placeholder='Выберите тип устройства...'
+                        placeholder={i18n.t('Choose device type...')}
                     />
                 </div>
 
                 <div className={`form__field ${styles.field}`}>
-                    <label className='form__label' htmlFor="brand">Бренд</label>
+                    <label className='form__label' htmlFor="brand">{i18n.t('Brand')}</label>
                     <CustomSelect 
                         options={optionsBrand}
                         value={formik.values.brand}
                         onChange={value => formik.setFieldValue('brand', value.value)}
-                        placeholder='Выберите бренд устройства...'
+                        placeholder={i18n.t('Choose device brand...')}
                     />
                 </div>
 
                 <div className={`form__field ${styles.field}`}>
-                    <label className='form__label' htmlFor='name'>Название</label>
+                    <label className='form__label' htmlFor='name'>{i18n.t('Name Device')}</label>
                     <input 
                         className='form__input'
                         id='name'
                         type='text' 
                         {...formik.getFieldProps('name')}
-                        placeholder='Выберите название устройства...'
+                        placeholder={i18n.t('Enter name device...')}
                     />
                 </div>
                 
                 <div className={`form__field ${styles.field}`}>
-                    <label className='form__label' htmlFor='price'>Цена руб.</label>
+                    <label className='form__label' htmlFor='price'>{i18n.t('Price rub.')}</label>
                     <input 
                         className='form__input'
                         id='price'
@@ -158,20 +160,19 @@ const CreateDeviceForm = observer(({submittedHandler}) => {
                         {...formik.getFieldProps('price')}
                         onKeyPress={priceOnKeyPressHandler}
                         onChange={priceOnInputHandler}
-                        placeholder='Укажите стоимость устройства...'
+                        placeholder={i18n.t('Enter price...')}
                     />
                 </div>
             
                 <div className={`form__field ${styles.field}`}>
-                    <label className='form__label' htmlFor='img'>Картинка</label>
+                    <label className='form__label' htmlFor='img'>{i18n.t('Image')}</label>
                     <label htmlFor='img' className={`btn`}>            
-                        Загрузить картинку 
+                       {i18n.t('Upload image')}
                     </label>
                     <input 
                         id='img'
                         name='img'
                         type='file' 
-                        placeholder='Выберите картинку устройства...'
                         onChange={(event) => {formik.setFieldValue('img', event.currentTarget.files[0])}}
                         hidden
                         multiple
@@ -180,7 +181,7 @@ const CreateDeviceForm = observer(({submittedHandler}) => {
                 </div> 
 
                 <div className={`form__field ${styles.field}`}>
-                    <div className='form__label'>Свойства</div>
+                    <div className='form__label'>{i18n.t('Properties')}</div>
                     <FormikProvider value={formik}>
                         <FieldArray 
                             name='info'
@@ -195,18 +196,18 @@ const CreateDeviceForm = observer(({submittedHandler}) => {
                                                 name={`info[${index}].title`}
                                                 value={formik.values.info[index].title}
                                                 onChange={formik.handleChange}
-                                                placeholder='Введите название свойства...'
+                                                placeholder={i18n.t('Enter property name...')}
                                             />
                                             <textarea
                                                 className={`form__input ${styles.textarea}`}
                                                 name={`info.${index}.description`}
                                                 value={formik.values.info[index].description}
                                                 onChange={formik.handleChange}
-                                                placeholder='Введите описание свойства...'
+                                                placeholder={i18n.t('Enter property description...')}
                                             />
                                         </div>
                                     ))}
-                                    <button type='button' onClick={() => arrayHelpers.push({title: '', description: ''})} className={`btn ${styles.addInfo}`}>Добавить новое свойство</button>
+                                    <button type='button' onClick={() => arrayHelpers.push({title: '', description: ''})} className={`btn ${styles.addInfo}`}>{i18n.t('Add new property')}</button>
                                 </div>
                             )}
                         /> 
@@ -217,11 +218,11 @@ const CreateDeviceForm = observer(({submittedHandler}) => {
                     {
                         (brand.isFetchingBrand && <div className='form__spinnerContainer'><SpinnerFacebook className='form__spinner'/></div>)
                         ||
-                        (messageError && <ErrorMessage message={messageError}/>)
+                        (messageError && <ErrorMessage message={i18n.t(messageError)}/>)
                         ||
-                        (error && <ErrorMessage message={error}/>)
+                        (error && <ErrorMessage message={i18n.t(error)}/>)
                     }
-                    <Button className='form__btn' type='submit' disabled={!formik.isValid} secondary>Добавить</Button>
+                    <Button className='form__btn' type='submit' disabled={!formik.isValid} secondary>{i18n.t('Create device')}</Button>
                 </div>
             </form>
     )

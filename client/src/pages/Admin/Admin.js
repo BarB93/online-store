@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { useTranslation } from 'react-i18next'
 
 import Button from '../../components/UI/Button/Button'
 import Container from '../../components/UI/Container/Container'
@@ -10,6 +11,7 @@ import CreateDeviceForm from '../../components/forms/CreateDeviceForm/CreateDevi
 import styles from './Admin.module.scss'
 
 const Admin = () => {
+    const i18n = useTranslation()
     const [typeModal, setTypeModal] = useState(false)
     const [brandModal, setBrandModal] = useState(false)
     const [deviceModal, setDeviceModal] = useState(false)
@@ -34,9 +36,9 @@ const Admin = () => {
         setDeviceModal(false)
     }
 
-    const titleType = 'Добавить тип'
-    const titleBrand = 'Добавить бренд'
-    const titleDevice = 'Добавить устройство'
+    const titleType = i18n.t('Add type')
+    const titleBrand = i18n.t('Add brand')
+    const titleDevice = i18n.t('Add device')
 
     return (
         <Container>
