@@ -1,0 +1,34 @@
+@import '../../../styles/variables.scss';
+
+.langSelect {
+    &__control {
+        border: none !important;
+        user-select: none !important;
+        cursor: pointer !important;
+        box-shadow: none !important;
+        font-weight: 700 !important;
+        &:hover {
+            box-shadow: none !important;
+        }
+    }
+    &__menu-list {
+        border-radius: $border-radius-base;
+    }
+    &__option {
+        cursor: pointer !important;
+        &--is-selected {
+            background: $background-primary !important;
+        }  
+    }
+    &__input {
+        caret-color: transparent !important;
+        user-select: none !important;
+    }
+    &__indicators {
+        display: none !important;
+    }
+    &__value-container {
+        padding: 2px 12px !important;
+    }
+    
+}
