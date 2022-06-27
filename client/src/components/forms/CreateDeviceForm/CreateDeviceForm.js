@@ -9,7 +9,7 @@ import { Context } from '../../../index'
 import SpinnerFacebook from '../../UI/spinners/SpinnerFacebook/SpinnerFacebook'
 import Button from '../../UI/Button/Button'
 import ErrorMessage from '../ErrorMessage'
-import CustomSelect from '../../UI/CustomSelect'
+import CustomSelect from '../../UI/CustomSelect/CustomSelect'
 
 import styles from './CreateDeviceForm.module.scss'
 import { createToast } from '../../UI/Toast/Toast'
