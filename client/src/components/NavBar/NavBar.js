@@ -7,7 +7,7 @@ import { Context } from '../../index'
 import { LOGIN_ROUTE, REGISTRATION_ROUTE, SHOP_ROUTE, ADMIN_ROUTE, DEVICE_ROUTE } from '../../utils/consts'
 import { languages } from '../../utils/consts'
 import Container from '../UI/Container/Container'
-import CustomSelect from '../UI/CustomSelect'
+import LangSelect from './LangSelect/LangSelect'
 import NavBarSkeleton from './NavBarSkeleton'
 import { createToast } from '../UI/Toast/Toast'
 
@@ -40,8 +40,6 @@ const NavBar = observer(() => {
         app.setLang(option.value)
     }
 
-    console.log('user', user.user.email)
-
     return (
         user.isLoading ? <NavBarSkeleton />
         :
@@ -56,11 +54,11 @@ const NavBar = observer(() => {
                         <li className={styles.nav__item}><NavLink className={styles.nav__link} to={SHOP_ROUTE}>Basket</NavLink></li>
                         <li className={styles.nav__item} onClick={() => toast.addToast(createToast('Тост успешно добавлен!'))}><span className={styles.nav__link}>add toast</span></li>
                         <li className={styles.nav__item}>
-                            <CustomSelect 
+                            <LangSelect 
                                 className={styles.nav__select}
                                 options={[
-                                    {value: languages.russian, label: 'Русский'},
-                                    {value: languages.english, label: 'English'}
+                                    {value: languages.russian, label: 'Rus'},
+                                    {value: languages.english, label: 'Eng'}
                                 ]}
                                 onChange={handleChangeLanguage}
                                 value={app.lang}
