@@ -1,0 +1,9 @@
+@import "../../../styles/variables.scss";
+
+.customSelect {
+    &__option {
+        &--is-selected {
+            background: $background-primary !important;
+        }  
+    }
+}
