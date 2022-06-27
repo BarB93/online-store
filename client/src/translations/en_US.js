@@ -15,6 +15,7 @@
     'Password must have max 20 symbols': 'Password must have max 20 symbols',
     'User with same Email already exist': 'User with same Email already exist',
     'Incorrect Email or Password': 'Incorrect Email or Password',
+    'My Orders': 'My Orders',
 }
 
 export default translationEN

@@ -15,6 +15,7 @@ const translationRU = {
     'Password must have max 20 symbols': 'Пароль должен быть не длиннее 20 символов',
     'User with same Email already exist': 'Пользователь с таким Email уже существует',
     'Incorrect Email or Password': 'Неправильный Email или Пароль',
+    'My Orders': 'Мои заказы',
 }
 
 export default translationRU
