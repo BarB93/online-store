@@ -4,15 +4,14 @@ import {observer} from 'mobx-react-lite'
 import { useTranslation } from 'react-i18next'
 
 import { Context } from '../../index'
-import { LOGIN_ROUTE, SHOP_ROUTE, ADMIN_ROUTE } from '../../utils/consts'
+import { LOGIN_ROUTE, REGISTRATION_ROUTE, SHOP_ROUTE, ADMIN_ROUTE, DEVICE_ROUTE } from '../../utils/consts'
 import { languages } from '../../utils/consts'
-import Button from '../UI/Button/Button'
 import Container from '../UI/Container/Container'
 import CustomSelect from '../UI/CustomSelect'
 import NavBarSkeleton from './NavBarSkeleton'
 import { createToast } from '../UI/Toast/Toast'
 
-
+import { RiShoppingCartLine, RiUserLine } from 'react-icons/ri'
 import styles from './NavBar.module.scss'
 
 const NavBar = observer(() => {
@@ -24,12 +23,24 @@ const NavBar = observer(() => {
         localStorage.removeItem('token')
         user.setUser({})
         user.setIsAuth(false)
-        navigate(LOGIN_ROUTE)
+        user.setIsAdmin(false)
+        app.setIsOpenUserMenu(false)
+        navigate(DEVICE_ROUTE)
+    }
+
+    const openUserMenu = () => {
+        app.setIsOpenUserMenu(true)
+    }
+
+    const closeUserMenu = () => {
+        app.setIsOpenUserMenu(false)
     }
 
     const handleChangeLanguage = (option) => {
         app.setLang(option.value)
     }
+
+    console.log('user', user.user.email)
 
     return (
         user.isLoading ? <NavBarSkeleton />
@@ -55,14 +66,24 @@ const NavBar = observer(() => {
                                 value={app.lang}
                             />
                         </li>
-                       {user.isAuth ? 
-                            <>
-                                <Button className={styles.btn} onClick={() => { navigate(ADMIN_ROUTE) }}>{i18n.t('Admin Dashboard')}</Button>
-                                <Button className={styles.btn} onClick={logout}>{i18n.t('Logout')}</Button>
-                            </>
-                            :
-                            <Button className={styles.btn} onClick={() => { navigate(LOGIN_ROUTE) }}>{i18n.t('Login')}</Button>
-                       }
+                        <li className={`${styles.nav__item} ${styles.nav__item_basket}`}><RiShoppingCartLine className={`${styles.nav__icon}  ${styles.nav__icon_basket}`} /></li>
+                        <li className={`${styles.nav__item} ${styles.nav__item_user} ${app.isOpenUserMenu ? styles.active : ''}`} onMouseEnter={openUserMenu} onMouseLeave={closeUserMenu}>
+                            <RiUserLine className={`${styles.nav__icon}  ${styles.nav__icon_user}`} />
+                            <ul className={styles.userMenu} >
+                                {user.isAuth ? 
+                                    <>
+                                        {user.isAdmin && <li className={styles.userMenu__item}><NavLink className={styles.userMenu__link} to={ADMIN_ROUTE}>{i18n.t('Admin Dashboard')}</NavLink></li>}
+                                        <li className={styles.userMenu__item}><NavLink className={styles.userMenu__link} to={LOGIN_ROUTE}>{i18n.t('My Orders')}</NavLink></li>
+                                        <li className={styles.userMenu__item} onClick={logout}><div className={styles.userMenu__link}>{i18n.t('Logout')}</div></li>
+                                    </>
+                                    :
+                                    <>
+                                        <li className={styles.userMenu__item}><NavLink className={styles.userMenu__link} to={REGISTRATION_ROUTE}>{i18n.t('Sign up')}</NavLink></li>
+                                        <li className={styles.userMenu__item}><NavLink className={styles.userMenu__link} to={LOGIN_ROUTE}>{i18n.t('Sign in')}</NavLink></li>
+                                    </>
+                                }
+                            </ul>
+                        </li>
                     </ul>
                 </nav>
             </Container>

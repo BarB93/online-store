@@ -33,9 +33,17 @@
         margin-left: auto; 
     }
     &__item {
-        display: inline-block;
+        display: flex;
+        align-items: center;
+        justify-content: center;
         height: 100%;
         padding: 0 16px;
+        white-space: nowrap;
+
+        &_basket,
+        &_user {
+            position: relative;
+        }
     }
     &__link {
         position: relative;
@@ -63,6 +71,10 @@
                 }
             }
         }
+    }
+    &__icon {
+        font-size: 25px;
+        cursor: pointer;
     }
     &__select {
         display: flex;
@@ -97,5 +109,59 @@
         height: 25px;
         border-radius: 5px;
         animation: $animation-skeleton-loading;
+    }
+}
+
+.userMenu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background: #fff;
+    box-shadow: 0 6PX 16PX 0 rgb(25 25 25 / 10%);
+    border: 1px solid $border-gray;
+    border-radius: $border-radius-base;
+    z-index: 20;
+
+    .active & {
+        display: block;
+    }
+
+    &::after {
+        content: "";
+        display: block;
+        position: absolute;
+        top:-3px;
+        right: 25px;
+        height: 18px;
+        width: 18px;
+        background: #fff;
+        border: 1px solid $border-gray;
+        border-bottom: none;
+        border-right: none;
+        border-radius: 3px;
+        transform: rotate(45deg) translateY(-50%);
+    }
+    &__item {
+        color: $text-secondary;
+        font-size: 0.9rem;
+        text-align: center;
+        white-space: nowrap;
+        cursor: pointer;
+        
+        & + & {   
+            border-top: 1px solid $border-gray;
+        }
+    }
+    &__link {
+        display: block;
+        min-width: 200px;
+        padding: 10px 15px;
+        transition: all .3s linear;
+
+        &:hover {
+            color: $text-base;
+            text-decoration: underline;
+        }
     }
 }
