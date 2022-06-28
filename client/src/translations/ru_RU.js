@@ -38,10 +38,18 @@ const translationRU = {
     'Upload image': 'Загрузить картинку',
     'Properties': 'Свойства',
     'Add new property': 'Добавить новое свойство',
-    'Create device': 'Создать девайс',
     'Add type':'Добавить тип',
     'Add brand':'Добавить бренд',
     'Add device':'Добавить устройство',
+    'Add': 'Добавить',
+    'Name of brand': 'Название бренда',
+    'Name of type': 'Название типа',
+    'Enter brand name': 'Введите название бренда',
+    'Enter type name': 'Введите название типа',
+    'Enter brand name...': 'Введите название бренда...',
+    'Enter type name...': 'Введите название типа...',
+    'Brand created successfully': 'Бренд {{name}} успешно создан!',
+    'Type created successfully': 'Тип {{name}} успешно создан!',
 }
 
 export default translationRU

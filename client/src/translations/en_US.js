@@ -38,10 +38,18 @@
     'Upload image': 'Upload image',
     'Properties': 'Properties',
     'Add new property': 'Add new property',
-    'Create device': 'Create device',
     'Add type': 'Add type',
     'Add brand': 'Add brand',
     'Add device': 'Add device',
+    'Add': 'Add',
+    'Name of brand': 'Name of brand',
+    'Name of type': 'Name of type',
+    'Enter brand name': 'Enter brand name',
+    'Enter type name': 'Enter type name',
+    'Enter brand name...': 'Enter brand name...',
+    'Enter type name...': 'Enter type name...',
+    'Brand created successfully': 'Brand {{name}} created successfully',
+    'Type created successfully': 'Type {{name}} created successfully',
 }
 
 export default translationEN
