@@ -222,7 +222,7 @@ const CreateDeviceForm = observer(({submittedHandler}) => {
                         ||
                         (error && <ErrorMessage message={i18n.t(error)}/>)
                     }
-                    <Button className='form__btn' type='submit' disabled={!formik.isValid} secondary>{i18n.t('Create device')}</Button>
+                    <Button className='form__btn' type='submit' disabled={!formik.isValid} secondary>{i18n.t('Add')}</Button>
                 </div>
             </form>
     )
