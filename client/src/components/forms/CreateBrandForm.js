@@ -24,7 +24,7 @@ const CreateBrandForm = observer(({submittedHandler}) => {
             brand.setIsFetchingBrand(true)
             await createBrand(values)
             resetForm()
-            toast.addToast(createToast(i18n.t('Brand created successfully'), {name: values.name}))
+            toast.addToast(createToast(i18n.t('Brand created successfully', {name: values.name})))
             if(typeof submittedHandler === 'function') {
                 submittedHandler()
             }

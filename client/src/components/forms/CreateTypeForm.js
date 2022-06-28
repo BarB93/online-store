@@ -24,7 +24,7 @@ const CreateTypeForm = observer(({submittedHandler}) => {
             type.setIsFetchingType(true)
             await createType(values)
             resetForm()
-            toast.addToast(createToast(i18n.t('Type created successfully'), {name: values.name}))
+            toast.addToast(createToast(i18n.t('Type created successfully', {name: values.name})))
             if(typeof submittedHandler === 'function') {
                 submittedHandler()
             }
