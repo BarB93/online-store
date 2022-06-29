@@ -9,13 +9,13 @@ import { languages } from '../../utils/consts'
 import Container from '../UI/Container/Container'
 import LangSelect from './LangSelect/LangSelect'
 import NavBarSkeleton from './NavBarSkeleton'
-import { createToast } from '../UI/Toast/Toast'
+import Logo from './Logo/Logo'
 
 import { RiShoppingCartLine, RiUserLine } from 'react-icons/ri'
 import styles from './NavBar.module.scss'
 
 const NavBar = observer(() => {
-    const {user, toast, app} = useContext(Context)
+    const {user, app} = useContext(Context)
     const navigate = useNavigate()
     const i18n = useTranslation()
 
@@ -46,13 +46,9 @@ const NavBar = observer(() => {
         <header className={styles.header}>
             <Container>
                 <nav className={styles.nav}>
-                    <NavLink className={styles.logo} to={SHOP_ROUTE}>DeviceShop</NavLink>
+                    <NavLink className={styles.logo} to={SHOP_ROUTE}><Logo /></NavLink>
                     <ul className={styles.nav__menu}>
-                        <li className={styles.nav__item}><NavLink className={styles.nav__link} to={SHOP_ROUTE}>Device</NavLink></li>
-                        <li className={styles.nav__item}><NavLink className={styles.nav__link} to={LOGIN_ROUTE}>Login</NavLink></li>
-                        <li className={styles.nav__item}><NavLink className={styles.nav__link} to={SHOP_ROUTE}>Basket</NavLink></li>
-                        <li className={styles.nav__item}><NavLink className={styles.nav__link} to={SHOP_ROUTE}>Basket</NavLink></li>
-                        <li className={styles.nav__item} onClick={() => toast.addToast(createToast('Тост успешно добавлен!'))}><span className={styles.nav__link}>add toast</span></li>
+                        <li className={styles.nav__item}><NavLink className={styles.nav__link} to={SHOP_ROUTE}>{i18n.t('Devices')}</NavLink></li>
                         <li className={styles.nav__item}>
                             <LangSelect 
                                 className={styles.nav__select}
