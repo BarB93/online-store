@@ -20,9 +20,8 @@
         user-select: none;
 
         &.active {
-            background-color: $background-primary;
-            border-color: $gray-500;
-            color: #fff
+            background-color: #000;
+            color: #fff;
         }
     }
 }
