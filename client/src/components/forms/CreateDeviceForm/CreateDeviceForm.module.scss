@@ -14,46 +14,45 @@
 
 .info {
     &__row {
+        display: flex;
         position: relative;
-        padding-top: 30px;
+        padding-top: 15px;
 
         & + & {
             margin-top: 15px;
             border-top: 1px dashed $gray-500;
         }
     }
+    &__input {
+        margin-bottom: 0 !important;
+    }
+    &__item {
+        flex: 0 1 50%;
 
+        & + & {
+            margin-left: 5px;
+        }
+    }
     &__remove {
-        position: absolute;
-        top: 3px;
-        right: 0;
-        width: 20px;
-        height: 20px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-left: 5px;
+        font-size: 18px;
         cursor: pointer;
         transition: transform .1s linear;
-        
+        color: $gray-500;
+        transition: color .3s linear;
+
         &:hover {
-            transform: rotate(90deg);
-        }
-        &::after,
-        &::before {
-            content: '';
-            position: absolute;
-            width: 100%;
-            height: 3px;
-            background: #000;
-            top:50%;
-            transform: translateY(-50%);
-        }
-        &::after {
-            transform: rotate(45deg);
-        }
-        &::before {
-            transform: rotate(-45deg);
+            color: #000;
         }
     }
 }
 
 .addInfo {
-    margin-top: 5px;
+    margin-top: 15px;
+}
+.btnAdd {
+    flex: 0 0 auto;
 }

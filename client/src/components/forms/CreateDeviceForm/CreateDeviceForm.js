@@ -11,9 +11,10 @@ import SpinnerFacebook from '../../UI/spinners/SpinnerFacebook/SpinnerFacebook'
 import Button from '../../UI/Button/Button'
 import ErrorMessage from '../ErrorMessage'
 import CustomSelect from '../../UI/CustomSelect/CustomSelect'
-
-import styles from './CreateDeviceForm.module.scss'
 import { createToast } from '../../UI/Toast/Toast'
+
+import { RiDeleteBin6Fill } from 'react-icons/ri'
+import styles from './CreateDeviceForm.module.scss'
 
 
 function getErrorMessage(formik) {
@@ -189,22 +190,27 @@ const CreateDeviceForm = observer(({submittedHandler}) => {
                                 <div className={styles.info}>
                                     {formik.values.info.map((item, index) => (
                                         <div key={index} className={styles.info__row}>
-                                            <div className={styles.info__remove} onClick={() => {arrayHelpers.remove(index)}}></div>
-                                            <input 
-                                                className='form__input'
-                                                type='text'
-                                                name={`info[${index}].title`}
-                                                value={formik.values.info[index].title}
-                                                onChange={formik.handleChange}
-                                                placeholder={i18n.t('Enter property name...')}
-                                            />
-                                            <textarea
-                                                className={`form__input ${styles.textarea}`}
-                                                name={`info.${index}.description`}
-                                                value={formik.values.info[index].description}
-                                                onChange={formik.handleChange}
-                                                placeholder={i18n.t('Enter property description...')}
-                                            />
+                                            <div className={styles.info__item}>
+                                                <input 
+                                                    className={`form__input ${styles.info__input}`}
+                                                    type='text'
+                                                    name={`info[${index}].title`}
+                                                    value={formik.values.info[index].title}
+                                                    onChange={formik.handleChange}
+                                                    placeholder={i18n.t('Enter name...')}
+                                                />
+                                            </div>
+                                            <div className={styles.info__item}>
+                                                <input
+                                                    className={`form__input ${styles.info__input}`}
+                                                    type='text'
+                                                    name={`info.${index}.description`}
+                                                    value={formik.values.info[index].description}
+                                                    onChange={formik.handleChange}
+                                                    placeholder={i18n.t('Enter description...')}
+                                                />
+                                            </div>
+                                            <div className={styles.info__remove} onClick={() => {arrayHelpers.remove(index)}}><RiDeleteBin6Fill className={styles.info__icon}/></div>
                                         </div>
                                     ))}
                                     <button type='button' onClick={() => arrayHelpers.push({title: '', description: ''})} className={`btn ${styles.addInfo}`}>{i18n.t('Add new property')}</button>
@@ -222,7 +228,7 @@ const CreateDeviceForm = observer(({submittedHandler}) => {
                         ||
                         (error && <ErrorMessage message={i18n.t(error)}/>)
                     }
-                    <Button className='form__btn' type='submit' disabled={!formik.isValid} secondary>{i18n.t('Add')}</Button>
+                    <Button className={`form__btn ${styles.btnAdd}`} type='submit' disabled={!formik.isValid} secondary>{i18n.t('Add')}</Button>
                 </div>
             </form>
     )
