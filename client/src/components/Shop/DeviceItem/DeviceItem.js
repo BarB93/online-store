@@ -3,6 +3,7 @@ import {useNavigate} from 'react-router-dom'
 import { observer } from 'mobx-react-lite'
 import { useTranslation } from 'react-i18next'
 
+import { addDeviceToBasket } from '../../../http/basketAPI'
 import {DEVICE_ROUTE} from '../../../utils/consts'
 import pricePrettify from '../../../utils/pricePrettify'
 import Button from '../../UI/Button/Button'
@@ -18,13 +19,23 @@ const DeviceItem = observer(({device}) => {
     const navigateToDevice = () => {navigate(DEVICE_ROUTE + '/' + device.id)}
     const imageURL = `${process.env.REACT_APP_API_URL}/${device.img}`
 
+    const handleBuy = () => {
+        addDeviceToBasket(device)
+            .then(data => {
+                console.log('Успешно добавлен в корзину')
+            })
+            .catch(e => {
+                console.log('EErorrR',e)
+            })
+    }
+
     return (
         <article className={styles.card}>
             <div className={styles.wrapper}>
                 <h3 className={styles.card__title} onClick={navigateToDevice}>{device.name}</h3>
                 <div className={styles.card__price}>{price}<small> ₽</small></div>
                 <div className={styles.card__buttons}>
-                    <Button className={styles.btnBuy} secondary>{i18n.t('Buy')}</Button>
+                    <Button className={styles.btnBuy} secondary onClick={handleBuy}>{i18n.t('Buy')}</Button>
                     <Button className={styles.btnMore} onClick={navigateToDevice}>{i18n.t('More')}</Button>
                 </div> 
                 <img className={styles.card__image} onClick={navigateToDevice} src={imageURL} alt={device.name} />
