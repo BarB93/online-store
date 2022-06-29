@@ -8,17 +8,24 @@ module.exports = function (role) {
         try {
             const token = req.headers.authorization.split(' ')[1]
             if(!token) {
-                return res.status(401).json({message: 'Не авторизован'})
+                return res.status(401).json({message: 'Not authorized'})
             }
             const decoded = jwt.verify(token, process.env.SECRET_KEY)
-            if(decoded.role !== role) {
-                return res.status(403).json({message: 'Нет доступа'})
-            } 
+
+            if(typeof role === 'string') {
+                if(decoded.role !== role) {
+                    return res.status(403).json({message: 'Not access'})
+                } 
+            } else if(Array.isArray(role)) {
+                if(!role.some(r => r === decoded.role)) {
+                    return res.status(403).json({message: 'Not access'})
+                }
+            }
 
             req.user = decoded
             next()
         } catch(e) {
-            res.status(401).json({message: 'Не авторизован'}) 
+            res.status(401).json({message: 'Not authorized'}) 
         }
     }
 }
