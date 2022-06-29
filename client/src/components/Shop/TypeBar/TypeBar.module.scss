@@ -5,9 +5,8 @@
     display: flex;
     flex-direction: column;
     background-color: #fff;
-    // TODO bbarb: while types is loading, type list  height equal 0, it display like some slim line
-    border: 1px solid $gray-500;
     border-radius: $border-radius-base;
+    box-shadow: 0 6px 14px 0 rgb(0 0 0 / 8%);
 
     &.skeleton {
         animation: $animation-skeleton-loading;
@@ -20,13 +19,13 @@
         cursor: pointer;
 
         & + & {
-            border-top: 1px solid $gray-500;
+            border-top: 1px solid $gray-200;
         }
         &:hover {
             background-color: rgba(0 0 0 /0.1);
         }
         &.active {
-            background-color: $background-primary;
+            background-color: #000;
             color: #fff
         }
     }
