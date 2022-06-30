@@ -77,14 +77,14 @@ DeviceInfo.belongsTo(Device)
 Basket.hasMany(BasketDevice)
 BasketDevice.belongsTo(Basket)
 
-BasketDevice.hasMany(Device)
-Device.belongsTo(BasketDevice)
+Device.hasMany(BasketDevice)
+BasketDevice.belongsTo(Device)
 
 Order.hasMany(OrderDevice)
 OrderDevice.belongsTo(Order)
 
-OrderDevice.hasMany(Device)
-Device.belongsTo(OrderDevice)
+Device.hasMany(OrderDevice)
+OrderDevice.belongsTo(Device)
 
 Type.hasMany(Device)
 Device.belongsTo(Type)
