@@ -4,6 +4,7 @@ import { observer } from 'mobx-react-lite'
 import i18n from 'i18next'
 import { initReactI18next } from 'react-i18next'
 
+import { getQuantityBasketItems } from './http/basketAPI'
 import { translationRU, translationEN } from './translations'
 import { languages } from './utils/consts'
 import { check } from './http/userAPI'
@@ -17,8 +18,9 @@ import './styles/normalize.scss'
 import './styles/styles.scss'
 
 const App = observer(() => {
-  const {user, app} = useContext(Context)
+  const {user, app, basket} = useContext(Context)
 
+  // init translation
   useEffect(() => {
     i18n
       .use(initReactI18next)
@@ -33,6 +35,7 @@ const App = observer(() => {
       })
   },[])
 
+  // check auth
   useEffect(() => {
     check().then((data) => {
       user.setUser(data)
@@ -47,6 +50,15 @@ const App = observer(() => {
     
   },[])
 
+  // basket total quantity items
+  useEffect(() => {
+    if(user.isAuth) {
+      getQuantityBasketItems()
+        .then(data => basket.setQuantity(data))
+    }
+  }, [user.isAuth])
+
+  // chenging language
   useEffect(() => {
     i18n.changeLanguage(app.lang)
   }, [app.lang])
