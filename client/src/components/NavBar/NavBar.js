@@ -18,7 +18,7 @@ const NavBar = observer(() => {
     const {user, app, basket} = useContext(Context)
     const navigate = useNavigate()
     const i18n = useTranslation()
-    console.log('basket quantity', basket.quantity)
+
     const logout = () => {
         localStorage.removeItem('token')
         user.setUser({})
