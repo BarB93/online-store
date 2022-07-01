@@ -47,9 +47,9 @@ const CreateDeviceForm = observer(({submittedHandler}) => {
         formData.append('info', JSON.stringify(info))
         createDevice(formData).then(data => {
             if(typeof submittedHandler === 'function') submittedHandler()
-            toast.addToast(createToast(`Девайс ${name} успешно создан!`))
+            toast.addToast(createToast(i18n.t('Device added', {name})))
         }).catch(e => {
-            console.log(e)
+            console.error('Error in CreateDeviceForm:' , e.massage)
         })
     }
 
