@@ -15,10 +15,10 @@ import { RiShoppingCartLine, RiUserLine } from 'react-icons/ri'
 import styles from './NavBar.module.scss'
 
 const NavBar = observer(() => {
-    const {user, app} = useContext(Context)
+    const {user, app, basket} = useContext(Context)
     const navigate = useNavigate()
     const i18n = useTranslation()
-
+    console.log('basket quantity', basket.quantity)
     const logout = () => {
         localStorage.removeItem('token')
         user.setUser({})
@@ -60,7 +60,12 @@ const NavBar = observer(() => {
                                 value={app.lang}
                             />
                         </li>
-                        <li className={`${styles.nav__item} ${styles.nav__item_basket}`}><RiShoppingCartLine className={`${styles.nav__icon}  ${styles.nav__icon_basket}`} /></li>
+                        <li className={`${styles.nav__item} ${styles.nav__item_basket}`}>
+                            <div className={styles.basketWrapper}>
+                                <RiShoppingCartLine className={`${styles.nav__icpon}  ${styles.nav__icon_basket}`} />
+                                {basket.quantity && <div className={styles.basketQuantity}>{basket.quantity}</div>}
+                            </div>
+                        </li>
                         <li className={`${styles.nav__item} ${styles.nav__item_user} ${app.isOpenUserMenu ? styles.active : ''}`} onMouseEnter={openUserMenu} onMouseLeave={closeUserMenu}>
                             <RiUserLine className={`${styles.nav__icon}  ${styles.nav__icon_user}`} />
                             <ul className={styles.userMenu} >
