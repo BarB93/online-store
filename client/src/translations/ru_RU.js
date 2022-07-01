@@ -83,6 +83,7 @@ const translationRU = {
     '8 Gb': '8 Гб',
     '256 Gb': '256 Гб',
     'Added to cart': '{{name}} добавлен в корзину',
+    'Device added': 'Девайс {{name}} добвален',
 }
 
 export default translationRU
