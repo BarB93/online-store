@@ -2,33 +2,81 @@ const ApiError = require('../error/ApiError')
 const {Basket, BasketDevice} = require('../models/models')
 
 class BasketController {
-    async add(req, res, next) {
+    async addDevice(req, res, next) {
         const device = req.body
         const user = req.user
-        console.log('in BasketController', device)
+        let result
+
         if(!device) {
             return next(ApiError.badRequest('Not got device'))
         } 
-        console.log('in BasketController 1')
-        const basket = await Basket.findOne({
-            where: {
-                userId: user.id,
-                include: [{model: BasketDevice, as: 'devices'}]
+        
+        try {
+            const basket = await Basket.findOne({
+                where: {userId: user.id}
+            })
+            
+            if(!basket) {
+                return next(ApiError.badRequest('Basket not exist'))
             }
-        })
-        console.log('in BasketController 2')
-        if(!basket) {
-            return next(ApiError.badRequest('Basket not exist'))
-        }
 
-        if(dev = basket.devices.find(item => item.id === device.id)) {
-            console.log('in BasketController3')
-            await BasketDevice.update({quantity: dev.quantity + 1})
-        } else {
-            console.log('in BasketController 4')
-            await BasketDevice.create({deviceId: device.id})
+            const basketDevice = await BasketDevice.findOne({
+                where: {
+                    basketId: basket.id, 
+                    deviceId: device.id,
+                }
+            })
+
+            if(basketDevice) {
+                result = await basketDevice.update({quantity: basketDevice.quantity + 1})
+            } else {
+                result = await BasketDevice.create({deviceId: device.id, basketId: basket.id})
+            }
+
+            res.status(201).json(result)
+        } catch(e) {
+            return next(ApiError.badRequest('Error happened while add to basket'))
         }
-        console.log('in BasketController 5')
+    }
+
+    async getBasketDevices(req, res, next) {
+        const user = req.user
+        if(!user) return next(ApiError.unauthorized())
+        try {
+            const basket = await Basket.findOne({where: {userId: user.id}})
+            if(!basket) return next(ApiError.badRequest('Basket not found'))
+            
+            const basketDevices = await BasketDevice.findAndCountAll({where: {basketId: basket.id}})
+            res.json(basketDevices)
+
+        } catch(e) {
+            return next(ApiError.badRequest('Error while get basket devices'))
+        }
+    }
+
+    async getQuantity(req, res, next) {
+        const user = req.user
+        let quantity = 0
+
+        if(!user) return next(ApiError.unauthorized())
+
+        try {
+            const basket = await Basket.findOne({where: {userId: user.id}})
+            if(!basket) return next(ApiError.badRequest('Basket not found'))
+    
+            const devices = await BasketDevice.findAll({where: {basketId: basket.id}})
+            if(devices.length) {
+                quantity = devices.reduce(
+                    (count, device) => count + device.quantity,
+                    0
+                )
+            }
+    
+            return res.json(quantity)
+
+        } catch(e) {
+            return next(ApiError.forbidden('Error while get quantity items in basket'))
+        }
     }
 }
 
