@@ -82,6 +82,7 @@
     'ROM SSD': 'ROM SSD',
     '8 Gb': '8 Gb',
     '256 Gb': '256 Gb',
+    'Added to cart': '{{name}} added to cart',
 }
 
 export default translationEN

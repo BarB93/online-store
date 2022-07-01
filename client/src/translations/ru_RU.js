@@ -82,6 +82,7 @@ const translationRU = {
     'ROM SSD': 'Общий объём SSD',
     '8 Gb': '8 Гб',
     '256 Gb': '256 Гб',
+    'Added to cart': '{{name}} добавлен в корзину',
 }
 
 export default translationRU
