@@ -46,7 +46,7 @@ class BasketController {
             const basket = await Basket.findOne({where: {userId: user.id}})
             if(!basket) return next(ApiError.badRequest('Basket not found'))
             
-            const basketDevices = await BasketDevice.findAndCountAll({where: {basketId: basket.id}})
+            const basketDevices = await BasketDevice.findAll({where: {basketId: basket.id}})
             res.json(basketDevices)
 
         } catch(e) {
