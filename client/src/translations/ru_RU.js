@@ -75,7 +75,7 @@ const translationRU = {
     'Weight': 'Вес',
     'Type RAM': 'Тип оперативной памяти',
     '13.3 Inches': '13.3 дюймов',
-    '1.4 Kg': '1.4 Кг',
+    '1.4 kg': '1.4 кг',
     'Apple M1 (3.2 GHz)': 'Apple M1 (3.2 ГГц)',
     'GPU': 'Видеокарта',
     'Matrix technology': 'Технология матрицы',

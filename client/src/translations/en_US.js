@@ -75,7 +75,7 @@
     'Weight': 'Weight',
     'Type RAM': 'Type RAM',
     '13.3 Inches': '13.3 Inches',
-    '1.4 Kg': '1.4 Kg',
+    '1.4 kg': '1.4 kg',
     'Apple M1 (3.2 GHz)': 'Apple M1 (3.2 GHz)',
     'GPU': 'GPU',
     'Matrix technology': 'Matrix technology',
