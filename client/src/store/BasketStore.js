@@ -2,23 +2,23 @@ import {makeAutoObservable} from 'mobx'
 
 export default class UserStore {
     constructor() {
-        this._basket = null
-        this._quantity = null
+        this._devices = null
+        this._totalQuantity = null
         
         makeAutoObservable(this)
     }
 
-    setBasket(basket) {
-        this._basket = basket
+    setTotalQuantity(num) {
+        this._totalQuantity = num
     }
-    setQuantity(num) {
-        this._quantity = num
+    setDevices(devices) {
+        this._devices = devices
     }
    
-    get quantity() {
-        return this._quantity
+    get totalQuantity() {
+        return this._totalQuantity
     }
-    get basket() {
-        return this._basket
+    get devices() {
+        return this._devices
     }
 }
