@@ -4,7 +4,7 @@ import { observer } from 'mobx-react-lite'
 import i18n from 'i18next'
 import { initReactI18next } from 'react-i18next'
 
-import { getQuantityBasketItems } from './http/basketAPI'
+import { fetchQuantityBasketItems } from './http/basketAPI'
 import { translationRU, translationEN } from './translations'
 import { languages } from './utils/consts'
 import { check } from './http/userAPI'
@@ -53,8 +53,8 @@ const App = observer(() => {
   // basket total quantity items
   useEffect(() => {
     if(user.isAuth) {
-      getQuantityBasketItems()
-        .then(data => basket.setQuantity(data))
+      fetchQuantityBasketItems()
+        .then(data => basket.setTotalQuantity(data))
     }
   }, [user.isAuth])
 
