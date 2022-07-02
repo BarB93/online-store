@@ -62,7 +62,7 @@ const NavBar = observer(() => {
                         </li>
                         <li className={`${styles.nav__item} ${styles.nav__item_basket}`}>
                             <div className={styles.basketWrapper}>
-                                <RiShoppingCartLine className={`${styles.nav__icpon}  ${styles.nav__icon_basket}`} />
+                                <RiShoppingCartLine className={`${styles.nav__icon}  ${styles.nav__icon_basket}`} />
                                 {basket.quantity && <div className={styles.basketQuantity}>{basket.quantity}</div>}
                             </div>
                         </li>
