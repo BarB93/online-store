@@ -6,7 +6,7 @@ import { useTranslation } from 'react-i18next'
 import { fetchOneDevice } from '../../../http/deviceAPI'
 import { Context } from '../../../index'
 import { createToast } from '../../UI/Toast/Toast'
-import { addDeviceToBasket, getQuantityBasketItems } from '../../../http/basketAPI'
+import { addDeviceToBasket, fetchQuantityBasketItems } from '../../../http/basketAPI'
 import { DEVICE_ROUTE } from '../../../utils/consts'
 import pricePrettify from '../../../utils/pricePrettify'
 import Button from '../../UI/Button/Button'
@@ -27,8 +27,8 @@ const DeviceItem = observer(({device}) => {
         addDeviceToBasket(device)
             .then(data => fetchOneDevice(data.deviceId))
             .then(data => toast.addToast(createToast(i18n.t('Added to cart', {name: data.name}))))
-            .then(() => getQuantityBasketItems())
-            .then(data => basket.setQuantity(data))
+            .then(() => fetchQuantityBasketItems())
+            .then(data => basket.setTotalQuantity(data))
             .catch(e => console.error('Error in DeviceItem component:', e.message))
     }
 
