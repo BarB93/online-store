@@ -4,7 +4,7 @@ import {observer} from 'mobx-react-lite'
 import { useTranslation } from 'react-i18next'
 
 import { Context } from '../../index'
-import { LOGIN_ROUTE, REGISTRATION_ROUTE, SHOP_ROUTE, ADMIN_ROUTE, DEVICE_ROUTE } from '../../utils/consts'
+import { LOGIN_ROUTE, REGISTRATION_ROUTE, SHOP_ROUTE, ADMIN_ROUTE, DEVICE_ROUTE, BASKET_ROUTE } from '../../utils/consts'
 import { languages } from '../../utils/consts'
 import Container from '../UI/Container/Container'
 import LangSelect from './LangSelect/LangSelect'
@@ -61,10 +61,12 @@ const NavBar = observer(() => {
                             />
                         </li>
                         <li className={`${styles.nav__item} ${styles.nav__item_basket}`}>
-                            <div className={styles.basketWrapper}>
-                                <RiShoppingCartLine className={`${styles.nav__icon}  ${styles.nav__icon_basket}`} />
-                                {basket.quantity && <div className={styles.basketQuantity}>{basket.quantity}</div>}
-                            </div>
+                            <NavLink to={BASKET_ROUTE}>
+                                <div className={styles.basketWrapper}>
+                                    <RiShoppingCartLine className={`${styles.nav__icon}  ${styles.nav__icon_basket}`} />
+                                    {basket.totalQuantity && <div className={styles.basketQuantity}>{basket.totalQuantity}</div>}
+                                </div>
+                            </NavLink>
                         </li>
                         <li className={`${styles.nav__item} ${styles.nav__item_user} ${app.isOpenUserMenu ? styles.active : ''}`} onMouseEnter={openUserMenu} onMouseLeave={closeUserMenu}>
                             <RiUserLine className={`${styles.nav__icon}  ${styles.nav__icon_user}`} />
