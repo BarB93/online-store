@@ -5,21 +5,25 @@ const {Device, DeviceInfo} = require('../models/models')
 
 class DeviceController {
     async getAll(req, res) {
-        let {brandId, typeId, limit, page} = req.query
+        let {brandId, typeId, limit, page, arrayId} = req.query
         page = page || 1
         limit = limit || 9
         let offset = page * limit - limit
         let devices
-        if(!brandId && !typeId) {
+      
+        if(arrayId) {
+            devices = await Device.findAll({where: {id: arrayId}})
+        }
+        else if(!brandId && !typeId) {
             devices = await Device.findAndCountAll({limit, offset})
         }
-        if(brandId && !typeId) {
+        else if(brandId && !typeId) {
             devices = await Device.findAndCountAll({where: {brandId}, limit, offset})
         }
-        if(!brandId && typeId) {
+        else if(!brandId && typeId) {
             devices = await Device.findAndCountAll({where: {typeId}, limit, offset})
         }
-        if(brandId && typeId) {
+        else if(brandId && typeId) {
             devices = await Device.findAndCountAll({where: {typeId, brandId}, limit, offset})
         }
 
