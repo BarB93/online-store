@@ -12,7 +12,10 @@ class DeviceController {
         let devices
       
         if(arrayId) {
-            devices = await Device.findAll({where: {id: arrayId}})
+            devices = await Device.findAll({
+                where: {id: arrayId},
+                include: [{model: DeviceInfo, as: 'info'}]
+            })
         }
         else if(!brandId && !typeId) {
             devices = await Device.findAndCountAll({limit, offset})
