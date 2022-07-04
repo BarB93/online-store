@@ -9,6 +9,7 @@
 .content {
     display: flex;
     flex-wrap: wrap;
+    margin-bottom: 50px;
 }
 
 .image {
@@ -21,7 +22,7 @@
     padding: 20px 15px;;
     background: #fff;
     border-radius: $border-radius-base;
-    box-shadow: 0 6px 16px rgb(0 26 52 / 16%), 0 0 0 rgb(0 26 52 / 5%);
+    box-shadow: $shadow-primary;
 
     img {
         height: 100%;
@@ -43,7 +44,7 @@
     padding: 20px 15px;
     background-color: #fff;
     border-radius: $border-radius-base;
-    box-shadow: 0 6px 16px rgb(0 26 52 / 16%), 0 0 0 rgb(0 26 52 / 5%);
+    box-shadow: $shadow-primary;
 
     &__header {
         display: flex;
@@ -71,7 +72,7 @@
     padding: $indent-base 0;
     background: #fff;
     border-radius: $border-radius-base;
-    box-shadow: 0 6px 16px rgb(0 26 52 / 16%), 0 0 0 rgb(0 26 52 / 5%);
+    box-shadow: $shadow-primary;
     
     &__item {
         display: flex;
