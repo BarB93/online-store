@@ -6,7 +6,7 @@
     flex-direction: column;
     background-color: #fff;
     border-radius: $border-radius-base;
-    box-shadow: 0 6px 14px 0 rgb(0 0 0 / 8%);
+    box-shadow: $shadow-primary;
 
     &.skeleton {
         animation: $animation-skeleton-loading;
