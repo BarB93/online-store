@@ -1,0 +1,22 @@
+.device {
+    display: flex;  
+    gap: 20px;
+
+    & + & {
+        margin-top: 30px;
+    }
+    &__imageBox {
+        width: 80px;
+        height: 100px;
+    }
+    &__img {
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        object-position: top center;
+    }
+    &__name {
+        font-size: 1.1rem;
+    }
+}
