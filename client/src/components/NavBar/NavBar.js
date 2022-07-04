@@ -48,7 +48,7 @@ const NavBar = observer(() => {
                 <nav className={styles.nav}>
                     <NavLink className={styles.logo} to={SHOP_ROUTE}><Logo /></NavLink>
                     <ul className={styles.nav__menu}>
-                        <li className={styles.nav__item}><NavLink className={styles.nav__link} to={SHOP_ROUTE}>{i18n.t('Devices')}</NavLink></li>
+                        <li className={styles.nav__item}><NavLink className={navData => navData.isActive ? `${styles.nav__link} ${styles.nav__link_active}` : styles.nav__link} to={SHOP_ROUTE}>{i18n.t('Devices')}</NavLink></li>
                         <li className={styles.nav__item}>
                             <LangSelect 
                                 className={styles.nav__select}

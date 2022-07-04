@@ -64,7 +64,8 @@
             background-color: transparent;
             transition: background-color .3s linear;
         }
-        &:hover {
+        &:hover,
+        &_active {
             &::after {
                 background-color: $background-primary;
                 .skeleton & {
@@ -72,6 +73,7 @@
                 }
             }
         }
+
     }
     &__icon {
         font-size: 25px;
