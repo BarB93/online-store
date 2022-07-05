@@ -41,7 +41,7 @@ const DevicePage = observer(() => {
                             <div className={styles.info__name}>{i18n.t('Price')}:</div>
                             <div className={styles.info__price}>{pricePrettify(device.price)} ₽</div>
                         </div>
-                        <Button className={styles.info__addToCard} secondary>{i18n.t('Add to cart')}</Button>
+                        <Button className={styles.info__addToCard} secondary>{i18n.t('Add to basket')}</Button>
                     </div>
                     <div className={styles.features}>
                        <h3 className={`${styles.title} ${styles.features__title}`}>{i18n.t('Specifications')}</h3>
