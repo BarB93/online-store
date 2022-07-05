@@ -62,7 +62,7 @@
     'More': 'More',
     'Price': 'Price',
     'Specifications': 'Specifications',
-    'Add to cart': 'Add to cart',
+    'Add to basket': 'Add to basket',
     'Gb': 'Gb',
     '6 Gb': '6 Gb',
     '64 Gb': '64 Gb',
@@ -84,6 +84,7 @@
     '256 Gb': '256 Gb',
     'Added to cart': '{{name}} added to cart',
     'Device added': 'Device {{name}} added',
+    'Basket': 'Basket',
 }
 
 export default translationEN

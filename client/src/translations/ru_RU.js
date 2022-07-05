@@ -62,7 +62,7 @@ const translationRU = {
     'More': 'Подробнее',
     'Price': 'Цена',
     'Specifications': 'Характеристики',
-    'Add to cart': 'Добавить в корзину',
+    'Add to basket': 'Добавить в корзину',
     'Gb': 'Gb',
     '6 Gb': '6 Гб',
     '64 Gb': '64 Гб',
@@ -84,6 +84,7 @@ const translationRU = {
     '256 Gb': '256 Гб',
     'Added to cart': '{{name}} добавлен в корзину',
     'Device added': 'Девайс {{name}} добвален',
+    'Basket': 'Корзина',
 }
 
 export default translationRU
