@@ -1,6 +1,36 @@
 @import '../../../styles/variables.scss';
 
 .aside {
+    position: sticky;
+    top: 10px;
+    padding: $padding-basket;
     background: #fff;
     border-radius: $border-radius-base;
+
+    &__row {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 1rem;
+        color: $gray-500;
+
+        & + & {
+            margin-top: 7px;
+        }
+    }
+    &__row_title {
+        font-size: $title-basket;
+        color: $text-base;
+    }
+    &__totalPrice {
+        font-weight: 700;
+    }
+    &__btnBox {
+        margin-top: 30px;
+    }
+    &__btnOrder {
+        width: 100%;
+        padding: 15px;
+        font-size: 1.1rem;
+    }
 }
