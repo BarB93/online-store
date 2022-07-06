@@ -2,8 +2,9 @@
 @import '../../styles/animations.scss';
 
 .header {
-    position: sticky;
-    top: 0;
+    // TODO barb: remove unused styles
+    // position: sticky;
+    // top: 0;
     width: 100%;
     max-width: 100%;
     background: #fff;
@@ -21,7 +22,7 @@
 .nav {
     display: flex;
     align-items: center;
-    height: 54px;
+    height: $height-header;
 
     &__menu {
         flex: 1 0 auto;
