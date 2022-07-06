@@ -34,7 +34,6 @@ const DeviceItem = observer(({device}) => {
 
     return (
         <article className={styles.card}>
-            <div className={styles.wrapper}>
                 <h3 className={styles.card__title} onClick={navigateToDevice}>{device.name}</h3>
                 <div className={styles.card__price}>{price}<small> ₽</small></div>
                 <div className={styles.card__buttons}>
@@ -46,7 +45,6 @@ const DeviceItem = observer(({device}) => {
                     <img src={star} alt={i18n.t('Rating')} />
                     {device.rating && <span>{device.rating.toFixed(1)}</span>}
                 </div>
-            </div>
         </article>
     )
 })

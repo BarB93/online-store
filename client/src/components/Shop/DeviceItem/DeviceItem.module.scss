@@ -2,24 +2,20 @@
 @import '../../../styles/animations.scss';
 
 .card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     flex: 0 0 25%;
-    padding: 0 $indent-card;
-   
-    .wrapper {
-        display: flex;
-        padding: 20px 15px 10px;
-        flex-direction: column;
-        align-items: center;
-        background-color: #fff;
-        overflow: hidden;
+    padding: 20px 15px 10px;
+    border-radius: $border-radius-base;
+    background-color: #fff;
 
-        &:hover {
-            box-shadow: 0 6px 14px 0 #00000014;
-        }
-        &.skeleton {
-            animation: $animation-skeleton-loading;
-            height: 412px;
-        }
+    &:hover {
+        box-shadow: 0 6px 14px 0 #00000014;
+    }
+    &.skeleton {
+        animation: $animation-skeleton-loading;
+        height: 412px;
     }
 
     &:nth-child(1n+5) {
@@ -33,7 +29,13 @@
         margin-top: 10px;
     }
     &__buttons {
+        display: flex;
         margin-top: 20px;
+        width: 100%;
+
+        button {
+            flex: 1 0 auto;
+        }
     }
     &__image {
         display: block;
