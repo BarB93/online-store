@@ -1,6 +1,18 @@
 @import '../../../styles/variables.scss';
 
 .content {
-    padding: 20px 15px;
+    padding: $padding-basket;
     background: #fff;
+    border-radius: $border-radius-base;
+    box-shadow: $shadow-primary;
+    
+    &__header {
+        padding-bottom: 20px;
+        margin-bottom: 20px;
+        border-bottom: 1px solid $gray-300;
+    }
+    &__title {
+        margin-bottom: 20px;
+        font-size: $title-basket;
+    }
 }
