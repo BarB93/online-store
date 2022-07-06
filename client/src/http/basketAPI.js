@@ -24,3 +24,8 @@ export const fetchQuantityBasketItems = async () => {
     const {data} = await $authHost.get('/api/basket/quantity')
     return data
 }
+
+export const setQuantity = async (id, quantity) => {
+    const {data} = await $authHost.put('/api/basket/quantity', {id, quantity})
+    return data
+}
