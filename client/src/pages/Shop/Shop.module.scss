@@ -2,14 +2,14 @@
 
 .container {
     display: flex;
-    min-height: calc(100vh - 54px);
+    min-height: calc(100vh - $height-header);
     padding-top: $indent-base;
     padding-bottom: 40px;
 }
 .aside {
     flex: 0 0 30%;
     max-width: 200px;
-    margin-right: 15px;
+    margin-right: $indent-base;
     user-select: none;
 }
 .main {
