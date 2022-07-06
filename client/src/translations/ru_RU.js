@@ -85,6 +85,14 @@ const translationRU = {
     'Added to cart': '{{name}} добавлен в корзину',
     'Device added': 'Девайс {{name}} добвален',
     'Basket': 'Корзина',
+    'Total': 'Итого',
+    'Discount': 'Скидка',
+    'Goods': 'Товары',
+    'Free': 'Бесплатно',
+    'PCS.': 'шт.',
+    'Delivery': 'Доставка',
+    'Order': 'Заказать',
+    'Select all': 'Выбрать все',
 }
 
 export default translationRU

@@ -85,6 +85,14 @@
     'Added to cart': '{{name}} added to cart',
     'Device added': 'Device {{name}} added',
     'Basket': 'Basket',
+    'Total': 'Total',
+    'Discount': 'Discount',
+    'Goods': 'Goods',
+    'Free': 'Free',
+    'PCS.': 'PCS.',
+    'Delivery': 'Delivery',
+    'Order': 'Order',
+    'Select all': 'Select all',
 }
 
 export default translationEN
