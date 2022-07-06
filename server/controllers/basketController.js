@@ -78,6 +78,27 @@ class BasketController {
             return next(ApiError.forbidden('Error while get quantity items in basket'))
         }
     }
+
+    async setQuantity(req, res, next) {
+        const {id, quantity} = req.body
+        const user = req.user
+        if(!id || !quantity) return next(ApiError.badRequest('Error: id or quantity not specified'))
+        if(quantity < 1) return next(ApiError.badRequest('Error: quantity is less than one'))
+        
+        try{
+            const basket = await Basket.findOne({where: {userId: user.id}})
+            if(!basket) return next(ApiError.badRequest('Error: basket not found'))
+            const data = await BasketDevice.update(
+                {quantity},
+                {where:{basketId: basket.id, deviceId: id}}
+            )
+            
+            res.json(data[0])
+        } catch(e) {
+            return next(ApiError.badRequest('Error while set quantity'))
+        }
+    
+    }
 }
 
 module.exports = new BasketController()
