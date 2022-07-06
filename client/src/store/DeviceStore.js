@@ -7,7 +7,8 @@ export default class DeviceStore {
         this._isLoadingOneDevice = true
         this._page = 1
         this._totalCount = 0
-        this._limit = 3
+        this._limit = 2
+        this._discount = 15
         makeAutoObservable(this)
     }
 
@@ -29,6 +30,9 @@ export default class DeviceStore {
     setLimit(num) {
         this._limit = num
     }
+    setDiscount(percent) {
+        this._discount = percent
+    }
     get devices() {
         return this._devices
     }
@@ -45,6 +49,9 @@ export default class DeviceStore {
         return this._totalCount
     }
     get limit() {
+        return this._limit
+    }
+    get discount() {
         return this._limit
     }
 }
