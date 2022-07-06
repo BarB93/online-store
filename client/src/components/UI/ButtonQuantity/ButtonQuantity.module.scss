@@ -1,0 +1,40 @@
+@import '../../../styles/variables.scss';
+
+.button {
+    position: relative;
+    width: 40px;
+    height: 40px;
+    border: 2px solid $gray-200;
+    border-radius: 50%;
+    background-color: #fff;
+    cursor: pointer;
+    transition: all .1s linear;
+
+    &:active {
+        transform: translateY(2px);
+    }
+    &:disabled {
+        transform: none;
+    }
+    &__minus::after,
+    &__plus::after,
+    &__plus::before {
+        content: "";
+        display: block;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 40%;
+        height: 1px;
+        background: #000;
+
+        transform: translate3d(-50%, -50%, 0);
+    }
+    &__minus:disabled::after {
+        background: $gray-400;
+    }
+    &__plus::before {
+        transform: translate3d(-50%, -50%, 0) rotate(90deg);
+    }
+
+}
