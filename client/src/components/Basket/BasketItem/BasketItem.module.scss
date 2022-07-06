@@ -1,5 +1,8 @@
+@import '../../../styles/variables.scss';
+
 .device {
     display: flex;  
+    align-items: flex-start;
     gap: 20px;
 
     & + & {
@@ -16,7 +19,33 @@
         object-fit: contain;
         object-position: top center;
     }
+    &__infoBox {
+        flex: 1 0 auto;
+    }
     &__name {
         font-size: 1.1rem;
+    }
+    &__color {
+        font-size: .9rem;
+        color: $gray-500;
+    }
+    &__quantityBox {
+        display: flex;
+        align-items: center;
+        width: 180px;
+    }
+    &__quantity {
+        margin: 0 10px;
+    }
+    &__priceBox {
+        width: 195px;
+        text-align: end;
+        font-size: 1.3rem;
+        font-weight: bold;
+    }
+    &__price_discount {
+        font-size: 1rem;
+        color: $gray-500;
+        text-decoration: line-through;
     }
 }
