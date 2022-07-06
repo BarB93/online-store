@@ -8,6 +8,7 @@ export const DEVICE_ROUTE = '/device'
 
 // numbers
 export const MAX_PRICE = 9_999_999
+export const DiSCOUNT = 15
 
 // languages
 export const languages = {
