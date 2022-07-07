@@ -15,6 +15,7 @@
     }
     &:disabled {
         transform: none;
+        cursor: default;
     }
     &__minus::after,
     &__plus::after,
