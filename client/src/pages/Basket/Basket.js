@@ -17,7 +17,6 @@ const Basket = observer(() => {
             fetchBasketItems()
                 .then(data => {
                     basket.setDevices(data.devices)
-                    basket.setTotalQuantity(data.totalQuantity)
                 })
         }
     }, [user.isAuth])
