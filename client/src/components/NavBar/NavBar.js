@@ -64,7 +64,7 @@ const NavBar = observer(() => {
                             <NavLink to={BASKET_ROUTE}>
                                 <div className={styles.basketWrapper}>
                                     <RiShoppingCartLine className={`${styles.nav__icon}  ${styles.nav__icon_basket}`} />
-                                    {basket.totalQuantity && <div className={styles.basketQuantity}>{basket.totalQuantity}</div>}
+                                    {Boolean(basket.totalQuantity) && <div className={styles.basketQuantity}>{basket.totalQuantity}</div>}
                                 </div>
                             </NavLink>
                         </li>
