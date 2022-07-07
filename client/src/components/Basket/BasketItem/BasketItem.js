@@ -1,4 +1,5 @@
 import React, { useContext } from 'react'
+import { observer } from 'mobx-react-lite'
 import { useTranslation } from 'react-i18next'
 
 import { DiSCOUNT } from '../../../utils/consts'
@@ -9,7 +10,7 @@ import ButtonQuantity from '../../UI/ButtonQuantity/ButtonQuantity'
 
 import styles from './BasketItem.module.scss'
 
-const BasketItem = ({device}) => {
+const BasketItem = observer(({device}) => {
     const {basket} = useContext(Context)
     const i18n = useTranslation()
     const imageURL = `${process.env.REACT_APP_API_URL}/${device.img}`
@@ -27,11 +28,18 @@ const BasketItem = ({device}) => {
             basket.setDeviceQuantity(id, newQuantity)
         }
     }
-
+    const orderItemChangeHandler = (e) => {
+        if(e.target.checked) {
+            basket.addToOrder(id)
+        } else {
+            basket.removeFromOrder(id)
+        }
+    }
+   
     return (
         <div className={styles.device}>
             <label className='customCheckbox__label'>
-                    <input className='customCheckbox__input' type='checkbox' />
+                    <input className='customCheckbox__input' type='checkbox' onChange={orderItemChangeHandler} checked={basket.orderDeviceIds.includes(id)}/>
                     <div className='customCheckbox__checkbox'></div>
             </label>
             <div className={styles.device__imageBox}>
@@ -52,6 +60,6 @@ const BasketItem = ({device}) => {
             </div>
         </div>
     )
-}
+})
 
 export default BasketItem
