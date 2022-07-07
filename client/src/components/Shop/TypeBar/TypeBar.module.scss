@@ -33,7 +33,7 @@
             background-color: rgba(0 0 0 /0.1);
         }
         &.active {
-            background-color: #000;
+            background-color: $active-bar-item;
             color: #fff
         }
     }
