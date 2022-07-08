@@ -2,7 +2,7 @@
 
 .basket {
     display: flex;
-    gap: 0 10px;
+    gap: 0 15px;
     padding: 20px 0 20px;
     min-height: calc( 100vh - 65px);
 
@@ -15,5 +15,26 @@
         background: #fff;
         border-radius: $border-radius-base;
         box-shadow: $shadow-primary;
+    }
+}
+
+.basketEmpty {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top:30px;
+
+    &__title {
+        display: block;
+        font-size: 1.6rem;
+    }
+    &__message {
+        width: 390px;
+        margin: 20px 0 30px;
+        color: $gray-600;
+        text-align: center;
+    }
+    &__btn {
+        font-weight: 700;
     }
 }
