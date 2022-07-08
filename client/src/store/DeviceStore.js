@@ -1,6 +1,5 @@
 import {makeAutoObservable} from 'mobx'
-
-export default class DeviceStore {
+class DeviceStore {
     constructor() {
         this._devices = []
         this._isLoadingDevices = true
@@ -48,3 +47,5 @@ export default class DeviceStore {
         return this._limit
     }
 }
+
+export default new DeviceStore()

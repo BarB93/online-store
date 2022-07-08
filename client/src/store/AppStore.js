@@ -1,7 +1,6 @@
 import { makeAutoObservable } from 'mobx';
 import { languages } from '../utils/consts'
-
-export default class AppStore {
+class AppStore {
     constructor() {
         this._lang = languages.russian
         this._mainLang = languages.russian
@@ -29,3 +28,5 @@ export default class AppStore {
         return this._isOpenUserMenu
     }
 }
+
+export default new AppStore()

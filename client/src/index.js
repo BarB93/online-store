@@ -6,18 +6,18 @@ import App from './App'
 export const Context = createContext(null)
 
 const store = {
-  user: new UserStore(),
-  device: new DeviceStore(),
-  type: new TypeStore(),
-  brand: new BrandStore(),
-  toast: new ToastStore(),
-  app: new AppStore(),
-  basket: new BasketStore(),
+  user: UserStore,
+  device: DeviceStore,
+  type: TypeStore,
+  brand: BrandStore,
+  toast: ToastStore,
+  app: AppStore,
+  basket: BasketStore,
 }
 
 const root = ReactDOM.createRoot(document.getElementById('root'))
 root.render(
-  <Context.Provider value={store} >
+  <Context.Provider value={store}>
     <App />
   </Context.Provider>
 )

@@ -1,6 +1,5 @@
 import { makeAutoObservable } from 'mobx'
-
-export default class TypeStore {
+class TypeStore {
     constructor() {
         this._types = []
         this._selectedType = {}
@@ -38,3 +37,5 @@ export default class TypeStore {
         return this._isFetchingType
     }
 }
+
+export default new TypeStore()

@@ -1,6 +1,5 @@
 import { makeAutoObservable } from 'mobx'
-
-export default class BrandStore {
+class BrandStore {
     constructor() {
         this._brands = []
         this._selectedBrand = {}
@@ -38,3 +37,5 @@ export default class BrandStore {
         return this._isFetchingBrand
     }
 }
+
+export default new BrandStore()

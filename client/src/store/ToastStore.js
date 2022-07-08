@@ -1,6 +1,5 @@
 import { makeAutoObservable } from "mobx";
-
-export default class ToastStore {
+class ToastStore {
     constructor() {
         this._list = []
         this._count = 0
@@ -21,3 +20,5 @@ export default class ToastStore {
         return this._count
     }
 }
+
+export default new ToastStore()
