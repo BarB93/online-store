@@ -1,4 +1,4 @@
-import {makeAutoObservable, action} from 'mobx'
+import {makeAutoObservable} from 'mobx'
 import basketAPI from '../http/basketAPI'
 import ToastStore from './ToastStore'
 import { createToast } from '../components/UI/Toast/Toast'
