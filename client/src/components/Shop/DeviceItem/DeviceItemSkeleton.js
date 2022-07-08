@@ -4,9 +4,7 @@ import styles from './DeviceItem.module.scss'
 
 const DeviceItemSkeleton = () => {
     return (
-        <div className={`${styles.card}`}>
-            <div className={`${styles.wrapper} ${styles.skeleton}`}></div>
-        </div>
+        <div className={`${styles.card} ${styles.skeleton}`}></div>
     )
 }
 
