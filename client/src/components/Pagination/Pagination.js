@@ -6,13 +6,13 @@ import { Context } from '../../index'
 import styles from './Pagination.module.scss'
 
 const Pagination = observer(() => {
-    const {device} = useContext(Context)
+    const {device, user} = useContext(Context)
     const countPages = useMemo(() => {
         return Math.ceil(device.totalCount / device.limit)
     }, [device.totalCount, device.limit])
 
     return (
-        countPages <= 1 ? null 
+        countPages <= 1 || user.isLoading || device.isLoadingDevices ? null 
         :
         <div className={styles.pagination}>
             {new Array(countPages).fill(0).map((item, index) => {
