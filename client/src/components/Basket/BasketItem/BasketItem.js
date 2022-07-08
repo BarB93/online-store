@@ -35,6 +35,9 @@ const BasketItem = observer(({device}) => {
             basket.removeFromOrder(id)
         }
     }
+    const removeItemHandler = () => {
+        basket.removeBasketItem(id)
+    }
    
     return (
         <div className={styles.device}>
@@ -50,9 +53,12 @@ const BasketItem = observer(({device}) => {
                 {color && <div className={styles.device__color}>{i18n.t(color.title)}: {i18n.t(color.description)}</div>}
             </div>
             <div className={styles.device__quantityBox}>
-                <ButtonQuantity disabled={quantity <= 1} minus onClick={decreaseHeadler}/>
-                <span className={styles.device__quantity}>{quantity}</span>
-                <ButtonQuantity plus onClick={increaseHeadler}/>
+                <div className={styles.device__quantityWrapper}>
+                    <ButtonQuantity disabled={quantity <= 1} minus onClick={decreaseHeadler}/>
+                    <span className={styles.device__quantity}>{quantity}</span>
+                    <ButtonQuantity plus onClick={increaseHeadler}/>
+                </div>
+                <button className={styles.device__removeBtn} onClick={removeItemHandler}>{i18n.t('Remove')}</button>
             </div>
             <div className={styles.device__priceBox}>
                 <div className={styles.device__price}>{pricePrettify(totalPrice)} ₽</div>

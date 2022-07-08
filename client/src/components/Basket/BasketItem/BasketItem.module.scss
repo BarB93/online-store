@@ -29,10 +29,35 @@
         font-size: .9rem;
         color: $gray-500;
     }
-    &__quantityBox {
+    &__quantityWrapper {
         display: flex;
         align-items: center;
         width: 180px;
+    }
+    &__removeBtn {
+        display: block;
+        width: fit-content;
+        margin-top: 10px;
+        border:none;
+        border-bottom: 1px dashed $gray-500;
+        font-size: 0.9rem;
+        color: $gray-500;
+        background: none;
+        cursor: pointer;
+        pointer-events: none;
+        opacity: 0;
+        transition: all .3s ease-in-out;
+        
+
+        &:hover {
+            color: $text-base;
+            border-bottom-color: #000;
+        }
+
+        .device:hover & {
+            pointer-events: all;
+            opacity: 1;
+        }
     }
     &__quantity {
         margin: 0 10px;
