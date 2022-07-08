@@ -1,8 +1,11 @@
 import {makeAutoObservable, action} from 'mobx'
 import basketAPI from '../http/basketAPI'
+import ToastStore from './ToastStore'
+import { createToast } from '../components/UI/Toast/Toast'
+import i18n from 'i18next'
 import { DiSCOUNT } from '../utils/consts'
 import { getPriceWithoutDiscount } from '../utils/getPriceWithoutDiscount'
-export default class UserStore {
+class BasketStore {
     constructor() {
         this._devices = []
         this._order = []
@@ -32,6 +35,7 @@ export default class UserStore {
     setDevices(devices) {
         this._devices = devices
         this.calcTotalPrice()
+        this.calcTotalQuantity()
     
         if(!this._isOrderInit) {
             this.setOrderDeviceIds(devices.map(item => item.id))
@@ -118,6 +122,16 @@ export default class UserStore {
         this.setOrderDeviceIds(this._orderDeviceIds.filter(orderId => orderId !== id))
     }
 
+    addDeviceToBasket(device) {
+        basketAPI.addDeviceToBasket(device)
+        .then(data => {
+            ToastStore.addToast(createToast(i18n.t('Added to cart', {name: device.name})))
+        })
+        .then(() => basketAPI.fetchQuantityBasketItems())
+        .then(data => this.setTotalQuantity(data))
+        .catch(e => console.error(e.message))
+    }
+
     calcTotalQuantity() {
         const total = this._devices.reduce((acc, item) => acc + item.quantity, 0)
         this.setTotalQuantity(total)
@@ -139,14 +153,30 @@ export default class UserStore {
         this.setTotalOrderPriceWithoutDiscount(getPriceWithoutDiscount(total, DiSCOUNT))
     }
 
-    updateOrder() {
-        this.setOrder(this._devices.filter(item => this._orderDeviceIds.includes(item.id)))
+    updateOrder(isForceUpdate = false) {
+        if(isForceUpdate) {
+            this.setOrderDeviceIds(this._devices.map(item => item.id))
+        } else {
+            this.setOrder(this._devices.filter(item => this._orderDeviceIds.includes(item.id)))
+        }
+    }
+
+    removeBasketItem(deviceId) {
+        basketAPI.deleteBasketItem(deviceId)
+            .then(data => {
+                if(data) {
+                    this.setDevices(this._devices.filter(item => item.id !== deviceId))
+                }
+            })
+            .catch((e) => console.error(e.message))
+
+            
     }
 
     setDeviceQuantity(id, quantity) {
         this._isPandding = true
         basketAPI.setQuantity(id, quantity).then(
-            action('fetch success', data => {
+            data => {
                 if(data) {
                     this.setDevices(this._devices.map(item => {
                         if(item.id === id) {
@@ -157,11 +187,11 @@ export default class UserStore {
                 }
                 this.calcTotalQuantity()
                 this.calcTotalPrice()
-            }),
-            action('fetch error', () => {}),
-        ).finally(() => {
-            this._isPandding = false
-        })
+            })
+            .catch(e => console.error(e.message))
+            .finally(() => {
+                this._isPandding = false
+            })
     }
     
     clearAllOrder() {
@@ -172,3 +202,5 @@ export default class UserStore {
         this.setOrderDeviceIds(this._devices.map(item => item.id))
     }
 }
+
+export default new BasketStore()
