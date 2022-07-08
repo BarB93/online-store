@@ -21,7 +21,10 @@ const Content = observer(() => {
     return (
         <div className={styles.content}>
             <div className={styles.content__header}>
-                <h3 className={styles.content__title}>{i18n.t('Basket')}</h3>
+                <h3 className={styles.content__title}>
+                    {i18n.t('Basket')}
+                    <div className={styles.content__titleQuantity}>{basket.totalOrderQuantity}</div>
+                </h3>
                 {basket.isVisibleCheckbox &&
                     <label className={`customCheckbox__label ${styles.content__label}`} htmlFor='all_goods'>
                         <input className='customCheckbox__input' id='all_goods' type='checkbox' checked={basket.isAllChecked} onChange={selectAllGoodsChangeHandler}/>
