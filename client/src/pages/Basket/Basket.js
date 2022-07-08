@@ -3,13 +3,13 @@ import { observer } from 'mobx-react-lite'
 import { NavLink } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 
-import basketAPI from '../../http/basketAPI'
 import { DEVICE_ROUTE } from '../../utils/consts'
 import { Context } from '../../index'
 import Content from '../../components/Basket/Content/Content'
 import Container from '../../components/UI/Container/Container'
 import Aside from '../../components/Basket/Aside/Aside'
 import Button from '../../components/UI/Button/Button'
+import BasketSkeleton from './BasketSkeleton'
 
 import styles from './Basket.module.scss'
 
@@ -19,17 +19,16 @@ const Basket = observer(() => {
 
     useEffect(() => {
         if(user.isAuth) {
-            basketAPI.fetchBasketItems()
-                .then(data => {
-                    basket.setDevices(data.devices)
-                    basket.updateOrder(true)
-                })
+            basket.fetchBasketItems()
         }
     }, [])
 
     return (
         <Container>
-            {basket.devices.length ? 
+            {
+                basket.isDevicesLoading ? <BasketSkeleton />
+                :
+                basket.devices.length ? 
                 <div className={styles.basket}>
                     <section className={styles.basket__content}><Content /></section>
                     <aside className={styles.basket__aside}><Aside /></aside>
