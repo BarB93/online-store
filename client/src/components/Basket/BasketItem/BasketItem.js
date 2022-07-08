@@ -41,10 +41,14 @@ const BasketItem = observer(({device}) => {
    
     return (
         <div className={styles.device}>
-            <label className='customCheckbox__label'>
-                    <input className='customCheckbox__input' type='checkbox' onChange={orderItemChangeHandler} checked={basket.orderDeviceIds.includes(id)}/>
-                    <div className='customCheckbox__checkbox'></div>
-            </label>
+            {
+                basket.isVisibleCheckbox 
+                &&
+                <label className='customCheckbox__label'>
+                        <input className='customCheckbox__input' type='checkbox' onChange={orderItemChangeHandler} checked={basket.orderDeviceIds.includes(id)}/>
+                        <div className='customCheckbox__checkbox'></div>
+                </label>
+            }
             <div className={styles.device__imageBox}>
                 <img className={styles.device__img} src={imageURL} alt={name} />
             </div>

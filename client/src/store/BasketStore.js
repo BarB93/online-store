@@ -8,6 +8,7 @@ import { getPriceWithoutDiscount } from '../utils/getPriceWithoutDiscount'
 class BasketStore {
     constructor() {
         this._devices = []
+        this._isDevicesLoading = true
         this._order = []
         this._isOrderInit = false
         this._orderDeviceIds = []
@@ -75,8 +76,13 @@ class BasketStore {
     setIsOrderInit(bool) {
         this._isOrderInit = bool
     }
+
     setIsAllChecked(bool) {
         this._isAllChecked = bool
+    }
+
+    setIsDevicesLoading(bool) {
+        this._isDevicesLoading = bool
     }
 
     // getters
@@ -109,6 +115,15 @@ class BasketStore {
     }
     get isOrderInit() {
         return this._isOrderInit
+    }
+    get isDevicesLoading() {
+        return this._isDevicesLoading
+    }
+    get order() {
+        return this._order
+    }
+    get isVisibleCheckbox() {
+        return this._order.length > 1
     }
 
     // methods
@@ -200,6 +215,16 @@ class BasketStore {
 
     checkAllOrder() {
         this.setOrderDeviceIds(this._devices.map(item => item.id))
+    }
+
+    fetchBasketItems() {
+        this.setIsDevicesLoading(true)
+        basketAPI.fetchBasketItems()
+            .then(data => {
+                this.setDevices(data.devices)
+                this.updateOrder(true)
+            })
+            .finally(() => this.setIsDevicesLoading(false))
     }
 }
 
