@@ -181,6 +181,9 @@ class BasketStore {
             .then(data => {
                 if(data) {
                     this.setDevices(this._devices.filter(item => item.id !== deviceId))
+                    if(this._devices.length === 1) {
+                        this.setOrderDeviceIds(this._devices.map(item => item.id))
+                    }
                 }
             })
             .catch((e) => console.error(e.message))
