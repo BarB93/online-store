@@ -123,7 +123,7 @@ class BasketStore {
         return this._order
     }
     get isVisibleCheckbox() {
-        return this._order.length > 1
+        return this._devices.length > 1
     }
 
     // methods
