@@ -97,6 +97,8 @@
     'There are nothing in basket yet': 'There are nothing in basket yet',
     'Start from home page, select device and add it into basket, enjoy purchases': 'Start from home page, select device and add it into basket, enjoy purchases',
     'Move to home page': 'Move to home page',
+    'There are no devices for selected filters, chose others or reset': 'There are no devices for selected filters, chose others or reset',
+    'Reset filters': 'Reset filters',
 }
 
 export default translationEN

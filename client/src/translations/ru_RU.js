@@ -97,6 +97,8 @@ const translationRU = {
     'There are nothing in basket yet': 'В корзине пока ничего нет',
     'Start from home page, select device and add it into basket, enjoy purchases': 'Начните с главной страницы, выберите и добавте девайс в корзину, приятных покупок',
     'Move to home page': 'Перейти на главную',
+    'There are no devices for selected filters, chose others or reset': 'Нет товаров по указанным фильтрам, выберите другие или сбросьте',
+    'Reset filters': 'Сбросить фильтры',
 }
 
 export default translationRU
