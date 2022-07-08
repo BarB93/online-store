@@ -28,7 +28,7 @@ const basketAPI = {
     },
 
     async deleteBasketItem(deviceId) {
-        const {data} = await $authHost.delete('/api/basket', {deviceId})
+        const {data} = await $authHost.delete('/api/basket',{params: {deviceId}})
         return data
     },
     
