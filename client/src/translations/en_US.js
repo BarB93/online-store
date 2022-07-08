@@ -93,6 +93,10 @@
     'Delivery': 'Delivery',
     'Order': 'Order',
     'Select all': 'Select all',
+    'Remove': 'Remove',
+    'There are nothing in basket yet': 'There are nothing in basket yet',
+    'Start from home page, select device and add it into basket, enjoy purchases': 'Start from home page, select device and add it into basket, enjoy purchases',
+    'Move to home page': 'Move to home page',
 }
 
 export default translationEN
