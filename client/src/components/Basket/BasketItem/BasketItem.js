@@ -17,6 +17,8 @@ const BasketItem = observer(({device}) => {
     const color = device.info.find(item => item.title === 'Color')
     const {name, quantity, price, id} = device 
     const totalPrice = price * quantity
+    const priceWithoutDiscount = getPriceWithoutDiscount(totalPrice, DiSCOUNT)
+    const discountPrice = priceWithoutDiscount - totalPrice
 
     const increaseHeadler = async () => {
         const newQuantity = quantity + 1
@@ -66,7 +68,13 @@ const BasketItem = observer(({device}) => {
             </div>
             <div className={styles.device__priceBox}>
                 <div className={styles.device__price}>{pricePrettify(totalPrice)} ₽</div>
-                <div className={styles.device__price_discount}>{pricePrettify(getPriceWithoutDiscount(totalPrice, DiSCOUNT))} ₽</div>
+                <div className={styles.device__discount}>
+                    <div className={styles.device__price_discount}>{pricePrettify(priceWithoutDiscount)} ₽</div>
+                    <div className={styles.discountPopup}>
+                        <div className={styles.discountPopup__discount}>{i18n.t('Discount')} {DiSCOUNT}%</div>
+                        <div className={styles.discountPopup__price}>-{pricePrettify(discountPrice)} ₽</div>
+                    </div>
+                </div>
             </div>
         </div>
     )
