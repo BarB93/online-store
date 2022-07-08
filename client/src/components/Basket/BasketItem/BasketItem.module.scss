@@ -9,6 +9,7 @@
         margin-top: 30px;
     }
     &__imageBox {
+        min-width: 80px;
         width: 80px;
         height: 100px;
     }
@@ -20,7 +21,8 @@
         object-position: top center;
     }
     &__infoBox {
-        flex: 1 0 auto;
+        flex: 1 1 40%;
+        min-width: 200px;
     }
     &__name {
         font-size: 1.1rem;
@@ -32,7 +34,7 @@
     &__quantityWrapper {
         display: flex;
         align-items: center;
-        width: 180px;
+        width: 120px;
     }
     &__removeBtn {
         display: block;
@@ -59,11 +61,15 @@
             opacity: 1;
         }
     }
+    &__quantityBox {
+        flex: 1 1 20%;
+    }
     &__quantity {
         margin: 0 10px;
     }
     &__priceBox {
-        width: 195px;
+        flex: 0 0 135px;
+        white-space: nowrap;
         text-align: end;
         font-size: 1.3rem;
         font-weight: bold;
