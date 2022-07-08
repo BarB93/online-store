@@ -1,0 +1,14 @@
+@import "../../../styles/variables.scss";
+
+.emptyList {
+    width: 100%;
+    text-align: center;
+    &__title {
+        margin-bottom: 30px;
+        font-size: 1.6rem;
+        color: $gray-700;
+    }
+    &__btn {
+        font-weight: 700;
+    }
+}
