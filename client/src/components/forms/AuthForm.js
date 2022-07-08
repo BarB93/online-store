@@ -5,8 +5,8 @@ import { useFormik } from 'formik'
 import * as Yup from 'yup'
 import { useTranslation } from 'react-i18next'
 
+import userAPI from '../../http/userAPI'
 import { Context } from '../../index'
-import { login, registration } from '../../http/userAPI'
 import { LOGIN_ROUTE,  SHOP_ROUTE } from '../../utils/consts'
 import Button from '../UI/Button/Button'
 import SpinnerFacebook from '../UI/spinners/SpinnerFacebook/SpinnerFacebook'
@@ -26,9 +26,9 @@ const AuthForm = observer(() => {
             let data
             if(error) setError(null)
             if(isLogin) {
-                data  = await login(email, password)
+                data  = await userAPI.login(email, password)
             } else {
-                data = await registration(email, password)
+                data = await userAPI.registration(email, password)
             }
             user.setUser(data)
             user.setIsAuth(true)

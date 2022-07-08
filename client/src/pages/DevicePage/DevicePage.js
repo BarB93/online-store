@@ -3,9 +3,9 @@ import { observer } from 'mobx-react-lite';
 import {useParams} from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 
+import deviceAPI from '../../http/deviceAPI'
 import { Context } from '../../index'
 import pricePrettify from '../../utils/pricePrettify'
-import { fetchOneDevice } from '../../http/deviceAPI'
 import Container from '../../components/UI/Container/Container'
 import Button from '../../components/UI/Button/Button'
 import DevicePageSkeleton from './DevicePageSkeleton'
@@ -21,7 +21,7 @@ const DevicePage = observer(() => {
 
     useEffect(() => {
         devStore.setIsLoadingOneDevice(true)
-        fetchOneDevice(id).then(data => setDevice(data))
+        deviceAPI.fetchOneDevice(id).then(data => setDevice(data))
         .catch(e => alert(e))
         .finally(() => devStore.setIsLoadingOneDevice(false))
     }, [])

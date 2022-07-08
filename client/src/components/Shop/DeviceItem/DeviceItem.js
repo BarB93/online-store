@@ -3,10 +3,10 @@ import {useNavigate} from 'react-router-dom'
 import { observer } from 'mobx-react-lite'
 import { useTranslation } from 'react-i18next'
 
-import { fetchOneDevice } from '../../../http/deviceAPI'
+import deviceAPI from '../../../http/deviceAPI'
+import basketAPI from '../../../http/basketAPI'
 import { Context } from '../../../index'
 import { createToast } from '../../UI/Toast/Toast'
-import { addDeviceToBasket, fetchQuantityBasketItems } from '../../../http/basketAPI'
 import { DEVICE_ROUTE } from '../../../utils/consts'
 import pricePrettify from '../../../utils/pricePrettify'
 import Button from '../../UI/Button/Button'
@@ -24,10 +24,10 @@ const DeviceItem = observer(({device}) => {
     const imageURL = `${process.env.REACT_APP_API_URL}/${device.img}`
 
     const handlerBuy = () => {
-        addDeviceToBasket(device)
-            .then(data => fetchOneDevice(data.deviceId))
+        basketAPI.addDeviceToBasket(device)
+            .then(data => deviceAPI.fetchOneDevice(data.deviceId))
             .then(data => toast.addToast(createToast(i18n.t('Added to cart', {name: data.name}))))
-            .then(() => fetchQuantityBasketItems())
+            .then(() => basketAPI.fetchQuantityBasketItems())
             .then(data => basket.setTotalQuantity(data))
             .catch(e => console.error('Error in DeviceItem component:', e.message))
     }

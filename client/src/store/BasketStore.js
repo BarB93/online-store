@@ -1,5 +1,5 @@
 import {makeAutoObservable, action} from 'mobx'
-import { setQuantity } from '../http/basketAPI'
+import basketAPI from '../http/basketAPI'
 import { DiSCOUNT } from '../utils/consts'
 import { getPriceWithoutDiscount } from '../utils/getPriceWithoutDiscount'
 export default class UserStore {
@@ -145,7 +145,7 @@ export default class UserStore {
 
     setDeviceQuantity(id, quantity) {
         this._isPandding = true
-        setQuantity(id, quantity).then(
+        basketAPI.setQuantity(id, quantity).then(
             action('fetch success', data => {
                 if(data) {
                     this.setDevices(this._devices.map(item => {

@@ -1,7 +1,7 @@
 import React, { useContext, useEffect } from 'react'
 import { observer } from 'mobx-react-lite'
 
-import { fetchBasketItems } from '../../http/basketAPI'
+import basketAPI from '../../http/basketAPI'
 import { Context } from '../../index'
 import Content from '../../components/Basket/Content/Content'
 import Container from '../../components/UI/Container/Container'
@@ -14,7 +14,7 @@ const Basket = observer(() => {
 
     useEffect(() => {
         if(user.isAuth) {
-            fetchBasketItems()
+            basketAPI.fetchBasketItems()
                 .then(data => {
                     basket.setDevices(data.devices)
                 })

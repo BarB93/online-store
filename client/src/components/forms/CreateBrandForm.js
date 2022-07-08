@@ -4,9 +4,9 @@ import { useFormik } from 'formik'
 import * as Yup from 'yup'
 import { useTranslation } from 'react-i18next'
 
+import deviceAPI from '../../http/deviceAPI'
 import { Context } from '../..'
 import { createToast } from '../UI/Toast/Toast'
-import { createBrand } from '../../http/deviceAPI'
 import SpinnerFacebook from '../UI/spinners/SpinnerFacebook/SpinnerFacebook'
 import Button from '../UI/Button/Button'
 import ErrorMessage from './ErrorMessage'
@@ -22,7 +22,7 @@ const CreateBrandForm = observer(({submittedHandler}) => {
         try {
             if(error) setError(null)
             brand.setIsFetchingBrand(true)
-            await createBrand(values)
+            await deviceAPI.createBrand(values)
             resetForm()
             toast.addToast(createToast(i18n.t('Brand created successfully', {name: values.name})))
             if(typeof submittedHandler === 'function') {

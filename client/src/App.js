@@ -4,10 +4,10 @@ import { observer } from 'mobx-react-lite'
 import i18n from 'i18next'
 import { initReactI18next } from 'react-i18next'
 
-import { fetchQuantityBasketItems } from './http/basketAPI'
+import basketAPI from './http/basketAPI'
+import userAPI from './http/userAPI'
 import { translationRU, translationEN } from './translations'
 import { languages } from './utils/consts'
-import { check } from './http/userAPI'
 import { Context } from './index'
 import SpinnerRoller from './components/UI/spinners/SpinnerRoller/SpinnerRoller'
 import AppRouter from './components/AppRouter'
@@ -37,7 +37,7 @@ const App = observer(() => {
 
   // check auth
   useEffect(() => {
-    check().then((data) => {
+    userAPI.check().then((data) => {
       user.setUser(data)
       user.setIsAuth(true)
     })
@@ -53,7 +53,7 @@ const App = observer(() => {
   // basket total quantity items
   useEffect(() => {
     if(user.isAuth) {
-      fetchQuantityBasketItems()
+      basketAPI.fetchQuantityBasketItems()
         .then(data => basket.setTotalQuantity(data))
     }
   }, [user.isAuth])

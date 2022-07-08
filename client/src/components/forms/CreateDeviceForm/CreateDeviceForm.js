@@ -4,7 +4,7 @@ import { useFormik, FieldArray, FormikProvider } from 'formik'
 import * as Yup from 'yup'
 import { useTranslation } from 'react-i18next'
 
-import { createDevice, fetchBrands, fetchTypes } from '../../../http/deviceAPI'
+import deviceAPI from '../../../http/deviceAPI'
 import { MAX_PRICE } from '../../../utils/consts'
 import { Context } from '../../../index'
 import SpinnerFacebook from '../../UI/spinners/SpinnerFacebook/SpinnerFacebook'
@@ -45,7 +45,7 @@ const CreateDeviceForm = observer(({submittedHandler}) => {
         formData.append('brandId', brand.id)
         formData.append('typeId', type.id)
         formData.append('info', JSON.stringify(info))
-        createDevice(formData).then(data => {
+        deviceAPI.createDevice(formData).then(data => {
             if(typeof submittedHandler === 'function') submittedHandler()
             toast.addToast(createToast(i18n.t('Device added', {name})))
         }).catch(e => {
@@ -56,13 +56,13 @@ const CreateDeviceForm = observer(({submittedHandler}) => {
     useEffect(() => {
         // fetch Types
         type.setIsLoadingTypes(true)
-        fetchTypes().then(data => {type.setTypes(data)})
+        deviceAPI.fetchTypes().then(data => {type.setTypes(data)})
         .catch(e => alert(e.massage))
         .finally(() => type.setIsLoadingTypes(false))
         
         // fetch Brands
         brand.setIsLoadingBrands(true)
-        fetchBrands().then(data => brand.setBrands(data))
+        deviceAPI.fetchBrands().then(data => brand.setBrands(data))
         .catch(e => alert(e.massage))
         .finally(() => brand.setIsLoadingBrands(false)) 
     }, [])

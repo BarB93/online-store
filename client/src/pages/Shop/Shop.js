@@ -1,7 +1,7 @@
 import React, { useContext, useEffect } from 'react'
 import { observer } from 'mobx-react-lite'
 
-import { fetchBrands, fetchDevices, fetchTypes } from '../../http/deviceAPI'
+import deviceAPI from '../../http/deviceAPI'
 import { Context } from '../../index'
 import Container from '../../components/UI/Container/Container'
 import TypeBar from '../../components/Shop/TypeBar/TypeBar'
@@ -16,17 +16,17 @@ const Shop = observer(() => {
 
     useEffect(() => {
         // Types
-        fetchTypes().then(data => {type.setTypes(data)})
+        deviceAPI.fetchTypes().then(data => {type.setTypes(data)})
         .catch(e => alert(e.massage))
         .finally(() => type.setIsLoadingTypes(false))
         
         // Brands
-        fetchBrands().then(data => brand.setBrands(data))
+        deviceAPI.fetchBrands().then(data => brand.setBrands(data))
         .catch(e => alert(e.massage))
         .finally(() => brand.setIsLoadingBrands(false)) 
 
         // Devices
-        fetchDevices(type.selectedType?.id, brand.selectedBrand?.id, 1, device.limit).then((data) => {
+        deviceAPI.fetchDevices(type.selectedType?.id, brand.selectedBrand?.id, 1, device.limit).then((data) => {
             device.setDevices(data.rows)
             device.setTotalCount(data.count)
         })
@@ -43,7 +43,7 @@ const Shop = observer(() => {
 
     useEffect(() => {
         device.setIsLoadingDevices(true)
-        fetchDevices(type.selectedType?.id, brand.selectedBrand?.id, device.page, device.limit)
+        deviceAPI.fetchDevices(type.selectedType?.id, brand.selectedBrand?.id, device.page, device.limit)
         .then((data) => {
             device.setDevices(data.rows)
             device.setTotalCount(data.count)
