@@ -39,6 +39,22 @@ class BasketController {
         }
     }
 
+    async removeDevice(req, res, next) {
+        const {deviceId} = req.query
+        const user = req.user
+        if(!deviceId) return next(ApiError.badRequest('Error: deviceId not specified'))
+
+        try {
+            const basket = await Basket.findOne({where: {userId: user.id}})
+            if(!basket) return next(ApiError.badRequest('Error: basket not found'))
+
+            const data = await BasketDevice.destroy({where: {deviceId, basketId: basket.id}})
+            res.json(data)
+        } catch {
+            return next(ApiError.badRequest('Error happened while remove from basket'))
+        }
+    }
+
     async getBasketDevices(req, res, next) {
         const user = req.user
         if(!user) return next(ApiError.unauthorized())
