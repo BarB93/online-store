@@ -20,8 +20,9 @@
     &__titleQuantity{
         position: absolute;
         top: -5px;
-        right: -10px;
+        right: 0;
         font-size: .9rem;
+        transform: translateX(100%);
     }
     &__label {
         margin-top: 15px;
