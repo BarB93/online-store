@@ -73,6 +73,7 @@ const NavBar = observer(() => {
                             <ul className={styles.userMenu} >
                                 {user.isAuth ? 
                                     <>
+                                        <div className={styles.userMenu__email}>{user.user.email}</div>
                                         {user.isAdmin && <li className={styles.userMenu__item}><NavLink className={styles.userMenu__link} to={ADMIN_ROUTE}>{i18n.t('Admin Dashboard')}</NavLink></li>}
                                         <li className={styles.userMenu__item}><NavLink className={styles.userMenu__link} to={LOGIN_ROUTE}>{i18n.t('My Orders')}</NavLink></li>
                                         <li className={styles.userMenu__item} onClick={logout}><div className={styles.userMenu__link}>{i18n.t('Logout')}</div></li>

@@ -121,6 +121,7 @@
     position: absolute;
     top: 100%;
     right: 0;
+    width: 250px;
     background: #fff;
     box-shadow: 0 6PX 16PX 0 rgb(25 25 25 / 10%);
     border: 1px solid $border-gray;
@@ -145,6 +146,12 @@
         border-right: none;
         border-radius: 3px;
         transform: rotate(45deg) translateY(-50%);
+    }
+
+    &__email {
+        margin: 10px 0;
+        text-align: center;
+        font-weight: 700;
     }
     &__item {
         color: $text-secondary;
