@@ -51,6 +51,7 @@ textarea {
     display: inline-block;
     width: 25px;
     height: 25px;
+    background: #fff;
     margin-right: 15px;
     border: 1px solid #000;
     border-radius: $border-radius-base;
@@ -70,6 +71,21 @@ textarea {
         border-top: none;
         border-left: none;
         transform: translate(-50%, -70%) rotate(45deg);
+
+        @media screen and (max-width: $screen-laptop-1) { 
+          width: 8px;
+          height: 12px;
+        }
+      }
+    }
+
+    @media screen and (max-width: $screen-laptop-1) {
+      width: 20px;
+      height: 20px;  
+
+      &::before {
+        width: 5px;
+        height: 10px;
       }
     }
   }

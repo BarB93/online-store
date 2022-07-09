@@ -1,28 +1,53 @@
 @import '../../../styles/variables.scss';
 
 .device {
-    display: flex;  
-    align-items: flex-start;
-    gap: 20px;
+    &__inner {
+        display: flex;  
+        align-items: flex-start;
+        gap: 20px;
+    }
+    &__checkboxBox {
+        align-self: center;
 
+        @media screen and (max-width: $screen-tablet-1) {
+            position: absolute;
+            top:0;
+            left: 0;
+            margin: 0;
+        }
+    }
     & + & {
         margin-top: 30px;
     }
     &__imageBox {
-        min-width: 80px;
-        width: 80px;
-        height: 100px;
+        position: relative;
+        display: flex;
     }
     &__img {
         display: block;
-        width: 100%;
-        height: 100%;
+        min-width: 80px;
+        width: 80px;
+        height: 100px;
         object-fit: contain;
         object-position: top center;
+    }
+    &__wrapperInfoAndPrice {
+        display: flex;
+        flex: 1 1 auto;
+        align-items: flex-start;
+
+        @media screen and (max-width: $screen-mobile-1) {
+            flex-direction: column;
+            align-items: stretch;
+        }
     }
     &__infoBox {
         flex: 1 1 40%;
         min-width: 200px;
+
+        @media screen and (max-width: $screen-mobile-1) {
+            order: 2;
+        }
     }
     &__name {
         font-size: 1.1rem;
@@ -32,8 +57,6 @@
         color: $gray-500;
     }
     &__quantityWrapper {
-        display: flex;
-        align-items: center;
         width: 120px;
     }
     &__removeBtn {
@@ -63,9 +86,10 @@
     }
     &__quantityBox {
         flex: 1 1 20%;
-    }
-    &__quantity {
-        margin: 0 10px;
+        
+        @media screen and (max-width: $screen-tablet-2) {
+            display: none;
+        }
     }
     &__priceBox {
         flex: 0 0 135px;
@@ -73,6 +97,18 @@
         text-align: end;
         font-size: 1.3rem;
         font-weight: bold;
+
+        @media screen and (max-width: $screen-tablet-2) {
+            font-size: 1.2rem;
+        }
+        @media screen and (max-width: $screen-mobile-1) {
+            display: flex;
+            align-items: center;
+            order: 1;
+            flex: 0 0 auto;
+            margin-bottom: 5px;
+            font-size: 1rem;
+        }
     }
     &__price_discount {
         font-size: 1rem;
@@ -83,6 +119,13 @@
         &:hover {
             color: $text-base;
         }
+
+        @media screen and (max-width: $screen-tablet-2) {
+            font-size: .95rem;
+        }
+        @media screen and (max-width: $screen-mobile-1) {
+            font-size: .9rem;
+        }
     }
     &__discount {
         position: relative;
@@ -90,6 +133,40 @@
         margin-left: auto;
         border-bottom: 1px dashed $gray-600;
         cursor: pointer;
+
+        @media screen and (max-width: $screen-mobile-1) {
+            margin-left: 10px;
+            line-height: 1.1;
+        }
+    }
+    &__footer {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 7px;
+
+        @media screen and (min-width: $screen-tablet-2) {
+            display: none;
+        }
+    }
+    &__footerRemoveBox {
+        cursor: pointer;
+    }
+    &__footerRemoveIcon {
+        font-size: 1.3rem;
+        color: $gray-500;
+        transition: all .3s linear;
+
+        .device__footerRemoveBox:hover &{
+            color: $red-500;
+        }
+    }
+
+    @media screen and (max-width: $screen-tablet-2) {
+       & + & {
+            border-top: 1px solid $gray-300;
+            margin-top: 20px;
+            padding-top: 20px;
+       }
     }
 }
 

@@ -1,0 +1,19 @@
+@import '../../../styles/variables.scss';
+
+.container {
+    display: flex;
+    align-items: center;
+}
+.quantity {
+    width: 18px;
+    min-width: 18px;
+    max-width: 18px;
+    margin: 0 10px;
+    text-align: center;
+}
+@media screen and (max-width: $screen-tablet-2) {
+    .btn {
+        height: 30px;
+        width: 30px;
+    }
+}

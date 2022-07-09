@@ -3,11 +3,12 @@ import { observer } from 'mobx-react-lite'
 import { useTranslation } from 'react-i18next'
 
 import { DiSCOUNT } from '../../../utils/consts'
+import { Context } from '../../../index'
 import pricePrettify from '../../../utils/pricePrettify'
 import { getPriceWithoutDiscount } from '../../../utils/getPriceWithoutDiscount'
-import { Context } from '../../../index'
-import ButtonQuantity from '../../UI/ButtonQuantity/ButtonQuantity'
+import QuantityButtons from '../QuantityButtons/QuantityButtons'
 
+import { RiDeleteBin6Fill } from 'react-icons/ri'
 import styles from './BasketItem.module.scss'
 
 const BasketItem = observer(({device}) => {
@@ -20,16 +21,7 @@ const BasketItem = observer(({device}) => {
     const priceWithoutDiscount = getPriceWithoutDiscount(totalPrice, DiSCOUNT)
     const discountPrice = priceWithoutDiscount - totalPrice
 
-    const increaseHeadler = async () => {
-        const newQuantity = quantity + 1
-        basket.setDeviceQuantity(id, newQuantity)
-    }
-    const decreaseHeadler = async () => {
-        const newQuantity = quantity - 1
-        if(newQuantity > 0) {
-            basket.setDeviceQuantity(id, newQuantity)
-        }
-    }
+  
     const orderItemChangeHandler = (e) => {
         if(e.target.checked) {
             basket.addToOrder(id)
@@ -43,40 +35,46 @@ const BasketItem = observer(({device}) => {
    
     return (
         <div className={styles.device}>
-            {
-                basket.isVisibleCheckbox 
-                &&
-                <div className={styles.device__checkboxBox}>
-                    <label className='customCheckbox__label'>
-                            <input className='customCheckbox__input' type='checkbox' onChange={orderItemChangeHandler} checked={basket.orderDeviceIds.includes(id)}/>
-                            <div className='customCheckbox__checkbox'></div>
-                    </label>
+            <div className={styles.device__inner}>
+                <div className={styles.device__imageBox}>
+                    {
+                        basket.isVisibleCheckbox 
+                        &&
+                        <div className={styles.device__checkboxBox}>
+                            <label className='customCheckbox__label'>
+                                    <input className='customCheckbox__input' type='checkbox' onChange={orderItemChangeHandler} checked={basket.orderDeviceIds.includes(id)}/>
+                                    <div className='customCheckbox__checkbox'></div>
+                            </label>
+                        </div>
+                    }
+                    <img className={styles.device__img} src={imageURL} alt={name} />
                 </div>
-            }
-            <div className={styles.device__imageBox}>
-                <img className={styles.device__img} src={imageURL} alt={name} />
-            </div>
-            <div className={styles.device__infoBox}>
-                <div className={styles.device__name}>{name}</div>
-                {color && <div className={styles.device__color}>{i18n.t(color.title)}: {i18n.t(color.description)}</div>}
-            </div>
-            <div className={styles.device__quantityBox}>
-                <div className={styles.device__quantityWrapper}>
-                    <ButtonQuantity disabled={quantity <= 1} minus onClick={decreaseHeadler}/>
-                    <span className={styles.device__quantity}>{quantity}</span>
-                    <ButtonQuantity plus onClick={increaseHeadler}/>
-                </div>
-                <button className={styles.device__removeBtn} onClick={removeItemHandler}>{i18n.t('Remove')}</button>
-            </div>
-            <div className={styles.device__priceBox}>
-                <div className={styles.device__price}>{pricePrettify(totalPrice)} ₽</div>
-                <div className={styles.device__discount}>
-                    <div className={styles.device__price_discount}>{pricePrettify(priceWithoutDiscount)} ₽</div>
-                    <div className={styles.discountPopup}>
-                        <div className={styles.discountPopup__discount}>{i18n.t('Discount')} {DiSCOUNT}%</div>
-                        <div className={styles.discountPopup__price}>-{pricePrettify(discountPrice)} ₽</div>
+                <div className={styles.device__wrapperInfoAndPrice}>
+                    <div className={styles.device__infoBox}>
+                        <div className={styles.device__name}>{name}</div>
+                        {color && <div className={styles.device__color}>{i18n.t(color.title)}: {i18n.t(color.description)}</div>}
+                    </div>
+                    <div className={styles.device__quantityBox}>
+                        <div className={styles.device__quantityWrapper}>
+                            <QuantityButtons device={device}/>
+                        </div>
+                        <button className={styles.device__removeBtn} onClick={removeItemHandler}>{i18n.t('Remove')}</button>
+                    </div>
+                    <div className={styles.device__priceBox}>
+                        <div className={styles.device__price}>{pricePrettify(totalPrice)} ₽</div>
+                        <div className={styles.device__discount}>
+                            <div className={styles.device__price_discount}>{pricePrettify(priceWithoutDiscount)} ₽</div>
+                            <div className={styles.discountPopup}>
+                                <div className={styles.discountPopup__discount}>{i18n.t('Discount')} {DiSCOUNT}%</div>
+                                <div className={styles.discountPopup__price}>-{pricePrettify(discountPrice)} ₽</div>
+                            </div>
+                        </div>
                     </div>
                 </div>
+            </div>
+            <div className={styles.device__footer}>
+                <div className={styles.device__footerQuantityBox}><QuantityButtons device={device}/></div>
+                <div className={styles.device__footerRemoveBox}><RiDeleteBin6Fill className={styles.device__footerRemoveIcon}/></div>
             </div>
         </div>
     )

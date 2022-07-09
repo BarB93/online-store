@@ -1,6 +1,15 @@
+@import '../../../styles/variables.scss';
+
 .container {
     width: 100%;
     max-width: 1500px;
     padding: 0 20px;
     margin: 0 auto;
+
+    @media screen and (max-width: $screen-laptop-1) {
+        padding: 15px;
+    }
+    @media screen and (max-width: $screen-tablet-2) {
+        padding: 10px;
+    }
 }

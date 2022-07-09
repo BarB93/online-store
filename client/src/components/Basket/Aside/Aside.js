@@ -15,23 +15,23 @@ const Aside = observer(() => {
     return (
         <div className={styles.aside}>
             <div className={`${styles.aside__row} ${styles.aside__row_title}`}>
-                <h4 className={styles.aside__totalTitle}>{i18n.t('Total')}</h4>
-                <div className={styles.aside__totalPrice}>{pricePrettify(basket.totalOrderPrice)} ₽</div>
+                <h4 className={`${styles.aside__totalTitle} ${styles.aside__rowTitle}`}>{i18n.t('Total')}</h4>
+                <div className={`${styles.aside__totalPrice} ${styles.aside__rowValue}`}>{pricePrettify(basket.totalOrderPrice)} ₽</div>
             </div>
-            <div className={styles.aside__row}>
+            <div className={`${styles.aside__row} ${!basket.totalOrderQuantity ? styles.aside__row_zero : ''}`}>
                 <div className={styles.aside__rowTitle}>{i18n.t('Goods')}, {basket.totalOrderQuantity} {i18n.t('PCS.')}</div>
-                {Boolean(basket.totalOrderQuantity) && <div className={styles.aside_rowValue}>{pricePrettify(basket.totalOrderPriceWithoutDiscount)} ₽</div>}
+                {Boolean(basket.totalOrderQuantity) && <div className={styles.aside__rowValue}>{pricePrettify(basket.totalOrderPriceWithoutDiscount)} ₽</div>}
             </div>
             {Boolean(basket.totalOrderPrice)  && 
 
                 <div className={styles.aside__row}>
                     <div className={styles.aside__rowTitle}>{i18n.t('Discount')}</div>
-                    <div className={styles.aside_rowValue}>- {pricePrettify(basket.totalOrderPriceWithoutDiscount - basket.totalOrderPrice)} ₽</div>
+                    <div className={styles.aside__rowValue}>- {pricePrettify(basket.totalOrderPriceWithoutDiscount - basket.totalOrderPrice)} ₽</div>
                 </div>
             }
             <div className={styles.aside__row}>
                 <div className={styles.aside__rowTitle}>{i18n.t('Delivery')}</div>
-                <div className={styles.aside_rowValue}>{i18n.t('Free')}</div>
+                <div className={styles.aside__rowValue}>{i18n.t('Free')}</div>
             </div>
             <div className={styles.aside__btnBox}>
                 <Button className={styles.aside__btnOrder} secondary>{i18n.t('Order')}</Button>

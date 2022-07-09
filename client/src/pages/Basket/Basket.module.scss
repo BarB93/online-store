@@ -3,13 +3,22 @@
 
 .basket {
     display: flex;
-    gap: 0 15px;
+    gap: 15px;
     padding: 20px 0 20px;
     min-height: calc( 100vh - 65px);
+
+    @media screen and (max-width: $screen-desktop-2) {
+        flex-wrap: wrap;
+        min-height: auto;
+    }
 
     &__content {
         flex: 1 1 auto;
         border-radius: $border-radius-base;
+
+        @media screen and (max-width: $screen-desktop-2) {
+            flex: 0 0 100%;
+        }
     }
     &__aside {
         position: relative;
@@ -17,6 +26,13 @@
         background: #fff;
         border-radius: $border-radius-base;
         box-shadow: $shadow-primary;
+
+        @media screen and (max-width: $screen-desktop-1) {
+            flex: 0 0 325px;
+        }
+        @media screen and (max-width: $screen-desktop-2) {
+            flex: 0 0 100%;
+        }
     }
 
     &.skeleton {
