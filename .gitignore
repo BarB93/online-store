@@ -3,3 +3,8 @@
 /server/node_modules
 /server/yarn-debug.log*
 /server/yarn-error.log
+/server/.env
+/server/.gitignore
+/server/.git
+/server/Procfile
+/server/build
