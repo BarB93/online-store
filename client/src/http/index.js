@@ -1,11 +1,14 @@
 import axios from 'axios'
 
+const isDev = process.env.NODE_ENV === 'development'
+const urlAPI = isDev ? process.env.DEVELOPMENT_APP_API_URL : process.env.PRODUCTION_APP_API_URL
+
 const $host = axios.create({
-    baseURL: process.env.REACT_APP_API_URL
+    baseURL: urlAPI
 })
 
 const $authHost = axios.create({
-    baseURL: process.env.REACT_APP_API_URL
+    baseURL: urlAPI
 })
 
 const authInterceptor = config => {
