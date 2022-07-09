@@ -31,7 +31,6 @@ const App = observer(() => {
         },
         lng: app.lang,
         fallbackLng: app.mainLang,
-        interpolation: { escapeValue: false },
       })
   },[])
 
