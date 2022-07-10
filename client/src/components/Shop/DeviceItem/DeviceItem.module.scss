@@ -24,18 +24,29 @@
     &__title {
         text-align: center;
         cursor: pointer;
+        white-space: nowrap;
     }
     &__price {
         margin-top: 10px;
     }
     &__buttons {
         display: flex;
+        gap: 15px;
         margin-top: 20px;
         width: 100%;
 
         button {
-            flex: 1 0 auto;
+            flex: 1 1 50%;
         }
+    }
+    &__btnBuy {
+        min-width: auto;
+    }
+    &__btnMore {
+        width: 100%;
+    }
+    &__moreLink {
+        flex: 1 1 50%;
     }
     &__image {
         display: block;
@@ -57,9 +68,4 @@
             margin-right: 5px;
         }
     }
-
-}
-
-.btnBuy {
-    margin-right: 15px;
 }
