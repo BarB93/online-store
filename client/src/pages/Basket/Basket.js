@@ -10,6 +10,7 @@ import Container from '../../components/UI/Container/Container'
 import Aside from '../../components/Basket/Aside/Aside'
 import Button from '../../components/UI/Button/Button'
 import BasketSkeleton from './BasketSkeleton'
+import Modal from '../../components/UI/Modal/Modal'
 
 import styles from './Basket.module.scss'
 
@@ -41,6 +42,14 @@ const Basket = observer(() => {
                 </div>
             
             }
+            <Modal 
+                active={basket.isOpenEmtyOrderModal}
+                setActive={basket.setIsOpenEmtyOrderModal.bind(basket)}
+            >
+                <div className={styles.basket__modal}>
+                    {i18n.t('To make order, choose goods')}
+                </div>
+            </Modal>
         </Container>
     )
 })

@@ -41,6 +41,13 @@
             animation: $animation-skeleton-loading;
         }
     }
+
+    &__modal {
+        margin: 20px 0;
+        font-size: 1.2rem;
+        font-weight: 400;
+        text-align: center;
+    }
 }
 
 .basketEmpty {
