@@ -10,7 +10,7 @@ import AuthForm from '../../components/forms/AuthForm'
 import styles from './Auth.module.scss'
 
 const Auth = observer(() => {
-    const i118n = useTranslation()
+    const i18n = useTranslation()
     const location = useLocation()
     const isLogin = location.pathname === LOGIN_ROUTE
 
@@ -21,8 +21,8 @@ const Auth = observer(() => {
         <Container className={styles.container}> 
             <div className={styles.box}>
                 <div className={styles.header}>
-                    <h2 className={styles.header__item + ' ' + loginClass}><NavLink to={LOGIN_ROUTE}>{i118n.t('Sign in')}</NavLink></h2>
-                    <h2 className={styles.header__item + ' ' + registrationClass}><NavLink to={REGISTRATION_ROUTE}>{i118n.t('Sign up')}</NavLink></h2>
+                    <h2 className={`${styles.header__item} ${loginClass}`}><NavLink to={LOGIN_ROUTE}>{i18n.t('Sign in')}</NavLink></h2>
+                    <h2 className={`${styles.header__item} ${registrationClass}`}><NavLink to={REGISTRATION_ROUTE}>{i18n.t('Sign up')}</NavLink></h2>
                 </div>
                 <AuthForm />
             </div>
