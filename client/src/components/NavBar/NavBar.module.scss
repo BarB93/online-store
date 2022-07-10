@@ -14,7 +14,7 @@
 }  
 .logo {
     text-decoration: none;
-
+    margin-right: 20px;
     &:hover {
         color: inherit;
     }
@@ -34,18 +34,59 @@
         margin: 0;
         margin-left: auto; 
     }
+    &__itemsRight {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        flex: 1 0 auto;
+        height: 100%;
+    }
+    &__itemsLeft {
+        display: flex;
+        align-items: center;
+        height: 100%;
+
+        @media screen and (max-width: $screen-mobile-2) {
+            display: none;
+        }
+    }
     &__item {
         display: flex;
         align-items: center;
         justify-content: center;
         height: 100%;
-        padding: 0 16px;
+        margin: 0 16px;
         white-space: nowrap;
 
         &_basket,
         &_user {
             position: relative;
         }
+        &_icon {
+            & + & {
+                margin-left: 20px;
+            }
+        }
+        &_lang {
+            margin-right: 0;
+        }
+    }
+    &__langLabel {
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+    }
+    &__langIcon {
+        font-size: 20px;
+        transform: translateX(5px);
+
+    }
+    &__itemLink {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        height: 100%;
     }
     &__link {
         position: relative;
