@@ -1,8 +1,9 @@
 import React, { useContext } from 'react'
+import { NavLink } from 'react-router-dom'
 import { observer } from 'mobx-react-lite'
 import { useTranslation } from 'react-i18next'
 
-import { DiSCOUNT } from '../../../utils/consts'
+import { DEVICE_ROUTE, DiSCOUNT } from '../../../utils/consts'
 import { Context } from '../../../index'
 import pricePrettify from '../../../utils/pricePrettify'
 import { getPriceWithoutDiscount } from '../../../utils/getPriceWithoutDiscount'
@@ -47,11 +48,13 @@ const BasketItem = observer(({device}) => {
                             </label>
                         </div>
                     }
-                    <img className={styles.device__img} src={imageURL} alt={name} />
+                    <NavLink to={`${DEVICE_ROUTE}/${device.id}`}>
+                        <img className={styles.device__img} src={imageURL} alt={name} />
+                    </NavLink>
                 </div>
                 <div className={styles.device__wrapperInfoAndPrice}>
                     <div className={styles.device__infoBox}>
-                        <div className={styles.device__name}>{name}</div>
+                        <div className={styles.device__name}><NavLink to={`${DEVICE_ROUTE}/${device.id}`}>{name}</NavLink></div>
                         {color && <div className={styles.device__color}>{i18n.t(color.title)}: {i18n.t(color.description)}</div>}
                     </div>
                     <div className={styles.device__quantityBox}>
