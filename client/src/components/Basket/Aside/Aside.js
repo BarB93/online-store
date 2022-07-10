@@ -12,6 +12,12 @@ const Aside = observer(() => {
     const i18n = useTranslation()
     const {basket} = useContext(Context)
 
+    const orderHandler = () => {
+        if(basket.totalOrderQuantity === 0)  return basket.setIsOpenEmtyOrderModal(true)
+    
+        //TODO barb: make order functional
+    }
+
     return (
         <div className={styles.aside}>
             <div className={`${styles.aside__row} ${styles.aside__row_title}`}>
@@ -34,7 +40,7 @@ const Aside = observer(() => {
                 <div className={styles.aside__rowValue}>{i18n.t('Free')}</div>
             </div>
             <div className={styles.aside__btnBox}>
-                <Button className={styles.aside__btnOrder} secondary>{i18n.t('Order')}</Button>
+                <Button className={styles.aside__btnOrder} secondary onClick={orderHandler}>{i18n.t('Order')}</Button>
             </div>
         </div>
     )
