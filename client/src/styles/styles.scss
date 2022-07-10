@@ -5,6 +5,10 @@ body {
     font-family: 'Roboto', sans-serif;
     color: $text-base;
     background: $background-base;
+
+    &.modal-show {
+      overflow: hidden;
+    }
 }
 
 .AppLoading {
