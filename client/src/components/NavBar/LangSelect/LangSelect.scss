@@ -2,6 +2,7 @@
 
 .langSelect {
     &__control {
+        background: transparent !important;
         border: none !important;
         user-select: none !important;
         cursor: pointer !important;
@@ -10,6 +11,9 @@
         &:hover {
             box-shadow: none !important;
         }
+    }
+    &__menu {
+        left: -12px !important;
     }
     &__menu-list {
         border-radius: $border-radius-base;
