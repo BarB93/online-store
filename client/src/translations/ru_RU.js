@@ -99,6 +99,7 @@ const translationRU = {
     'Move to home page': 'Перейти на главную',
     'There are no devices for selected filters, chose others or reset': 'Нет товаров по указанным фильтрам, выберите другие или сбросьте',
     'Reset filters': 'Сбросить фильтры',
+    'To make order, choose goods': 'Для оформляния заказа выберите товар',
 }
 
 export default translationRU
