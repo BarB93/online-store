@@ -10,6 +10,7 @@
     bottom: 0;
     left: 0;
     right: 0;
+    padding: 0 10px;
     background-color: rgba(0 0 0 /0.8);
 
     opacity: 0;
@@ -49,7 +50,7 @@
         width: 30px;
         height: 30px;
         border-radius: 50%;
-        border: 3px solid #000;
+        border: 2px solid #000;
         transition: all .1s linear;
 
         &:hover {
@@ -65,7 +66,7 @@
             top: 50%;
             left: 50%;
             width: 70%;
-            height: 3px;
+            height: 2px;
             background: #000;
             display: block;
 
