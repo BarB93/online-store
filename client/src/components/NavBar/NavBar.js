@@ -16,7 +16,7 @@ import styles from './NavBar.module.scss'
 
 const NavBar = observer(() => {
     const {user, app, basket} = useContext(Context)
-    const [isOpenLang, setIsOpenLang] = useState(false);
+    const [isOpenMenuLang, setIsOpenMenuLang] = useState(false)
     const navigate = useNavigate()
     const i18n = useTranslation()
 
@@ -37,14 +37,14 @@ const NavBar = observer(() => {
         app.setIsOpenUserMenu(false)
     }
 
-    const handleChangeLanguage = (option) => {
+    const languageChangeHandler = (option) => {
         app.setLang(option.value)
     }
 
-    const toggleOpenLang = (e) => {
-        setIsOpenLang(prev => !prev)
+    const toggleOpenMenuLang = (e) => {
+        setIsOpenMenuLang(prev => !prev)
     }
-
+ 
     return (
         user.isLoading ? <NavBarSkeleton />
         :
@@ -58,7 +58,7 @@ const NavBar = observer(() => {
                         </div>
                         <div className={styles.nav__itemsRight}>
                             <li className={`${styles.nav__item} ${styles.nav__item_lang}`}>
-                                <div className={styles.nav__langLabel} onClick={(e) => setIsOpenLang(toggleOpenLang)}>
+                                <div className={styles.nav__langLabel} onClick={(e) => toggleOpenMenuLang()}>
                                     <RiGlobalLine className={styles.nav__langIcon}/>
                                     <LangSelect 
                                         className={styles.nav__select}
@@ -66,9 +66,9 @@ const NavBar = observer(() => {
                                             {value: languages.russian, label: 'Rus'},
                                             {value: languages.english, label: 'Eng'}
                                         ]}
-                                        onChange={handleChangeLanguage}
+                                        onChange={languageChangeHandler}
                                         value={app.lang}
-                                        menuIsOpen={isOpenLang}
+                                        menuIsOpen={isOpenMenuLang}
                                     />
                                 </div>
                             </li>
