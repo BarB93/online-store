@@ -1,10 +1,19 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 
 import styles from './Modal.module.scss'
 
 const Modal = ({active, setActive, children, title}) => {
     const activeClass = active ? ` ${styles.active}` : ''
     let overlayChecker = false
+
+    useEffect(() => {
+        if(active) {
+            document.querySelector('body').classList.add('modal-show')
+        }else {
+            document.querySelector('body').classList.remove('modal-show')
+        }
+        
+    },[active])
 
     const closeHandler = () => { setActive(false) }
     const mouseDownHandler = () => { 
