@@ -7,15 +7,16 @@ import { DiSCOUNT } from '../utils/consts'
 import { getPriceWithoutDiscount } from '../utils/getPriceWithoutDiscount'
 class BasketStore {
     constructor() {
+        this._isPandding = false
         this._devices = []
-        this._isDevicesLoading = true
         this._order = []
-        this._isOrderInit = false
         this._orderDeviceIds = []
+        this._isDevicesLoading = true
+        this._isOrderInit = false
         this._isAllChecked = true
+        this._isOpenEmtyOrderModal = false
         this._totalQuantity = 0
         this._totalOrderQuantity = 0
-        this._isPandding = false
         this._totalPrice = 0
         this._totalOrderPrice = 0
         this._totalPriceWithoutDiscount = 0
@@ -85,6 +86,11 @@ class BasketStore {
         this._isDevicesLoading = bool
     }
 
+    setIsOpenEmtyOrderModal(bool) {
+        debugger
+        this._isOpenEmtyOrderModal = bool
+    }
+
     // getters
     get totalQuantity() {
         return this._totalQuantity
@@ -124,6 +130,9 @@ class BasketStore {
     }
     get isVisibleCheckbox() {
         return this._devices.length > 1
+    }
+    get isOpenEmtyOrderModal() {
+        return this._isOpenEmtyOrderModal
     }
 
     // methods
