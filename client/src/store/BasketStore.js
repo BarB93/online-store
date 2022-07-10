@@ -87,7 +87,6 @@ class BasketStore {
     }
 
     setIsOpenEmtyOrderModal(bool) {
-        debugger
         this._isOpenEmtyOrderModal = bool
     }
 
