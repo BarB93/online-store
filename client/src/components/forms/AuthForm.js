@@ -88,7 +88,7 @@ const AuthForm = observer(() => {
                     ||
                     ((formik.errors.password && formik.touched.password) && <ErrorMessage message={i18n.t(formik.errors.password)} />)
                 }
-                <Button className='form__btn' disabled={!formik.isValid || user.isFetchingAuth} secondary type='submit'>{isLogin ? i18n.t('Sing in') : i18n.t('Sing up')}</Button>
+                <Button className='form__btn' disabled={!formik.isValid || user.isFetchingAuth} secondary type='submit'>{isLogin ? i18n.t('Sign in') : i18n.t('Sign up')}</Button>
             </div>
         </form>
     )
