@@ -1,6 +1,7 @@
 import React from 'react'
 import { useTranslation } from 'react-i18next'
 
+import BrandFilter from '../BrandFilter/BrandFilter'
 import FilterItem from '../FilterItem/FilterItem'
 import TypeFilter from '../TypeFilter/TypeFilter'
 
@@ -15,7 +16,9 @@ const FilterBar = () => {
                 <FilterItem title={i18n.t('Type')}>
                     <TypeFilter />
                 </FilterItem>
-                <FilterItem title={i18n.t('Brand')}></FilterItem>
+                <FilterItem title={i18n.t('Brand')}>
+                    <BrandFilter />
+                </FilterItem>
                 <FilterItem title={i18n.t('Price currency', { currency: '₽' })}></FilterItem>
             </div>
         </>

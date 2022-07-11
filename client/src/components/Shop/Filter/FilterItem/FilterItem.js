@@ -6,7 +6,6 @@ import styles from './FilterItem.module.scss'
 const FilterItem = ({title, children}) => {
     const [isActive, setIsActive] = useState(true)
     const toggleFilterHandler = () => {
-        console.log('act')
         setIsActive(prev => !prev)
     }
     return (

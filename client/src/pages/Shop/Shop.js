@@ -4,7 +4,6 @@ import { observer } from 'mobx-react-lite'
 import deviceAPI from '../../http/deviceAPI'
 import { Context } from '../../index'
 import Container from '../../components/UI/Container/Container'
-import BrandBar from '../../components/Shop/BrandBar/BrandBar'
 import DeviceList from '../../components/Shop/DeviceList/DeviceList'
 import Pagination from '../../components/Pagination/Pagination'
 import FilterBar from '../../components/Shop/Filter/FilterBar/FilterBar'
@@ -43,14 +42,14 @@ const Shop = observer(() => {
 
     useEffect(() => {
         device.setIsLoadingDevices(true)
-        deviceAPI.fetchDevices(type.selectedTypes, type.selectedBrands, device.page, device.limit)
+        deviceAPI.fetchDevices(type.selectedTypes, brand.selectedBrands, device.page, device.limit)
         .then((data) => {
             device.setDevices(data.rows)
             device.setTotalCount(data.count)
         })
         .catch(e => alert(e))
         .finally(() => {device.setIsLoadingDevices(false)})
-    }, [type.selectedTypes, type.selectedBrands, device.limit, device.page])
+    }, [type.selectedTypes, brand.selectedBrands, device.limit, device.page])
 
     return (
         <Container>
@@ -59,7 +58,6 @@ const Shop = observer(() => {
                     <FilterBar />
                 </aside>
                 <main className={styles.main}>
-                    <BrandBar />
                     <DeviceList />
                     <Pagination />
                 </main>
