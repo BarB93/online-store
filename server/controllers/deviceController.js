@@ -1,11 +1,13 @@
-const uuid     = require('uuid')
-const path     = require('path')
+const uuid = require('uuid')
+const path = require('path')
 const ApiError = require('../error/ApiError')
 const {Device, DeviceInfo} = require('../models/models')
 
 class DeviceController {
+    
     async getAll(req, res) {
-        let {brandId, typeId, limit, page, arrayId} = req.query
+        let {typeIds, brandIds, limit, page, arrayId} = req.query
+        const restult = typeof typeIds
         page = page || 1
         limit = limit || 9
         let offset = page * limit - limit
@@ -17,17 +19,21 @@ class DeviceController {
                 include: [{model: DeviceInfo, as: 'info'}]
             })
         }
-        else if(!brandId && !typeId) {
+        else if(!brandIds && !typeIds) {
             devices = await Device.findAndCountAll({limit, offset})
         }
-        else if(brandId && !typeId) {
-            devices = await Device.findAndCountAll({where: {brandId}, limit, offset})
+        else if(brandIds && !typeIds) {
+            brandIds = brandIds.map(item => Number(item))
+            devices = await Device.findAndCountAll({where: {brandId: brandIds}, limit, offset})
         }
-        else if(!brandId && typeId) {
-            devices = await Device.findAndCountAll({where: {typeId}, limit, offset})
+        else if(!brandIds && typeIds) {
+            typeIds = typeIds.map(item => Number(item))
+            devices = await Device.findAndCountAll({where: {typeId: typeIds}, limit, offset})
         }
-        else if(brandId && typeId) {
-            devices = await Device.findAndCountAll({where: {typeId, brandId}, limit, offset})
+        else if(brandIds && typeIds) {
+            typeIds = typeIds.map(item => Number(item))
+            brandIds = brandIds.map(item => Number(item))
+            devices = await Device.findAndCountAll({where: {typeId: typeIds, brandId: brandIds}, limit, offset})
         }
 
         return res.json(devices)   

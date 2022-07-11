@@ -4,10 +4,10 @@ import { observer } from 'mobx-react-lite'
 import deviceAPI from '../../http/deviceAPI'
 import { Context } from '../../index'
 import Container from '../../components/UI/Container/Container'
-import TypeBar from '../../components/Shop/TypeBar/TypeBar'
 import BrandBar from '../../components/Shop/BrandBar/BrandBar'
 import DeviceList from '../../components/Shop/DeviceList/DeviceList'
 import Pagination from '../../components/Pagination/Pagination'
+import FilterBar from '../../components/Shop/Filter/FilterBar/FilterBar'
 
 import styles from './Shop.module.scss'
 
@@ -43,20 +43,20 @@ const Shop = observer(() => {
 
     useEffect(() => {
         device.setIsLoadingDevices(true)
-        deviceAPI.fetchDevices(type.selectedType?.id, brand.selectedBrand?.id, device.page, device.limit)
+        deviceAPI.fetchDevices(type.selectedTypes, type.selectedBrands, device.page, device.limit)
         .then((data) => {
             device.setDevices(data.rows)
             device.setTotalCount(data.count)
         })
         .catch(e => alert(e))
         .finally(() => {device.setIsLoadingDevices(false)})
-    }, [type.selectedType, brand.selectedBrand, device.page, device.limit])
+    }, [type.selectedTypes, type.selectedBrands, device.limit, device.page])
 
     return (
         <Container>
             <div className={styles.container}>
                 <aside className={styles.aside}>
-                    <TypeBar />
+                    <FilterBar />
                 </aside>
                 <main className={styles.main}>
                     <BrandBar />

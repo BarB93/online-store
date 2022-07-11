@@ -1,0 +1,42 @@
+@import '../../../../styles/variables.scss';
+
+.filter {
+    // TODO barb: delete
+    // border: 1px solid #000;
+    // margin-bottom: 10px;
+
+    &__titleWrapper {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 10px 0;
+        cursor: pointer;
+    }
+    &__title {
+        font-size: 1.1rem;
+    }
+    &__arrow {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        transform-origin: center center;
+        transition: all .3s linear;
+        transform: rotate3d(1, 0, 0, 180deg);
+
+        .active & {
+            transform: rotate3d(1, 0, 0, 0);
+        }
+    }
+    &__arrowIcon {
+        font-size: 20px;
+        color: $gray-500;
+    }
+    &__body {
+        display: none;
+        padding: 10px 0;
+
+        .active & {
+            display: block;
+        }
+    }
+}

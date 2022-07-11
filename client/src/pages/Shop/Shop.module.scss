@@ -8,8 +8,13 @@
 }
 .aside {
     flex: 0 0 30%;
+    align-self: flex-start;
+    min-width: 250px;
     max-width: 200px;
+    padding: 0 15px;
     margin-right: $indent-base;
+    background: #fff;
+    border-radius: $border-radius-base;
     user-select: none;
 }
 .main {

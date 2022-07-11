@@ -14,14 +14,11 @@ const app = express()
 app.use(cors())
 app.use(express.json())
 app.use(express.static(path.resolve(__dirname, 'static')))
-app.use(express.static(path.resolve(__dirname, 'build')))
 app.use(fileUpload({}))
 app.use('/api', router)
 
 // error handler middleware, important: must be last middleware
 app.use(errorHandlerMiddleware)
-
-app.get('/*', (req, res) => res.sendFile(path.join(__dirname, 'build', 'index.html')))
 
 const start = async () => {
     try {

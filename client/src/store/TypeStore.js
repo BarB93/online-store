@@ -2,21 +2,18 @@ import { makeAutoObservable } from 'mobx'
 class TypeStore {
     constructor() {
         this._types = []
-        this._selectedType = {}
         this._isLoadingTypes = true
         this._isFetchingType = false
+        this._selectedTypes = []
         makeAutoObservable(this)
     }
 
+    // setters
     setTypes(types) {
         this._types = types
     }
-    setSelectedType(type) {
-        if(this._selectedType?.id === type?.id) {
-            this._selectedType = null
-        } else {
-            this._selectedType = type
-        }
+    setSelectedTypes(array) {
+        this._selectedTypes = array
     }
     setIsLoadingTypes(bool) {
         this._isLoadingTypes = bool
@@ -24,17 +21,28 @@ class TypeStore {
     setIsFetchingType(bool) {
         this._isFetchingType = bool
     }
+
+    // getters
     get types() {
         return this._types
-    }
-    get selectedType() {
-        return this._selectedType
     }
     get isLoadingTypes() {
         return this._isLoadingTypes
     }
     get isFetchingType() {
         return this._isFetchingType
+    }
+    get selectedTypes() {
+        return this._selectedTypes
+    }
+
+    // methods
+    addSelectedType(id) {
+        this._selectedTypes = [...this._selectedTypes, id]
+    }
+
+    removeSelectedType(id) {
+        this._selectedTypes = this._selectedTypes.filter(item => item !== id)
     }
 }
 

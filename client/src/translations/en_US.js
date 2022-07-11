@@ -100,6 +100,7 @@
     'There are no devices for selected filters, chose others or reset': 'There are no devices for selected filters, chose others or reset',
     'Reset filters': 'Reset filters',
     'To make order, choose goods': 'To make order, choose goods',
+    'Price currency': 'Price, {{currency}}',
 }
 
 export default translationEN

@@ -1,0 +1,10 @@
+.filter {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+    &__item {
+        display: flex;
+        cursor: pointer;
+    }
+}

@@ -33,13 +33,15 @@ const deviceAPI = {
         return data
     },
     
-    async fetchDevices(typeId, brandId, page = 1, limit = 10) {
-        const {data} = await $host.get('/api/device', {params: {
-            typeId,
-            brandId,
-            page,
-            limit
-        }})
+    async fetchDevices(typeIds, brandIds, page = 1, limit = 10) {
+        const {data} = await $host.get('/api/device', {
+            params: {
+                typeIds,
+                brandIds,
+                page,
+                limit,
+            }
+        })
         return data
     },
     
