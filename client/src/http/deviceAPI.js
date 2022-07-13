@@ -33,14 +33,9 @@ const deviceAPI = {
         return data
     },
     
-    async fetchDevices(typeIds, brandIds, page = 1, limit = 10) {
+    async fetchDevices(params) {
         const {data} = await $host.get('/api/device', {
-            params: {
-                typeIds,
-                brandIds,
-                page,
-                limit,
-            }
+            params
         })
         return data
     },

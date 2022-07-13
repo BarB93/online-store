@@ -21,7 +21,7 @@ const CreateBrandForm = observer(({submittedHandler}) => {
     const onSubmit = async (values, {resetForm, ...rest}) => {
         try {
             if(error) setError(null)
-            brand.setIsFetchingBrand(true)
+            brand.setIsLoadingBrand(true)
             await deviceAPI.createBrand(values)
             resetForm()
             toast.addToast(createToast(i18n.t('Brand created successfully', {name: values.name})))
@@ -31,7 +31,7 @@ const CreateBrandForm = observer(({submittedHandler}) => {
         } catch(e) {
             setError(e.response.data.message)
         } finally {
-            brand.setIsFetchingBrand(false)
+            brand.setIsLoadingBrand(false)
         }
     }
 
@@ -53,13 +53,13 @@ const CreateBrandForm = observer(({submittedHandler}) => {
             />
             <div className='form__footer'>
                 {
-                    (brand.isFetchingBrand && <div className='form__spinnerContainer'><SpinnerFacebook className='form__spinner'/></div>)
+                    (brand.isLoadingBrand && <div className='form__spinnerContainer'><SpinnerFacebook className='form__spinner'/></div>)
                     ||
                     (formik.errors.name && <ErrorMessage message={i18n.t(formik.errors.name)}/>)
                     ||
                     (error && <ErrorMessage message={i18n.t(error)}/>)
                 }
-                <Button className='form__btn' disabled={!formik.isValid || brand.isFetchingBrand} type='submit' secondary>{i18n.t('Add')}</Button>
+                <Button className='form__btn' disabled={!formik.isValid || brand.isLoadingBrand} type='submit' secondary>{i18n.t('Add')}</Button>
             </div>   
         </form>
     )

@@ -7,9 +7,11 @@ class DeviceStore {
         this._page = 1
         this._totalCount = 0
         this._limit = 2
+
         makeAutoObservable(this)
     }
 
+    // setters
     setDevices(devices) {
         this._devices = devices
     }
@@ -28,6 +30,8 @@ class DeviceStore {
     setLimit(num) {
         this._limit = num
     }
+
+    // getters
     get devices() {
         return this._devices
     }
@@ -46,6 +50,7 @@ class DeviceStore {
     get limit() {
         return this._limit
     }
+   
 }
 
 export default new DeviceStore()

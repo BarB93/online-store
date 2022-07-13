@@ -101,6 +101,8 @@
     'Reset filters': 'Reset filters',
     'To make order, choose goods': 'To make order, choose goods',
     'Price currency': 'Price, {{currency}}',
+    'From': 'From',
+    'To': 'To',
 }
 
 export default translationEN

@@ -1,6 +1,6 @@
 import React, { createContext } from 'react'
 import ReactDOM from 'react-dom/client'
-import { UserStore, TypeStore, BrandStore, DeviceStore, ToastStore, AppStore, BasketStore } from './store'
+import { UserStore, TypeStore, BrandStore, DeviceStore, ToastStore, AppStore, BasketStore, PriceStore } from './store'
 import App from './App'
 
 export const Context = createContext(null)
@@ -13,6 +13,7 @@ const store = {
   toast: ToastStore,
   app: AppStore,
   basket: BasketStore,
+  price: PriceStore,
 }
 
 const root = ReactDOM.createRoot(document.getElementById('root'))

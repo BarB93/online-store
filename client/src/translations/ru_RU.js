@@ -101,6 +101,8 @@ const translationRU = {
     'Reset filters': 'Сбросить фильтры',
     'To make order, choose goods': 'Для оформляния заказа выберите товар',
     'Price currency': 'Цена, {{currency}}',
+    'From': 'От',
+    'To': 'До',
 }
 
 export default translationRU

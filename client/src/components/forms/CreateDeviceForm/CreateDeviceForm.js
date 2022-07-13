@@ -222,7 +222,7 @@ const CreateDeviceForm = observer(({submittedHandler}) => {
 
                 <div className='form__footer'>
                     {
-                        (brand.isFetchingBrand && <div className='form__spinnerContainer'><SpinnerFacebook className='form__spinner'/></div>)
+                        (brand.isLoadingBrand && <div className='form__spinnerContainer'><SpinnerFacebook className='form__spinner'/></div>)
                         ||
                         (messageError && <ErrorMessage message={i18n.t(messageError)}/>)
                         ||

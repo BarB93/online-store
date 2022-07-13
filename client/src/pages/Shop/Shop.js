@@ -11,45 +11,62 @@ import FilterBar from '../../components/Shop/Filter/FilterBar/FilterBar'
 import styles from './Shop.module.scss'
 
 const Shop = observer(() => {
-    const {device, type, brand} = useContext(Context)
+    const {device, type, brand, price} = useContext(Context)
 
     useEffect(() => {
         // Types
+        type.setIsLoadingTypes(true)
         deviceAPI.fetchTypes().then(data => {type.setTypes(data)})
         .catch(e => alert(e.massage))
         .finally(() => type.setIsLoadingTypes(false))
         
         // Brands
+        brand.setIsLoadingBrands(true)
         deviceAPI.fetchBrands().then(data => brand.setBrands(data))
         .catch(e => alert(e.massage))
         .finally(() => brand.setIsLoadingBrands(false)) 
 
         // Devices
-        deviceAPI.fetchDevices(type.selectedType?.id, brand.selectedBrand?.id, 1, device.limit).then((data) => {
+        deviceAPI.fetchDevices({
+            page: device.page,
+            limit: device.limit,
+            typeIds: type.selectedTypes,
+            brandIds: brand.selectedBrands,
+            minPrice: price.inputedMinPrice,
+            maxPrice: price.inputedMaxPrice,
+        }).then((data) => {
             device.setDevices(data.rows)
             device.setTotalCount(data.count)
         })
         .catch(e => alert(e))
         .finally(() => {device.setIsLoadingDevices(false)})
-
-        //  TODO barb: uncomment if you want reset selectedType and selectedBrand 
-        // return () => {
-        //     type.setSelectedType(null)
-        //     brand.setSelectedBrand(null)
-        // }
-       
     }, [])
 
     useEffect(() => {
         device.setIsLoadingDevices(true)
-        deviceAPI.fetchDevices(type.selectedTypes, brand.selectedBrands, device.page, device.limit)
+        deviceAPI.fetchDevices({
+            page: device.page,
+            limit: device.limit,
+            typeIds: type.selectedTypes,
+            brandIds: brand.selectedBrands,
+            minPrice: price.inputedMinPrice,
+            maxPrice: price.inputedMaxPrice,
+        })
         .then((data) => {
             device.setDevices(data.rows)
             device.setTotalCount(data.count)
+            price.setMinPrice(data.minPrice)
+            price.setMaxPrice(data.maxPrice)
         })
         .catch(e => alert(e))
         .finally(() => {device.setIsLoadingDevices(false)})
-    }, [type.selectedTypes, brand.selectedBrands, device.limit, device.page])
+    }, [type.selectedTypes, brand.selectedBrands, device.limit, device.page, price.inputedMinPrice, price.inputedMaxPrice])
+
+    useEffect(() => {
+        price.setStateMinPrice('')
+        price.setStateMaxPrice('')
+        device.setPage(1)
+    }, [type.selectedTypes, brand.selectedBrands])
 
     return (
         <Container>

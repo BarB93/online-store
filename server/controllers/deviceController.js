@@ -2,38 +2,54 @@ const uuid = require('uuid')
 const path = require('path')
 const ApiError = require('../error/ApiError')
 const {Device, DeviceInfo} = require('../models/models')
+const { Op } = require('sequelize')
 
 class DeviceController {
     
     async getAll(req, res) {
-        let {typeIds, brandIds, limit, page, arrayId} = req.query
+        let {typeIds, brandIds, limit, page, minPrice, maxPrice, arrayId} = req.query
         const restult = typeof typeIds
         page = page || 1
         limit = limit || 9
         let offset = page * limit - limit
         let devices
-      
+        const options = {
+            limit,
+            offset,
+            where: {}
+        }
+        const optionsForPriceRange = {where: {}}
+
+        if(brandIds) {
+            options.where.brandId = brandIds
+            optionsForPriceRange.where.brandId = brandIds
+        }
+        if(typeIds) {
+            options.where.typeId = typeIds
+            optionsForPriceRange.where.typeId = typeIds
+        } 
+        if(minPrice && maxPrice) {
+            options.where.price = {
+                [Op.gte]: minPrice,
+                [Op.lte]: maxPrice,
+            }
+        }
+        else if(minPrice) options.where.price = {[Op.gte]: minPrice}
+        else if(maxPrice) options.where.price = {[Op.lte]: maxPrice}
+        
         if(arrayId) {
             devices = await Device.findAll({
                 where: {id: arrayId},
                 include: [{model: DeviceInfo, as: 'info'}]
             })
         }
-        else if(!brandIds && !typeIds) {
-            devices = await Device.findAndCountAll({limit, offset})
-        }
-        else if(brandIds && !typeIds) {
-            brandIds = brandIds.map(item => Number(item))
-            devices = await Device.findAndCountAll({where: {brandId: brandIds}, limit, offset})
-        }
-        else if(!brandIds && typeIds) {
-            typeIds = typeIds.map(item => Number(item))
-            devices = await Device.findAndCountAll({where: {typeId: typeIds}, limit, offset})
-        }
-        else if(brandIds && typeIds) {
-            typeIds = typeIds.map(item => Number(item))
-            brandIds = brandIds.map(item => Number(item))
-            devices = await Device.findAndCountAll({where: {typeId: typeIds, brandId: brandIds}, limit, offset})
+        else {
+            devices = await Device.findAndCountAll(options)
+
+            const min = await Device.min('price', optionsForPriceRange)
+            const max = await Device.max('price', optionsForPriceRange)
+            devices.minPrice = min
+            devices.maxPrice = max
         }
 
         return res.json(devices)   

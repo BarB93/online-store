@@ -5,7 +5,6 @@ class BrandStore {
         this._brands = []
         this._selectedBrands = []
         this._isLoadingBrands = true
-        this._isFetchingBrand = false
         makeAutoObservable(this)
     }
 
@@ -19,9 +18,6 @@ class BrandStore {
     setIsLoadingBrands(bool) {
         this._isLoadingBrands = bool
     }
-    setIsFetchingBrand(bool) {
-        this._isFetchingBrand = bool
-    }
 
     get brands() {
         return this._brands
@@ -31,9 +27,6 @@ class BrandStore {
     }
     get isLoadingBrands() {
         return this._isLoadingBrands
-    }
-    get isFetchingBrand() {
-        return this._isFetchingBrand
     }
 
     // methods
