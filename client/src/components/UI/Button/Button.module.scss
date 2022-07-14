@@ -36,6 +36,12 @@
             }
         }
     }
+    &.bold {
+        width: 100%;
+        padding: 15px;
+        font-weight: 700;
+        font-size: 1.1rem;
+    }
     &:hover {
         cursor: pointer;
         border-color:#666;
