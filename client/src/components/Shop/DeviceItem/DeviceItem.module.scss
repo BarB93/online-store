@@ -17,10 +17,6 @@
         animation: $animation-skeleton-loading;
         height: 412px;
     }
-
-    &:nth-child(1n+5) {
-        margin-top: 15px;
-    }
     &__title {
         text-align: center;
         cursor: pointer;
