@@ -40,7 +40,7 @@ const Aside = observer(() => {
                 <div className={styles.aside__rowValue}>{i18n.t('Free')}</div>
             </div>
             <div className={styles.aside__btnBox}>
-                <Button className={styles.aside__btnOrder} secondary onClick={orderHandler}>{i18n.t('Order')}</Button>
+                <Button className={styles.aside__btnOrder} secondary bold onClick={orderHandler}>{i18n.t('Order')}</Button>
             </div>
         </div>
     )
