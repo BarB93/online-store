@@ -1,6 +1,6 @@
-import React, {useContext, useState} from 'react'
+import React, { useContext, useEffect, useRef } from 'react'
 import { NavLink, useNavigate } from 'react-router-dom'
-import {observer} from 'mobx-react-lite'
+import { observer } from 'mobx-react-lite'
 import { useTranslation } from 'react-i18next'
 
 import { Context } from '../../index'
@@ -16,9 +16,9 @@ import styles from './NavBar.module.scss'
 
 const NavBar = observer(() => {
     const {user, app, basket} = useContext(Context)
-    const [isOpenMenuLang, setIsOpenMenuLang] = useState(false)
     const navigate = useNavigate()
     const i18n = useTranslation()
+    const langMenu = useRef()
 
     const logout = () => {
         localStorage.removeItem('token')
@@ -42,8 +42,21 @@ const NavBar = observer(() => {
     }
 
     const toggleOpenMenuLang = (e) => {
-        setIsOpenMenuLang(prev => !prev)
+        app.setIsOpenLangMenu(!app.isOpenLangMenu)
     }
+
+    useEffect(() => {
+        const openLangMenuHandler = (e) => {
+           if(app.isOpenLangMenu && !(e.path.some(item => item === langMenu.current))) {
+                app.setIsOpenLangMenu(false)
+           }
+        }
+
+        window.addEventListener('click', openLangMenuHandler)
+
+        return () => window.removeEventListener('click', openLangMenuHandler)
+
+    },[])
  
     return (
         user.isLoading ? <NavBarSkeleton />
@@ -58,7 +71,7 @@ const NavBar = observer(() => {
                         </div>
                         <div className={styles.nav__itemsRight}>
                             <li className={`${styles.nav__item} ${styles.nav__item_lang}`}>
-                                <div className={styles.nav__langLabel} onClick={(e) => toggleOpenMenuLang()}>
+                                <div ref={langMenu} className={styles.nav__langLabel} onClick={(e) => toggleOpenMenuLang()}>
                                     <RiGlobalLine className={styles.nav__langIcon}/>
                                     <LangSelect 
                                         className={styles.nav__select}
@@ -68,7 +81,7 @@ const NavBar = observer(() => {
                                         ]}
                                         onChange={languageChangeHandler}
                                         value={app.lang}
-                                        menuIsOpen={isOpenMenuLang}
+                                        menuIsOpen={app.isOpenLangMenu}
                                     />
                                 </div>
                             </li>

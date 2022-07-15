@@ -5,6 +5,7 @@ class AppStore {
         this._lang = languages.russian
         this._mainLang = languages.russian
         this._isOpenUserMenu = false
+        this._isOpenLangMenu = false
         makeAutoObservable(this)
     }
 
@@ -17,6 +18,9 @@ class AppStore {
     setIsOpenUserMenu(bool) {
         this._isOpenUserMenu = bool
     }
+    setIsOpenLangMenu(bool) {
+        this._isOpenLangMenu = bool
+    }
 
     get lang() {
         return this._lang
@@ -26,6 +30,9 @@ class AppStore {
     }
     get isOpenUserMenu() {
         return this._isOpenUserMenu
+    }
+    get isOpenLangMenu() {
+        return this._isOpenLangMenu
     }
 }
 
