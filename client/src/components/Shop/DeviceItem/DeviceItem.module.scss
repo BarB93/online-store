@@ -1,11 +1,21 @@
 @import '../../../styles/variables.scss';
 @import '../../../styles/animations.scss';
 
+.wrapper {
+    flex: 0 1 25%;
+    padding: 0 $margin-card;
+
+    @media screen and (max-width: 1490px) {
+        flex: 0 1 33.333%;
+    }
+    @media screen and (max-width: $screen-desktop-1) {
+        flex: 0 1 50%;
+    }
+}
 .card {
     display: flex;
     flex-direction: column;
     align-items: center;
-    flex: 0 0 25%;
     padding: 20px 15px 10px;
     border-radius: $border-radius-base;
     background-color: #fff;
@@ -27,12 +37,14 @@
     }
     &__buttons {
         display: flex;
+        justify-content: center;
         gap: 15px;
         margin-top: 20px;
         width: 100%;
 
         button {
             flex: 1 1 50%;
+            max-width: 140px;
         }
     }
     &__btnBuy {
@@ -43,6 +55,7 @@
     }
     &__moreLink {
         flex: 1 1 50%;
+        max-width: 140px;
     }
     &__image {
         display: block;
