@@ -1,0 +1,17 @@
+@import '../../../styles/variables.scss';
+
+.sort {
+    display: flex;
+    align-items: center;
+    margin: 0 0 15px 0;
+    font-size: .9rem;
+
+    &__title {
+        margin-right: 15px;
+        color: $gray-600;
+    }
+    &__item {
+        border-bottom: 1px dashed #000;
+        cursor: pointer;
+    }
+}

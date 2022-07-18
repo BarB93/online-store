@@ -2,6 +2,7 @@
 
 .list {
     display: flex;
-    gap: $indent-base;
+    gap: $indent-base 0;
     flex-wrap: wrap;
+    margin: 0 (-$margin-card);
 }

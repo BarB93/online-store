@@ -6,7 +6,7 @@ class DeviceStore {
         this._isLoadingOneDevice = true
         this._page = 1
         this._totalCount = 0
-        this._limit = 2
+        this._limit = 10
 
         makeAutoObservable(this)
     }

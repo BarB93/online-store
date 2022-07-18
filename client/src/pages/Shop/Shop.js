@@ -7,6 +7,7 @@ import Container from '../../components/UI/Container/Container'
 import DeviceList from '../../components/Shop/DeviceList/DeviceList'
 import Pagination from '../../components/Pagination/Pagination'
 import FilterBar from '../../components/Shop/Filter/FilterBar/FilterBar'
+import DeviceSort from '../../components/Shop/DeviceSort/DeviceSort'
 
 import styles from './Shop.module.scss'
 
@@ -75,6 +76,7 @@ const Shop = observer(() => {
                     <FilterBar />
                 </aside>
                 <main className={styles.main}>
+                    <DeviceSort />
                     <DeviceList />
                     <Pagination />
                 </main>
