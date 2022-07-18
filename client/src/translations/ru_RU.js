@@ -103,6 +103,12 @@ const translationRU = {
     'Price currency': 'Цена, {{currency}}',
     'From': 'От',
     'To': 'До',
+    'Sort by': 'Сортировать по:',
+    'Blue': 'Синий',
+    'Pink': 'Розовый',
+    '12 Gb': '12 Гб',
+    'Snapdragon 8 Gen 1(8 cores)': 'Snapdragon 8 Gen 1(8 ядер)',
+    '6,67" AMOLED 120 GHz, 2400 x 1080': '6,67" AMOLED 120 ГГц, 2400 x 1080',
 }
 
 export default translationRU

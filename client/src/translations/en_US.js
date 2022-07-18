@@ -103,6 +103,12 @@
     'Price currency': 'Price, {{currency}}',
     'From': 'From',
     'To': 'To',
+    'Sort by': 'Sort by:',
+    'Blue': 'Blue',
+    'Pink': 'Pink',
+    '12 Gb': '12 Gb',
+    'Snapdragon 8 Gen 1(8 cores)': 'Snapdragon 8 Gen 1(8 cores)',
+    '6,67" AMOLED 120 GHz, 2400 x 1080': '6,67" AMOLED 120 GHz, 2400 x 1080',
 }
 
 export default translationEN
